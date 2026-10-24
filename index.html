@@ -446,6 +446,11 @@ footer a{color:var(--muted)}
         <button class="vbtn" data-v="d"><span data-l="ru">Нет паспорта, есть ДП</span><span data-l="pl">Brak paszportu, mam DP</span><span data-l="be">Няма пашпарта, ёсць ДП</span></button>
       </div>
       <div id="v-c">
+      <p class="hint"><span data-l="ru">Ваша ситуация:</span><span data-l="pl">Twoja sytuacja:</span><span data-l="be">Ваша сітуацыя:</span></p>
+      <div class="gtog sm" id="kst">
+        <button type="button" class="on" data-st="thr"><span data-l="ru">Только угрожают</span><span data-l="pl">Tylko grożą</span><span data-l="be">Толькі пагражаюць</span></button>
+        <button type="button" data-st="blk"><span data-l="ru">Счёт уже заблокирован</span><span data-l="pl">Konto już zablokowane</span><span data-l="be">Рахунак ужо заблакаваны</span></button>
+      </div>
       <div class="pre" id="t-odw"></div>
       <button class="btn blue" data-copy="odw"><span data-l="ru">Копировать текст</span><span data-l="pl">Kopiuj tekst</span><span data-l="be">Капіраваць тэкст</span></button>
       <button class="btn line" data-toggle="t-odw">↕</button>
@@ -1104,11 +1109,12 @@ function tRekb(m){return ['Szanowni Państwo,','',
 'składam reklamację w związku z odmową uznania mojego polskiego dokumentu podróży dla cudzoziemca na potrzeby obsługi mojego rachunku bankowego. Posiadam ważny dokument pobytowy w Polsce oraz dokument podróży wydany przez polskie władze.','',
 'Proszę o:','1. wskazanie konkretnej podstawy prawnej odmowy;','2. wyjaśnienie, czy i jakie usługi bankowe mają zostać ograniczone oraz na jakiej podstawie;','3. ponowne rozpatrzenie sprawy z uwzględnieniem mojego statusu pobytowego i przedstawionych dokumentów.','',
 'Z wyrazami szacunku,',m.name].join('\n');}
+var KST='thr';
 function tOdw(m){return ['Odwołanie od odpowiedzi na reklamację nr '+m.num,'',
-'Nie zgadzam się z odpowiedzią Banku na moją reklamację. Odpowiedź nie wskazuje, jakie konkretnie dokumenty mogę przedstawić, aby uniknąć zablokowania rachunku w sytuacji, gdy:',
+'Nie zgadzam się z odpowiedzią Banku na moją reklamację. Odpowiedź nie wskazuje, jakie konkretnie dokumenty mogę przedstawić, '+(KST==='blk'?'aby rachunek został odblokowany':'aby uniknąć zablokowania rachunku')+' w sytuacji, gdy:',
 '– czekam na wydanie nowej karty pobytu, a postępowanie trwa z przyczyn ode mnie niezależnych (w tym zawieszenia biegu terminów na podstawie art. 100d ustawy o pomocy obywatelom Ukrainy w związku z konfliktem zbrojnym na terytorium tego państwa),',
 '– nie mogę uzyskać paszportu białoruskiego, ponieważ od września 2023 r. białoruskie placówki konsularne nie wydają ani nie przedłużają paszportów, a jedynym dostępnym mi dokumentem jest polski dokument podróży dla cudzoziemca.','',
-'Wnoszę o ponowne rozpatrzenie sprawy oraz o jednoznaczne wskazanie: (1) czy Bank akceptuje polski dokument podróży dla cudzoziemca jako dokument tożsamości, (2) czy Bank akceptuje zaświadczenie o toczącym się postępowaniu w sprawie zezwolenia na pobyt jako potwierdzenie legalnego pobytu, (3) jakie inne dokumenty mogę przedstawić.','',
+'Wnoszę o ponowne rozpatrzenie sprawy, '+(KST==='blk'?'niezwłoczne odblokowanie mojego rachunku, ':'')+'zaakceptowanie zaświadczenia o toczącym się postępowaniu lub stempla w paszporcie jako dokumentów uzupełniających oraz o jednoznaczne wskazanie: (1) czy Bank akceptuje polski dokument podróży dla cudzoziemca jako dokument tożsamości, (2) czy Bank akceptuje zaświadczenie o toczącym się postępowaniu w sprawie zezwolenia na pobyt jako potwierdzenie legalnego pobytu, (3) jakie inne dokumenty mogę przedstawić.','',
 'W przypadku podtrzymania stanowiska Banku rozważę skierowanie wniosku do Rzecznika Finansowego.','',m.name].join('\n');}
 var DPST='thr';
 function tOdwDp(m){return ['Odwołanie od odpowiedzi na reklamację nr '+m.num,'','Szanowni Państwo,','',
@@ -1145,6 +1151,8 @@ bank.addEventListener('click',function(e){
     var ok=function(){c.classList.add('done');setTimeout(function(){c.classList.remove('done');},1500);};
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fallback(t);ok();});}else{fallback(t);ok();}
     return;}
+  var ks=e.target.closest('#kst button');
+  if(ks){KST=ks.dataset.st;$('kst').querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===ks);});bRender();return;}
   var st=e.target.closest('#dpst button');
   if(st){DPST=st.dataset.st;$('dpst').querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===st);});bRender();return;}
   var v=e.target.closest('.vbtn');
