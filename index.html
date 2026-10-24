@@ -291,6 +291,7 @@ footer a{color:var(--muted)}
     <button class="tab" data-tab="home"><span data-l="ru">О нас</span><span data-l="pl">O nas</span><span data-l="be">Пра нас</span></button>
     <button class="tab" data-tab="wniosek">Wniosek</button>
     <button class="tab" data-tab="bank"><span data-l="ru">Банк</span><span data-l="pl">Bank</span><span data-l="be">Банк</span></button>
+    <button class="tab" data-tab="prp"><span data-l="ru">Счёт PRP</span><span data-l="pl">Konto PRP</span><span data-l="be">Рахунак PRP</span></button>
     <button class="tab" data-tab="guide"><span data-l="ru">Инструкция</span><span data-l="pl">Poradnik</span><span data-l="be">Інструкцыя</span></button>
     <button class="tab" data-tab="tg">Telegram</button>
     <button class="tab" data-tab="fb">Facebook</button>
@@ -310,9 +311,10 @@ footer a{color:var(--muted)}
     <div class="quick">
       <button data-go="wniosek"><span class="n">01</span><b>Wniosek</b><small><span data-l="ru">Конструктор и пример</span><span data-l="pl">Kreator i wzór</span><span data-l="be">Канструктар і ўзор</span></small></button>
       <button data-go="bank"><span class="n">02</span><b>Bank Millennium</b><small><span data-l="ru">Что делать при блокировке</span><span data-l="pl">Co robić przy blokadzie</span><span data-l="be">Што рабіць пры блакаванні</span></small></button>
-      <button data-go="guide"><span class="n">03</span><b><span data-l="ru">Инструкция</span><span data-l="pl">Poradnik</span><span data-l="be">Інструкцыя</span></b><small><span data-l="ru">Как получить документ</span><span data-l="pl">Jak uzyskać dokument</span><span data-l="be">Як атрымаць дакумент</span></small></button>
-      <button data-go="tg"><span class="n">04</span><b>Telegram</b><small><span data-l="ru">Чат и канал</span><span data-l="pl">Czat i kanał</span><span data-l="be">Чат і канал</span></small></button>
-      <button data-go="fb"><span class="n">05</span><b>Facebook</b><small><span data-l="ru">Наша группа</span><span data-l="pl">Nasza grupa</span><span data-l="be">Наша група</span></small></button>
+      <button data-go="prp"><span class="n">03</span><b><span data-l="ru">Счёт PRP</span><span data-l="pl">Konto PRP</span><span data-l="be">Рахунак PRP</span></b><small><span data-l="ru">Как открыть базовый счёт</span><span data-l="pl">Jak otworzyć rachunek podstawowy</span><span data-l="be">Як адкрыць базавы рахунак</span></small></button>
+      <button data-go="guide"><span class="n">04</span><b><span data-l="ru">Инструкция</span><span data-l="pl">Poradnik</span><span data-l="be">Інструкцыя</span></b><small><span data-l="ru">Как получить документ</span><span data-l="pl">Jak uzyskać dokument</span><span data-l="be">Як атрымаць дакумент</span></small></button>
+      <button data-go="tg"><span class="n">05</span><b>Telegram</b><small><span data-l="ru">Чат и канал</span><span data-l="pl">Czat i kanał</span><span data-l="be">Чат і канал</span></small></button>
+      <button data-go="fb"><span class="n">06</span><b>Facebook</b><small><span data-l="ru">Наша группа</span><span data-l="pl">Nasza grupa</span><span data-l="be">Наша група</span></small></button>
     </div>
     <div class="box">
       <h3><span data-l="ru">Контакты</span><span data-l="pl">Kontakt</span><span data-l="be">Кантакты</span></h3>
@@ -487,6 +489,114 @@ footer a{color:var(--muted)}
       <span data-l="ru">SMS и письма от банка, переписку, ответы на рекламации, документы о легальном пребывании и ипотечный договор, если есть.</span><span data-l="pl">SMS-y i listy z banku, korespondencję, odpowiedzi na reklamacje, dokumenty pobytowe i umowę kredytu, jeśli jest.</span><span data-l="be">SMS і лісты ад банка, перапіску, адказы на рэкламацыі, дакументы аб легальным знаходжанні і іпатэчны дагавор, калі ёсць.</span>
     </div>
     <p class="hint"><span data-l="ru">Тексты подготовлены участниками сообщества беларусов в Польше. Это не юридическая консультация.</span><span data-l="pl">Teksty przygotowane przez społeczność Białorusinów w Polsce. To nie jest porada prawna.</span><span data-l="be">Тэксты падрыхтаваны ўдзельнікамі супольнасці беларусаў у Польшчы. Гэта не юрыдычная кансультацыя.</span></p>
+  </section>
+
+  <!-- PRP -->
+  <section class="panel" id="prp">
+    <h2><span data-l="ru">Базовый платёжный счёт (PRP)</span><span data-l="pl">Podstawowy rachunek płatniczy (PRP)</span><span data-l="be">Базавы плацежны рахунак (PRP)</span></h2>
+    <p class="lead">
+      <span data-l="ru">Если нет счёта в польском банке, банк обязан открыть вам бесплатный базовый счёт с картой и переводами. Гражданство, карта побыту и работа значения не имеют.</span>
+      <span data-l="pl">Jeśli nie masz rachunku w polskim banku, bank ma obowiązek otworzyć Ci bezpłatny rachunek podstawowy z kartą i przelewami. Obywatelstwo, karta pobytu i praca nie mają znaczenia.</span>
+      <span data-l="be">Калі няма рахунку ў польскім банку, банк абавязаны адкрыць вам бясплатны базавы рахунак з карткай і пераводамі. Грамадзянства, карта побыту і праца значэння не маюць.</span>
+    </p>
+    <span class="badge"><span data-l="ru">Просите именно podstawowy rachunek płatniczy, не konto osobiste</span><span data-l="pl">Proś o podstawowy rachunek płatniczy, nie o konto osobiste</span><span data-l="be">Прасіце менавіта podstawowy rachunek płatniczy, не konto osobiste</span></span>
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">1</span><div><h3><span data-l="ru">Проверьте, есть ли у вас право</span><span data-l="pl">Sprawdź, czy masz prawo</span><span data-l="be">Праверце, ці ёсць у вас права</span></h3></div></div>
+      <ul>
+        <li><span data-l="ru">Вы законно находитесь в Польше (гражданство не важно).</span><span data-l="pl">Przebywasz legalnie w Polsce (obywatelstwo nie ma znaczenia).</span><span data-l="be">Вы законна знаходзіцеся ў Польшчы (грамадзянства не важнае).</span></li>
+        <li><span data-l="ru">У вас нет другого счёта в польском банке, с которого можно делать переводы и платить картой.</span><span data-l="pl">Nie masz innego rachunku w polskim banku, z którego można robić przelewy i płacić kartą.</span><span data-l="be">У вас няма іншага рахунку ў польскім банку, з якога можна рабіць пераводы і плаціць карткай.</span></li>
+        <li><span data-l="ru">Заявление подаётся именно на PRP. Его предлагают практически все крупные банки.</span><span data-l="pl">Wniosek dotyczy właśnie PRP. Oferują go praktycznie wszystkie duże banki.</span><span data-l="be">Заява падаецца менавіта на PRP. Яго прапануюць практычна ўсе буйныя банкі.</span></li>
+      </ul>
+      <p class="hint"><span data-l="ru">Art. 59ia Ustawy o usługach płatniczych и директива 2014/92/UE (ст. 16): это прямое право, а не решение банка.</span><span data-l="pl">Art. 59ia Ustawy o usługach płatniczych i dyrektywa 2014/92/UE (art. 16): to bezpośrednie prawo, a nie decyzja banku.</span><span data-l="be">Art. 59ia Ustawy o usługach płatniczych і дырэктыва 2014/92/UE (арт. 16): гэта прамое права, а не рашэнне банка.</span></p>
+    </div>
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">2</span><div><h3><span data-l="ru">Соберите документы</span><span data-l="pl">Przygotuj dokumenty</span><span data-l="be">Збярыце дакументы</span></h3><div class="sub"><span data-l="ru">Банк не вправе требовать больше, чем нужно для подтверждения личности и законного пребывания.</span><span data-l="pl">Bank nie może wymagać więcej, niż potrzeba do potwierdzenia tożsamości i legalnego pobytu.</span><span data-l="be">Банк не мае права патрабаваць больш, чым трэба для пацвярджэння асобы і законнага знаходжання.</span></div></div></div>
+      <ul>
+        <li><span data-l="ru">Документ личности: паспорт, карта побыту, dokument podróży dla cudzoziemca, TZTC или другой действующий документ, выданный польским органом.</span><span data-l="pl">Dokument tożsamości: paszport, karta pobytu, dokument podróży dla cudzoziemca, TZTC lub inny ważny dokument wydany przez polski organ.</span><span data-l="be">Дакумент асобы: пашпарт, карта побыту, dokument podróży dla cudzoziemca, TZTC або іншы дзейны дакумент, выдадзены польскім органам.</span></li>
+        <li><span data-l="ru">Meldunek, если есть.</span><span data-l="pl">Meldunek, jeśli jest.</span><span data-l="be">Meldunek, калі ёсць.</span></li>
+        <li><span data-l="ru">PESEL, если присвоен.</span><span data-l="pl">PESEL, jeśli nadany.</span><span data-l="be">PESEL, калі прысвоены.</span></li>
+        <li><span data-l="ru">На телефоне: страница PRP на сайте выбранного банка (ссылки ниже).</span><span data-l="pl">W telefonie: strona PRP wybranego banku (linki poniżej).</span><span data-l="be">На тэлефоне: старонка PRP на сайце абранага банка (спасылкі ніжэй).</span></li>
+      </ul>
+      <details>
+        <summary><span data-l="ru">Если у вас TZTC: аргументы</span><span data-l="pl">Jeśli masz TZTC: argumenty</span><span data-l="be">Калі ў вас TZTC: аргументы</span></summary>
+        <div><span data-l="ru">• gov.pl / UdSC: TZTC — документ, подтверждающий личность иностранца в процедуре международной защиты.
+• Art. 55 ustawy o udzielaniu cudzoziemcom ochrony: TZTC подтверждает личность и право пребывания до окончательного решения.
+• Реестр ЕС PRADO: TZTC указан как официальный документ личности (POL-HP-03001).
+• Письмо UKNF банкам: TZTC нужно принимать как документ, удостоверяющий личность.</span><span data-l="pl">• gov.pl / UdSC: TZTC to dokument potwierdzający tożsamość cudzoziemca w procedurze o udzielenie ochrony międzynarodowej.
+• Art. 55 ustawy o udzielaniu cudzoziemcom ochrony: TZTC potwierdza tożsamość i uprawnia do pobytu do zakończenia postępowania.
+• Rejestr UE PRADO: TZTC jako oficjalny dokument tożsamości (POL-HP-03001).
+• Pismo UKNF do banków: TZTC należy uznawać za dokument stwierdzający tożsamość.</span><span data-l="be">• gov.pl / UdSC: TZTC — дакумент, які пацвярджае асобу замежніка ў працэдуры міжнароднай абароны.
+• Art. 55 ustawy o udzielaniu cudzoziemcom ochrony: TZTC пацвярджае асобу і права знаходжання да канчатковага рашэння.
+• Рэестр ЕС PRADO: TZTC пазначаны як афіцыйны дакумент асобы (POL-HP-03001).
+• Ліст UKNF банкам: TZTC трэба прымаць як дакумент, які сведчыць асобу.</span></div>
+      </details>
+    </div>
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">3</span><div><h3><span data-l="ru">В отделении банка</span><span data-l="pl">W oddziale banku</span><span data-l="be">У аддзяленні банка</span></h3></div></div>
+      <ul>
+        <li><span data-l="ru">Сразу назовите продукт: podstawowy rachunek płatniczy. На предложение konto osobiste откажитесь и повторите.</span><span data-l="pl">Od razu nazwij produkt: podstawowy rachunek płatniczy. Na propozycję konta osobistego odmów i powtórz.</span><span data-l="be">Адразу назавіце прадукт: podstawowy rachunek płatniczy. На прапанову konto osobiste адмоўцеся і паўтарыце.</span></li>
+        <li><span data-l="ru">Если консультант «не знает» такого счёта, покажите страницу PRP на сайте этого банка.</span><span data-l="pl">Jeśli doradca „nie zna” takiego rachunku, pokaż stronę PRP na stronie tego banku.</span><span data-l="be">Калі кансультант «не ведае» такога рахунку, пакажыце старонку PRP на сайце гэтага банка.</span></li>
+        <li><span data-l="ru">Если требуют лишнее (карту побыту на 12 месяцев и т.п.), объясните, что для PRP нужен только документ личности и законное пребывание.</span><span data-l="pl">Jeśli wymagają więcej (karty pobytu na 12 miesięcy itp.), wyjaśnij, że do PRP wystarczy dokument tożsamości i legalny pobyt.</span><span data-l="be">Калі патрабуюць лішняе (карту побыту на 12 месяцаў і г.д.), растлумачце, што для PRP патрэбны толькі дакумент асобы і законнае знаходжанне.</span></li>
+        <li><span data-l="ru">Не помогает — просите руководителя отделения (kierownik oddziału). Обычно он звонит в головной офис и получает подтверждение.</span><span data-l="pl">Nie pomaga — poproś kierownika oddziału. Zwykle dzwoni do centrali i dostaje potwierdzenie.</span><span data-l="be">Не дапамагае — прасіце кіраўніка аддзялення (kierownik oddziału). Звычайна ён тэлефануе ў галоўны офіс і атрымлівае пацвярджэнне.</span></li>
+        <li><span data-l="ru">Дальше: подписание договора, установка приложения. Карта приходит по почте.</span><span data-l="pl">Dalej: podpisanie umowy, instalacja aplikacji. Karta przychodzi pocztą.</span><span data-l="be">Далей: подпіс дагавора, усталёўка праграмы. Картка прыходзіць поштай.</span></li>
+      </ul>
+      <div class="callout"><b><span data-l="ru">Про белорусское гражданство.</span><span data-l="pl">O obywatelstwie białoruskim.</span><span data-l="be">Пра беларускае грамадзянства.</span></b> <span data-l="ru">UKNF напомнил банкам: отказ не может основываться только на гражданстве страны под санкциями. Нужна индивидуальная оценка риска, а решение должно быть обосновано и задокументировано.</span><span data-l="pl">UKNF przypomniał bankom: odmowa nie może wynikać wyłącznie z obywatelstwa państwa objętego sankcjami. Potrzebna jest indywidualna analiza ryzyka, a decyzja musi być uzasadniona i udokumentowana.</span><span data-l="be">UKNF нагадаў банкам: адмова не можа грунтавацца толькі на грамадзянстве краіны пад санкцыямі. Патрэбна індывідуальная ацэнка рызыкі, а рашэнне павінна быць абгрунтаваным і задакументаваным.</span></div>
+    </div>
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">4</span><div><h3><span data-l="ru">Фразы для банка</span><span data-l="pl">Zwroty do banku</span><span data-l="be">Фразы для банка</span></h3></div></div>
+      <div class="pre open">Dzień dobry, chciałabym / chciałbym otworzyć podstawowy rachunek płatniczy (PRP), nie konto osobiste.
+
+Zgodnie z art. 59ia ustawy o usługach płatniczych mam prawo do podstawowego rachunku płatniczego. Karta pobytu nie jest wymagana.
+
+Na stronie Państwa banku jest informacja o tym rachunku — mogę pokazać.
+
+Czy mogę porozmawiać z kierownikiem oddziału?
+
+Proszę o odmowę na piśmie wraz z uzasadnieniem.</div>
+      <button class="btn blue" type="button" id="prpCopy"><span data-l="ru">Копировать фразы</span><span data-l="pl">Kopiuj zwroty</span><span data-l="be">Капіраваць фразы</span></button>
+    </div>
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">5</span><div><h3><span data-l="ru">Если всё равно отказали</span><span data-l="pl">Jeśli mimo to odmówili</span><span data-l="be">Калі ўсё роўна адмовілі</span></h3></div></div>
+      <ul>
+        <li><span data-l="ru">Законно отказать можно только если у вас уже есть счёт в польском банке, банк не может вас идентифицировать (или есть обоснованные AML-подозрения), либо вы дали ложные данные.</span><span data-l="pl">Odmowa jest zgodna z prawem tylko, gdy masz już rachunek w polskim banku, bank nie może Cię zidentyfikować (lub ma uzasadnione podejrzenia AML) albo podano nieprawdziwe dane.</span><span data-l="be">Законна адмовіць можна толькі калі ў вас ужо ёсць рахунак у польскім банку, банк не можа вас ідэнтыфікаваць (або ёсць абгрунтаваныя AML-падазрэнні), ці вы далі ілжывыя даныя.</span></li>
+        <li><span data-l="ru">Попросите отказ письменно: по директиве 2014/92/UE (ст. 19) банк сообщает об отказе письменно, бесплатно и с причиной.</span><span data-l="pl">Poproś o odmowę na piśmie: zgodnie z dyrektywą 2014/92/UE (art. 19) bank informuje o odmowie pisemnie, bezpłatnie i z uzasadnieniem.</span><span data-l="be">Папрасіце адмову пісьмова: паводле дырэктывы 2014/92/UE (арт. 19) банк паведамляе пра адмову пісьмова, бясплатна і з прычынай.</span></li>
+        <li><span data-l="ru">Попробуйте другое отделение или другой банк.</span><span data-l="pl">Spróbuj w innym oddziale lub innym banku.</span><span data-l="be">Паспрабуйце іншае аддзяленне або іншы банк.</span></li>
+        <li><span data-l="ru">Подайте reklamację в банк, затем — к <a href="https://rf.gov.pl" target="_blank" rel="noopener">Rzecznik Finansowy</a> или в <a href="https://www.knf.gov.pl" target="_blank" rel="noopener">KNF</a>.</span><span data-l="pl">Złóż reklamację w banku, a potem — do <a href="https://rf.gov.pl" target="_blank" rel="noopener">Rzecznika Finansowego</a> lub <a href="https://www.knf.gov.pl" target="_blank" rel="noopener">KNF</a>.</span><span data-l="be">Падайце reklamację ў банк, потым — да <a href="https://rf.gov.pl" target="_blank" rel="noopener">Rzecznik Finansowy</a> або ў <a href="https://www.knf.gov.pl" target="_blank" rel="noopener">KNF</a>.</span></li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h3><span data-l="ru">Страницы PRP в банках</span><span data-l="pl">Strony PRP w bankach</span><span data-l="be">Старонкі PRP у банках</span></h3>
+      <p><span data-l="ru">На страницах — условия, тарифы и бланк заявления (wniosek).</span><span data-l="pl">Na stronach — warunki, opłaty i formularz wniosku.</span><span data-l="be">На старонках — умовы, тарыфы і бланк заявы (wniosek).</span></p>
+      <div class="links">
+        <a href="https://www.pkobp.pl/klient-indywidualny/konta/podstawowy-rachunek-platniczy" target="_blank" rel="noopener"><span class="ic">→</span>PKO BP</a>
+        <a href="https://www.pekao.com.pl/klient-indywidualny/codzienne-bankowanie/konta-osobiste/Rachunek-podstawowy.html" target="_blank" rel="noopener"><span class="ic">→</span>Bank Pekao</a>
+        <a href="https://www.mbank.pl/indywidualny/uslugi/uslugi/podstawowy-rachunek-platniczy/" target="_blank" rel="noopener"><span class="ic">→</span>mBank</a>
+        <a href="https://www.erste.pl/klient-indywidualny/konta/konto-podstawowe" target="_blank" rel="noopener"><span class="ic">→</span>Erste Bank Polska (Konto Podstawowe)</a>
+        <a href="https://www.ing.pl/indywidualni/konta-osobiste/konto-prp-podstawowy-rachunek-platniczy" target="_blank" rel="noopener"><span class="ic">→</span>ING</a>
+        <a href="https://www.bankmillennium.pl/delegate/managedfiles/819/latest" target="_blank" rel="noopener"><span class="ic">→</span>Bank Millennium</a>
+        <a href="https://www.aliorbank.pl/klienci-indywidualni/konta-osobiste/rachunek-podstawowy.html" target="_blank" rel="noopener"><span class="ic">→</span>Alior Bank</a>
+        <a href="https://www.bnpparibas.pl/klienci-indywidualni/konta/rachunek-podstawowy" target="_blank" rel="noopener"><span class="ic">→</span>BNP Paribas</a>
+        <a href="https://www.credit-agricole.pl/klienci-indywidualni/konta/podstawowy-rachunek-platniczy" target="_blank" rel="noopener"><span class="ic">→</span>Credit Agricole</a>
+      </div>
+      <p class="hint"><span data-l="ru">Erste: счёт открывают только в отделении, не в Strefa Erste.</span><span data-l="pl">Erste: rachunek otwiera się tylko w oddziale, nie w Strefie Erste.</span><span data-l="be">Erste: рахунак адкрываюць толькі ў аддзяленні, не ў Strefa Erste.</span></p>
+    </div>
+
+    <div class="box">
+      <h3><span data-l="ru">Правовая база</span><span data-l="pl">Podstawa prawna</span><span data-l="be">Прававая база</span></h3>
+      <div class="links">
+        <a href="https://isap.sejm.gov.pl/isap.nsf/download.xsp/WDU20111991175/U/D20111175Lj.pdf" target="_blank" rel="noopener"><span class="ic">§</span>Ustawa o usługach płatniczych, art. 59ia</a>
+        <a href="https://eur-lex.europa.eu/legal-content/PL/TXT/PDF/?uri=CELEX%3A32014L0092" target="_blank" rel="noopener"><span class="ic">§</span>Dyrektywa 2014/92/UE</a>
+        <a href="https://www.gov.pl/web/finanse/dostep-konsumentow-do-bezplatnego-rachunku-podstawowego" target="_blank" rel="noopener"><span class="ic">§</span>gov.pl — rachunek podstawowy</a>
+        <a href="https://www.consilium.europa.eu/prado/pl/POL-HP-03001/index.html" target="_blank" rel="noopener"><span class="ic">§</span>PRADO — TZTC</a>
+      </div>
+      <p class="hint"><span data-l="ru">По материалам статьи «Базовый платёжный счёт в Польше» и реального опыта открытия PRP с TZTC. Это не юридическая консультация.</span><span data-l="pl">Na podstawie artykułu „Bazowy rachunek płatniczy w Polsce” i realnego doświadczenia otwarcia PRP z TZTC. To nie jest porada prawna.</span><span data-l="be">Паводле артыкула «Базавы плацежны рахунак у Польшчы» і рэальнага досведу адкрыцця PRP з TZTC. Гэта не юрыдычная кансультацыя.</span></p>
+    </div>
   </section>
 
   <!-- Инструкция -->
@@ -1029,6 +1139,10 @@ function show(id){
 }
 tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.tab);});});
 document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){show(b.dataset.go);window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});});});
+var pc=document.getElementById('prpCopy');
+if(pc){pc.addEventListener('click',function(){var t=pc.previousElementSibling.textContent;var ok=function(){pc.classList.add('done');setTimeout(function(){pc.classList.remove('done');},1500);};
+  var fb=function(){try{if(typeof fallback==='function'){fallback(t);}else{var r=document.createRange();r.selectNodeContents(pc.previousElementSibling);var sel=window.getSelection();sel.removeAllRanges();sel.addRange(r);document.execCommand('copy');}}catch(e){}ok();};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb);}else{fb();}});}
 var start=(location.hash||'').slice(1);
 show(document.getElementById(start)&&document.getElementById(start).classList.contains('panel')?start:'home');
 })();
