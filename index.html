@@ -442,7 +442,7 @@ footer a{color:var(--muted)}
       <div class="step-head"><span class="step-num">2</span><div><h3><span data-l="ru">Обжалование (odwołanie)</span><span data-l="pl">Odwołanie</span><span data-l="be">Абскарджанне (odwołanie)</span></h3><p class="sub"><span data-l="ru">Если ответ на рекламацию не устроил — подайте там же.</span><span data-l="pl">Jeśli odpowiedź nie satysfakcjonuje — złóż w tym samym miejscu.</span><span data-l="be">Калі адказ не задаволіў — падайце там жа.</span></p></div></div>
       <div class="f"><label><span data-l="ru">Номер рекламации и дата ответа</span><span data-l="pl">Numer reklamacji i data odpowiedzi</span><span data-l="be">Нумар рэкламацыі і дата адказу</span></label><input id="b-num" type="text" placeholder="np. RK/123456, 05.11.2026"></div>
       <div class="vtabs">
-        <button class="vbtn on" data-v="c"><span data-l="ru">Карта побыту и паспорт</span><span data-l="pl">Karta pobytu i paszport</span><span data-l="be">Карта побыту і пашпарт</span></button>
+        <button class="vbtn on" data-v="c"><span data-l="ru">Карта побыту истекла</span><span data-l="pl">Karta pobytu wygasła</span><span data-l="be">Тэрмін карты побыту скончыўся</span></button>
         <button class="vbtn" data-v="d"><span data-l="ru">Нет паспорта, есть ДП</span><span data-l="pl">Brak paszportu, mam DP</span><span data-l="be">Няма пашпарта, ёсць ДП</span></button>
       </div>
       <div id="v-c">
@@ -1114,12 +1114,13 @@ function tRekb(m){return ['Szanowni Państwo,','',
 'Proszę o:','1. wskazanie konkretnej podstawy prawnej odmowy;','2. wyjaśnienie, czy i jakie usługi bankowe mają zostać ograniczone oraz na jakiej podstawie;','3. ponowne rozpatrzenie sprawy z uwzględnieniem mojego statusu pobytowego i przedstawionych dokumentów.','',
 'Z wyrazami szacunku,',m.name].join('\n');}
 var KST='thr';
-function tOdw(m){return ['Odwołanie od odpowiedzi na reklamację nr '+m.num,'',
-'Nie zgadzam się z odpowiedzią Banku na moją reklamację. Odpowiedź nie wskazuje, jakie konkretnie dokumenty mogę przedstawić, '+(KST==='blk'?'aby rachunek został odblokowany':'aby uniknąć zablokowania rachunku')+' w sytuacji, gdy:',
-'– czekam na wydanie nowej karty pobytu, a postępowanie trwa z przyczyn ode mnie niezależnych (w tym zawieszenia biegu terminów na podstawie art. 100d ustawy o pomocy obywatelom Ukrainy w związku z konfliktem zbrojnym na terytorium tego państwa),',
-'– nie mogę uzyskać paszportu białoruskiego, ponieważ od września 2023 r. białoruskie placówki konsularne nie wydają ani nie przedłużają paszportów, a jedynym dostępnym mi dokumentem jest polski dokument podróży dla cudzoziemca.','',
-'Wnoszę o ponowne rozpatrzenie sprawy, '+(KST==='blk'?'niezwłoczne odblokowanie mojego rachunku, ':'')+'zaakceptowanie zaświadczenia o toczącym się postępowaniu lub stempla w paszporcie jako dokumentów uzupełniających oraz o jednoznaczne wskazanie: (1) czy Bank akceptuje polski dokument podróży dla cudzoziemca jako dokument tożsamości, (2) czy Bank akceptuje zaświadczenie o toczącym się postępowaniu w sprawie zezwolenia na pobyt jako potwierdzenie legalnego pobytu, (3) jakie inne dokumenty mogę przedstawić.','',
-'W przypadku podtrzymania stanowiska Banku rozważę skierowanie wniosku do Rzecznika Finansowego.','',m.name].join('\n');}
+function tOdw(m){var b=KST==='blk';return ['Odwołanie od odpowiedzi na reklamację nr '+m.num,'','Do Bank Millennium S.A.','','Szanowni Państwo,','',
+'nie zgadzam się z odpowiedzią Banku na moją reklamację i wnoszę o ponowne rozpatrzenie sprawy dotyczącej '+(b?'blokady':'ryzyka zablokowania')+' mojego rachunku z powodu braku aktualnej karty pobytu.','',
+'Oczekuję na zakończenie postępowania w sprawie zezwolenia na pobyt. Opóźnienie wynika z przyczyn ode mnie niezależnych, a w zakresie objętym art. 100d ustawy o pomocy obywatelom Ukrainy bieg określonych terminów został zawieszony.','',
+'Zgodnie z art. 1u rozporządzenia Rady (WE) nr 765/2006 ograniczenia dotyczące depozytów i określonych usług bankowych nie oznaczają automatycznego zakazu utrzymywania wszystkich rachunków obywateli Białorusi. Motyw 8 rozporządzenia (UE) 2025/2041 wyjaśnia ponadto zakres ograniczeń dotyczących usług płatniczych.','',
+'Wnoszę o '+(b?'niezwłoczne odblokowanie rachunku, ':'')+'indywidualną ocenę mojej sytuacji, wskazanie konkretnej podstawy prawnej '+(b?'blokady':'ewentualnej blokady')+' rachunku oraz zaakceptowanie zaświadczenia o toczącym się postępowaniu / stempla w paszporcie jako dokumentów uzupełniających.','',
+'W przypadku podtrzymania stanowiska Banku rozważę skierowanie sprawy do Rzecznika Finansowego.','',
+'Z poważaniem,','',m.name,'','[Data]'].join('\n');}
 var DPST='thr';
 function tOdwDp(m){return ['Odwołanie od odpowiedzi na reklamację nr '+m.num,'','Szanowni Państwo,','',
 'nie zgadzam się z odpowiedzią Banku na moją reklamację i wnoszę o ponowne rozpatrzenie sprawy dotyczącej '+(DPST==='blk'?'blokady mojego rachunku':'ryzyka zablokowania lub zamknięcia mojego rachunku')+' z powodu posiadania polskiego dokumentu podróży.','',
