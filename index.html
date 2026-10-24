@@ -441,9 +441,25 @@ footer a{color:var(--muted)}
     <div class="step">
       <div class="step-head"><span class="step-num">2</span><div><h3><span data-l="ru">Обжалование (odwołanie)</span><span data-l="pl">Odwołanie</span><span data-l="be">Абскарджанне (odwołanie)</span></h3><p class="sub"><span data-l="ru">Если ответ на рекламацию не устроил — подайте там же.</span><span data-l="pl">Jeśli odpowiedź nie satysfakcjonuje — złóż w tym samym miejscu.</span><span data-l="be">Калі адказ не задаволіў — падайце там жа.</span></p></div></div>
       <div class="f"><label><span data-l="ru">Номер рекламации и дата ответа</span><span data-l="pl">Numer reklamacji i data odpowiedzi</span><span data-l="be">Нумар рэкламацыі і дата адказу</span></label><input id="b-num" type="text" placeholder="np. RK/123456, 05.11.2026"></div>
+      <div class="vtabs">
+        <button class="vbtn on" data-v="c"><span data-l="ru">Карта побыту и паспорт</span><span data-l="pl">Karta pobytu i paszport</span><span data-l="be">Карта побыту і пашпарт</span></button>
+        <button class="vbtn" data-v="d"><span data-l="ru">Нет паспорта, есть ДП</span><span data-l="pl">Brak paszportu, mam DP</span><span data-l="be">Няма пашпарта, ёсць ДП</span></button>
+      </div>
+      <div id="v-c">
       <div class="pre" id="t-odw"></div>
       <button class="btn blue" data-copy="odw"><span data-l="ru">Копировать текст</span><span data-l="pl">Kopiuj tekst</span><span data-l="be">Капіраваць тэкст</span></button>
       <button class="btn line" data-toggle="t-odw">↕</button>
+      </div>
+      <div id="v-d" style="display:none">
+      <p class="hint"><span data-l="ru">Ваша ситуация:</span><span data-l="pl">Twoja sytuacja:</span><span data-l="be">Ваша сітуацыя:</span></p>
+      <div class="gtog sm" id="dpst">
+        <button type="button" class="on" data-st="thr"><span data-l="ru">Только угрожают</span><span data-l="pl">Tylko grożą</span><span data-l="be">Толькі пагражаюць</span></button>
+        <button type="button" data-st="blk"><span data-l="ru">Счёт уже заблокирован</span><span data-l="pl">Konto już zablokowane</span><span data-l="be">Рахунак ужо заблакаваны</span></button>
+      </div>
+      <div class="pre" id="t-odwdp"></div>
+      <button class="btn blue" data-copy="odwdp"><span data-l="ru">Копировать текст</span><span data-l="pl">Kopiuj tekst</span><span data-l="be">Капіраваць тэкст</span></button>
+      <button class="btn line" data-toggle="t-odwdp">↕</button>
+      </div>
     </div>
 
     <div class="step">
@@ -1094,6 +1110,15 @@ function tOdw(m){return ['Odwołanie od odpowiedzi na reklamację nr '+m.num,'',
 '– nie mogę uzyskać paszportu białoruskiego, ponieważ od września 2023 r. białoruskie placówki konsularne nie wydają ani nie przedłużają paszportów, a jedynym dostępnym mi dokumentem jest polski dokument podróży dla cudzoziemca.','',
 'Wnoszę o ponowne rozpatrzenie sprawy oraz o jednoznaczne wskazanie: (1) czy Bank akceptuje polski dokument podróży dla cudzoziemca jako dokument tożsamości, (2) czy Bank akceptuje zaświadczenie o toczącym się postępowaniu w sprawie zezwolenia na pobyt jako potwierdzenie legalnego pobytu, (3) jakie inne dokumenty mogę przedstawić.','',
 'W przypadku podtrzymania stanowiska Banku rozważę skierowanie wniosku do Rzecznika Finansowego.','',m.name].join('\n');}
+var DPST='thr';
+function tOdwDp(m){return ['Odwołanie od odpowiedzi na reklamację nr '+m.num,'','Szanowni Państwo,','',
+'nie zgadzam się z odpowiedzią Banku na moją reklamację i wnoszę o ponowne rozpatrzenie sprawy dotyczącej '+(DPST==='blk'?'blokady mojego rachunku':'ryzyka zablokowania lub zamknięcia mojego rachunku')+' z powodu posiadania polskiego dokumentu podróży.','',
+'Brak możliwości uzyskania lub przedłużenia paszportu wynika z przyczyn ode mnie niezależnych. Posiadam polski dokument podróży dla cudzoziemca, wydany przez państwo polskie.','',
+'Art. 36 i 37 ustawy z dnia 1 marca 2018 r. o przeciwdziałaniu praniu pieniędzy oraz finansowaniu terroryzmu regulują zasady identyfikacji i weryfikacji klienta. Nie ustanawiają jednak wprost ogólnego obowiązku posiadania ważnego paszportu państwa pochodzenia jako warunku utrzymywania rachunku bankowego. Również rozporządzenie Rady (WE) nr 765/2006 nie ustanawia takiego ogólnego wymogu.','',
+'Wnoszę o wskazanie konkretnej podstawy prawnej zastosowanych ograniczeń oraz o indywidualną ocenę mojej sytuacji i posiadanych dokumentów.','',
+'W związku z powyższym wnoszę o:','',
+(DPST==='blk'?'1. Niezwłoczne odblokowanie mojego rachunku.':'1. Pisemne potwierdzenie, że rachunek nie zostanie zablokowany ani zamknięty wyłącznie z powodu posługiwania się polskim dokumentem podróży dla cudzoziemca zamiast ważnego paszportu białoruskiego.'),'',
+'Z wyrazami szacunku,',m.name].join('\n');}
 function tKnf(m){return ['Szanowni Państwo,','',
 'Zwracam się z uprzejmą prośbą o zajęcie stanowiska przez Komisję Nadzoru Finansowego w sprawie praktyk Banku Millennium SA polegających na blokowaniu rachunków bankowych klientów będących obywatelami państw trzecich, w szczególności Białorusi, którzy oczekują na zakończenie procedury legalizacji pobytu i wydanie nowej karty pobytu.','',
 'Jako osoba legalnie przebywająca w Polsce '+m.dop+' wszelkich wymaganych formalności związanych z legalizacją pobytu oraz otwarciem rachunku bankowego. Ze względu na powszechnie znane, wielomiesięczne opóźnienia w rozpatrywaniu spraw przez urzędy wojewódzkie uzyskanie decyzji i nowej karty pobytu może trwać bardzo długo. Sytuacja ta nie jest zależna od cudzoziemca, który nie ma żadnego wpływu na tempo prowadzonego postępowania administracyjnego.','',
@@ -1106,22 +1131,24 @@ function tKnf(m){return ['Szanowni Państwo,','',
 '2. Wyjaśnienie, czy Bank Millennium SA ma prawo odmawiać uznania polskiego dokumentu podróży dla cudzoziemca oraz jakie inne dokumenty tożsamości mogą przedstawić obywatele Białorusi, którzy nie mają możliwości uzyskania paszportu krajowego.','',
 'Z poważaniem,',m.name,m.contact].join('\n');}
 function mark(t){var h=esc(t);[NAME,CONTACT,NUM].forEach(function(p){h=h.split(esc(p)).join('<span class="ph">'+esc(p)+'</span>');});return h;}
-function bRender(){var m=bm();$('t-rek').innerHTML=mark(tRek(m));$('t-rekb').innerHTML=mark(tRekb(m));$('t-odw').innerHTML=mark(tOdw(m));$('t-knf').innerHTML=mark(tKnf(m));$('rekb-subj').textContent=REKB_S;$('knf-subj').textContent=KNF_S;}
+function bRender(){var m=bm();$('t-rek').innerHTML=mark(tRek(m));$('t-rekb').innerHTML=mark(tRekb(m));$('t-odw').innerHTML=mark(tOdw(m));$('t-odwdp').innerHTML=mark(tOdwDp(m));$('t-knf').innerHTML=mark(tKnf(m));$('rekb-subj').textContent=REKB_S;$('knf-subj').textContent=KNF_S;}
 ['b-name','b-contact','b-num'].forEach(function(id){$(id).addEventListener('input',bRender);});
 $('b-g').addEventListener('change',bRender);
-function setG(g){$('b-g').value=g;document.querySelectorAll('.gtog button').forEach(function(b){b.classList.toggle('on',b.dataset.g===g);});bRender();}
-document.querySelectorAll('.gtog button').forEach(function(b){b.addEventListener('click',function(){setG(b.dataset.g);});});
+function setG(g){$('b-g').value=g;document.querySelectorAll('.gtog button[data-g]').forEach(function(b){b.classList.toggle('on',b.dataset.g===g);});bRender();}
+document.querySelectorAll('.gtog button[data-g]').forEach(function(b){b.addEventListener('click',function(){setG(b.dataset.g);});});
 bRender();
 var bank=$('bank');
 bank.addEventListener('click',function(e){
   var c=e.target.closest('[data-copy]');
-  if(c){var m=bm(),map={millmail:'kontakt@bankmillennium.pl',waw:'konsument@um.warszawa.pl',wro:'brk@um.wroc.pl',knfmail:'knf@knf.gov.pl',rekbsubj:REKB_S,knfsubj:KNF_S,rek:tRek(m),rekb:tRekb(m),odw:tOdw(m),knf:tKnf(m)};
+  if(c){var m=bm(),map={millmail:'kontakt@bankmillennium.pl',waw:'konsument@um.warszawa.pl',wro:'brk@um.wroc.pl',knfmail:'knf@knf.gov.pl',rekbsubj:REKB_S,knfsubj:KNF_S,rek:tRek(m),rekb:tRekb(m),odw:tOdw(m),odwdp:tOdwDp(m),knf:tKnf(m)};
     var t=map[c.dataset.copy];
     var ok=function(){c.classList.add('done');setTimeout(function(){c.classList.remove('done');},1500);};
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fallback(t);ok();});}else{fallback(t);ok();}
     return;}
+  var st=e.target.closest('#dpst button');
+  if(st){DPST=st.dataset.st;$('dpst').querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===st);});bRender();return;}
   var v=e.target.closest('.vbtn');
-  if(v){bank.querySelectorAll('.vbtn').forEach(function(x){x.classList.toggle('on',x===v);});$('v-a').style.display=v.dataset.v==='a'?'':'none';$('v-b').style.display=v.dataset.v==='b'?'':'none';return;}
+  if(v){var g=v.closest('.vtabs');g.querySelectorAll('.vbtn').forEach(function(x){x.classList.toggle('on',x===v);var el=$('v-'+x.dataset.v);if(el)el.style.display=x===v?'':'none';});return;}
   var tg=e.target.closest('[data-toggle]');
   if(tg){$(tg.dataset.toggle).classList.toggle('open');}
 });
