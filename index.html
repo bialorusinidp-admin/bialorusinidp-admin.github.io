@@ -451,6 +451,7 @@ footer a{color:var(--muted)}
         <button type="button" class="on" data-st="thr"><span data-l="ru">Только угрожают</span><span data-l="pl">Tylko grożą</span><span data-l="be">Толькі пагражаюць</span></button>
         <button type="button" data-st="blk"><span data-l="ru">Счёт уже заблокирован</span><span data-l="pl">Konto już zablokowane</span><span data-l="be">Рахунак ужо заблакаваны</span></button>
       </div>
+      <div class="callout"><span data-l="ru">Перед отправкой отредактируйте текст: во фразе «zaświadczenia o toczącym się postępowaniu / stempla w paszporcie» оставьте только то, что у вас есть, — подтверждение (zaświadczenie) или штамп в паспорте.</span><span data-l="pl">Przed wysłaniem zmień tekst: we fragmencie „zaświadczenia o toczącym się postępowaniu / stempla w paszporcie” zostaw tylko to, co masz — zaświadczenie albo stempel w paszporcie.</span><span data-l="be">Перад адпраўкай адрэдагуйце тэкст: у фразе «zaświadczenia o toczącym się postępowaniu / stempla w paszporcie» пакіньце толькі тое, што ў вас ёсць, — пацвярджэнне (zaświadczenie) або штамп у пашпарце.</span></div>
       <div class="pre" id="t-odw"></div>
       <button class="btn blue" data-copy="odw"><span data-l="ru">Копировать текст</span><span data-l="pl">Kopiuj tekst</span><span data-l="be">Капіраваць тэкст</span></button>
       <button class="btn line" data-toggle="t-odw">↕</button>
@@ -1124,7 +1125,7 @@ function tOdw(m){var b=KST==='blk';return ['Odwołanie od odpowiedzi na reklamac
 var DPST='thr';
 function tOdwDp(m){return ['Odwołanie od odpowiedzi na reklamację nr '+m.num,'','Szanowni Państwo,','',
 'nie zgadzam się z odpowiedzią Banku na moją reklamację i wnoszę o ponowne rozpatrzenie sprawy dotyczącej '+(DPST==='blk'?'blokady mojego rachunku':'ryzyka zablokowania lub zamknięcia mojego rachunku')+' z powodu posiadania polskiego dokumentu podróży.','',
-'Brak możliwości uzyskania lub przedłużenia paszportu wynika z przyczyn ode mnie niezależnych. Posiadam polski dokument podróży dla cudzoziemca, wydany przez państwo polskie.','',
+'Brak możliwości uzyskania lub przedłużenia paszportu wynika z przyczyn ode mnie niezależnych. Posiadam polski dokument podróży dla cudzoziemca, wydany przez Polskę.','',
 'Art. 36 i 37 ustawy z dnia 1 marca 2018 r. o przeciwdziałaniu praniu pieniędzy oraz finansowaniu terroryzmu regulują zasady identyfikacji i weryfikacji klienta. Nie ustanawiają jednak wprost ogólnego obowiązku posiadania ważnego paszportu państwa pochodzenia jako warunku utrzymywania rachunku bankowego. Również rozporządzenie Rady (WE) nr 765/2006 nie ustanawia takiego ogólnego wymogu.','',
 'W związku z powyższym wnoszę o:','',
 (DPST==='blk'?'1. Niezwłoczne odblokowanie mojego rachunku.':'1. Pisemne potwierdzenie, że rachunek nie zostanie zablokowany ani zamknięty wyłącznie z powodu posługiwania się polskim dokumentem podróży dla cudzoziemca zamiast ważnego paszportu białoruskiego.'),'',
