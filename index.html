@@ -355,9 +355,15 @@ footer a{color:var(--muted)}
         <button class="btn red" id="go"><span data-l="ru">Показать, как заполнить</span><span data-l="pl">Pokaż, jak wypełnić</span><span data-l="be">Паказаць, як запоўніць</span></button>
         <button class="btn line" id="fillSample"><span data-l="ru">Заполнить примером</span><span data-l="pl">Wypełnij przykładem</span><span data-l="be">Запоўніць прыкладам</span></button>
       </div>
+      <div class="formwrap no-print" id="liveUz">
+        <h3><span data-l="ru">Обоснование (uzasadnienie)</span><span data-l="pl">Uzasadnienie</span><span data-l="be">Абгрунтаванне (uzasadnienie)</span></h3>
+        <p class="lead" style="font-size:14px"><span data-l="ru">Заполняется само по вашим данным. Некоторые urzędy (Варшава, Гданьск) просят его отдельным листом. В PDF оно уже есть последней страницей.</span><span data-l="pl">Wypełnia się samo na podstawie Twoich danych. Niektóre urzędy (Warszawa, Gdańsk) proszą o nie na osobnej kartce. W PDF jest już na ostatniej stronie.</span><span data-l="be">Запаўняецца само па вашых даных. Некаторыя urzędy (Варшава, Гданьск) просяць яго асобным лістом. У PDF яно ўжо ёсць апошняй старонкай.</span></p>
+        <div class="uz" id="liveUzText"></div>
+        <div class="savebar"><button class="btn line" type="button" id="cpUz"><span data-l="ru">Копировать текст</span><span data-l="pl">Kopiuj tekst</span><span data-l="be">Капіраваць тэкст</span></button></div>
+      </div>
       <div class="formwrap no-print" id="liveForm">
         <h3><span data-l="ru">Ваш бланк</span><span data-l="pl">Twój formularz</span><span data-l="be">Ваш бланк</span></h3>
-        <p class="lead" style="font-size:14px"><span data-l="ru">Заполняется сам, пока вы вводите данные выше. От руки останется только расписаться: в рамке части F, рядом с датами в F и G и на перечёркнутых частях.</span><span data-l="pl">Wypełnia się sam, gdy wpisujesz dane powyżej. Odręcznie zostają tylko podpisy: w ramce części F, przy datach w F i G oraz na przekreślonych częściach.</span><span data-l="be">Запаўняецца сам, пакуль вы ўводзіце даныя вышэй. Ад рукі застанецца толькі распісацца: у рамцы часткі F, побач з датамі ў F і G і на перакрэсленых частках.</span></p>
+        <p class="lead" style="font-size:14px"><span data-l="ru">Заполняется сам, пока вы вводите данные выше. От руки останется только расписаться: в рамке части F и рядом с датами в F и G.</span><span data-l="pl">Wypełnia się sam, gdy wpisujesz dane powyżej. Odręcznie zostają tylko podpisy: w ramce części F i przy datach w F i G.</span><span data-l="be">Запаўняецца сам, пакуль вы ўводзіце даныя вышэй. Ад рукі застанецца толькі распісацца: у рамцы часткі F і побач з датамі ў F і G.</span></p>
         <div class="savebar"><button class="btn red" type="button" data-save><span data-l="ru">Сохранить PDF</span><span data-l="pl">Zapisz PDF</span><span data-l="be">Захаваць PDF</span></button><span class="hint" data-st></span></div>
         <div class="fwarn"></div><div data-host></div>
       </div>
@@ -609,7 +615,6 @@ function build(o,VOI){
   var pl=MAP.text.place;txt(pl[0],pl[1],pl[2],U(o.place),9,pl[3],true);
   put('date_sub',signDate);
   var og=MAP.text.organ;txt(og[0],og[1],og[2],'WOJEWODA '+v[0],10,og[3],true);
-  MAP.strike.forEach(function(s){pages[s[0]].push({t:'line',x1:s[1]-2,y1:s[2],x2:s[3]+2,y2:s[2],w:1.3});});
 
   // A
   put('sur',o.sur,'A1');put('prevSur',U(o.prevSur)||'BRAK','A2');put('rod',U(o.rod)||U(o.sur),'A3');
@@ -624,7 +629,7 @@ function build(o,VOI){
 
   // crossed sections
   function cross(key){var c=MAP.cross[key];pages[c[0]].push({t:'cross',x0:c[1],y0:c[2],x1:c[3],y1:c[4],label:'NIE DOTYCZY',date:o.sign});}
-  cross('B');cross('D1a');cross('D1b');cross('E');
+  
 
   // C
   put('voi_c',v[1]);put('pow',o.pow,'C2');put('gm',o.gm,'C3');put('city',o.city,'C4');put('str',o.str,'C5');
@@ -895,7 +900,7 @@ function build(o){
     'Jestem '+(f?'obywatelką':'obywatelem')+' Republiki Białorusi i '+(f?'posiadam':'posiadam')+' '+PERMITS[o.permit].replace('zezwolenie','zezwolenie').replace('ochronę','ochronę')+' w Rzeczypospolitej Polskiej. '+
     r+' Nie mam możliwości uzyskania nowego paszportu Republiki Białorusi. Polski dokument podróży dla cudzoziemca jest mi niezbędny do wyjazdu poza terytorium Rzeczypospolitej Polskiej.\n\n'+nm;
   h+=sec('✉',tri('Обоснование (uzasadnienie)','Uzasadnienie','Абгрунтаванне (uzasadnienie)'),
-    act('info','i',tri('Отдельный лист — некоторые урзенды (Варшава, Гданьск) его просят. Распечатайте или перепишите и подпишите.','Osobna kartka — niektóre urzędy (Warszawa, Gdańsk) o nią proszą.','Асобны ліст — некаторыя ўрады (Варшава, Гданьск) яго просяць. Раздрукуйце або перапішыце і падпішыце.'))+
+    act('info','i',tri('Отдельный лист — некоторые urzędy (Варшава, Гданьск) его просят. Распечатайте или перепишите и подпишите.','Osobna kartka — niektóre urzędy (Warszawa, Gdańsk) o nią proszą.','Асобны ліст — некаторыя urzędy (Варшава, Гданьск) яго просяць. Раздрукуйце або перапішыце і падпішыце.'))+
     '<div class="uz" id="uzText">'+esc(uz)+'</div>');
   return '<div class="sheet"><div class="print-title">Wniosek o wydanie polskiego dokumentu podróży dla cudzoziemca — jak wypełnić (art. 252a)</div>'+h+'</div>';
 }
@@ -903,10 +908,13 @@ function build(o){
 function uzFor(o){var t=document.createElement('div');t.innerHTML=build(o);var u=t.querySelector('.uz');return u?u.textContent:'';}
 var liveWrap=document.getElementById('liveForm'),liveHost=liveWrap.querySelector('[data-host]'),liveTimer=null;
 function renderLive(){
-  var o=data(),warn=[];
-  try{warn=FormFill.preview(liveHost,o,VOI,uzFor(o));}catch(e){liveHost.innerHTML='<p class="hint">'+esc(e.message)+'</p>';}
+  var o=data(),warn=[],uzT=uzFor(o);
+  document.getElementById('liveUzText').textContent=uzT;
+  try{warn=FormFill.preview(liveHost,o,VOI,uzT);}catch(e){liveHost.innerHTML='<p class="hint">'+esc(e.message)+'</p>';}
   liveWrap.querySelector('.fwarn').innerHTML=warn.length?'<div class="note">'+tri('Не поместилось в клеточки: ','Nie zmieściło się w kratkach: ','Не змясцілася ў клеткі: ')+esc(warn.join(', '))+'. '+tri('Сократите или впишите от руки.','Skróć lub wpisz odręcznie.','Скараціце або ўпішыце ад рукі.')+'</div>':'';
 }
+document.getElementById('cpUz').addEventListener('click',function(){var b=this,t=document.getElementById('liveUzText').textContent;function ok(){b.classList.add('done');setTimeout(function(){b.classList.remove('done');},1500);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fallback(t);ok();});}else{fallback(t);ok();}});
 function scheduleLive(){clearTimeout(liveTimer);liveTimer=setTimeout(renderLive,200);}
 form.addEventListener('input',scheduleLive);form.addEventListener('change',scheduleLive);
 (function(){
