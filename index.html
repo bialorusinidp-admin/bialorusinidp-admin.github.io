@@ -380,7 +380,7 @@ footer a{color:var(--muted)}
         <span data-l="be">Прыклад для выдуманай асобы: дарослы, часовы побыт, у пашпарта скончыўся тэрмін.</span>
       </p>
       <div id="exOut"></div>
-      <div class="btns no-print"><button class="btn" id="prEx" type="button"><span data-l="ru">Печать / PDF</span><span data-l="pl">Drukuj / PDF</span><span data-l="be">Друк / PDF</span></button></div>
+      <div class="btns no-print"><button class="btn" id="prEx" type="button"><span data-l="ru">Печать / PDF</span><span data-l="pl">Drukuj / PDF</span><span data-l="be">Друк / PDF</span></button><span class="hint" id="prExSt" style="display:block;width:100%"></span></div>
       <div class="box no-print">
         <h3><span data-l="ru">Скан заполненного бланка</span><span data-l="pl">Skan wypełnionego wniosku</span><span data-l="be">Скан запоўненага бланка</span></h3>
         <p><span data-l="ru">Образец настоящего заполненного бланка из инструкции (PDF).</span><span data-l="pl">Wzór prawdziwego wypełnionego formularza z poradnika (PDF).</span><span data-l="be">Узор сапраўднага запоўненага бланка з інструкцыі (PDF).</span></p>
@@ -1064,23 +1064,42 @@ function scheduleLive(){clearTimeout(liveTimer);liveTimer=setTimeout(renderLive,
 form.addEventListener('input',scheduleLive);form.addEventListener('change',scheduleLive);
 (function(){
   var btn=liveWrap.querySelector('[data-save]'),st=liveWrap.querySelector('[data-st]');
-  btn.addEventListener('click',function(){
-    var o=data();
-    st.innerHTML=tri('Готовлю PDF…','Przygotowuję PDF…','Рыхтую PDF…');btn.disabled=true;
-    FormFill.pdf(o,VOI,uzFor(o)).then(function(bytes){
-      var blob=new Blob([bytes],{type:'application/pdf'}),url=URL.createObjectURL(blob);
-      var name='wniosek-'+(up(o.sur)||'dokument').replace(/[^A-Z0-9]+/g,'-')+'.pdf';
-      var a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();
-      st.innerHTML=tri('Готово. Если файл не скачался — ','Gotowe. Jeśli plik się nie pobrał — ','Гатова. Калі файл не спампаваўся — ')+'<a href="'+url+'" target="_blank" rel="noopener">'+tri('откройте PDF','otwórz PDF','адкрыйце PDF')+'</a>';
-      btn.disabled=false;
-    }).catch(function(){btn.disabled=false;st.innerHTML=tri('Не удалось создать PDF. Проверьте интернет и попробуйте ещё раз.','Nie udało się utworzyć PDF. Sprawdź internet i spróbuj ponownie.','Не ўдалося стварыць PDF. Праверце інтэрнэт і паспрабуйце яшчэ раз.');});
-  });
+  btn.addEventListener('click',function(){makePdf(data(),st,btn);});
 })();
+/* ---------- save file: Claude viewer (downloads), phone share sheet, or browser download ---------- */
+var IN_CLAUDE=!!(window.claude&&typeof window.claude.use==='function');
+var DL=IN_CLAUDE?window.claude.use('downloads').catch(function(){return null;}):Promise.resolve(null);
+function saveFile(name,bytes,st){
+  var blob=new Blob([bytes],{type:'application/pdf'});
+  return DL.then(function(dl){
+    if(dl)return dl.save({filename:name,data:blob}).then(function(){st.innerHTML=tri('Готово ✓','Gotowe ✓','Гатова ✓');},function(e){
+      st.innerHTML=e&&e.code==='declined'?tri('Сохранение отменено.','Zapis anulowany.','Захаванне адменена.'):tri('Здесь сохранить не получилось. Откройте сайт в браузере.','Nie udało się zapisać tutaj. Otwórz stronę w przeglądarce.','Тут захаваць не атрымалася. Адкрыйце сайт у браўзеры.');});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();
+    var file=null;try{file=new File([blob],name,{type:'application/pdf'});}catch(e){}
+    var canShare=file&&navigator.canShare&&navigator.canShare({files:[file]});
+    st.innerHTML=tri('Готово. Если файл не скачался: ','Gotowe. Jeśli plik się nie pobrał: ','Гатова. Калі файл не спампаваўся: ')+
+      '<a href="'+url+'" target="_blank" rel="noopener">'+tri('открыть PDF','otwórz PDF','адкрыць PDF')+'</a>'+
+      (canShare?' · <button type="button" class="mini" data-share>'+tri('Сохранить / печать','Zapisz / drukuj','Захаваць / друк')+'</button>':'');
+    var sb=st.querySelector('[data-share]');
+    if(sb)sb.addEventListener('click',function(){navigator.share({files:[file],title:name}).catch(function(){});});
+  });
+}
+function makePdf(o,st,btn){
+  st.innerHTML=tri('Готовлю PDF…','Przygotowuję PDF…','Рыхтую PDF…');if(btn)btn.disabled=true;
+  return FormFill.pdf(o,VOI,uzFor(o)).then(function(bytes){
+    var name='wniosek-'+(up(o.sur)||'dokument').replace(/[^A-Z0-9]+/g,'-')+'.pdf';
+    return saveFile(name,bytes,st);
+  }).catch(function(){st.innerHTML=tri('Не удалось создать PDF. Проверьте интернет и попробуйте ещё раз.','Nie udało się utworzyć PDF. Sprawdź internet i spróbuj ponownie.','Не ўдалося стварыць PDF. Праверце інтэрнэт і паспрабуйце яшчэ раз.');})
+  .then(function(){if(btn)btn.disabled=false;});
+}
+/* print: works in browsers; inside the Claude viewer printing is blocked, so save a PDF instead */
+function doPrint(o,st){if(IN_CLAUDE){makePdf(o,st);}else{window.print();}}
 var out=document.getElementById('out');
 document.getElementById('go').addEventListener('click',function(){
   out.innerHTML=build(data())+
-   '<div class="btns no-print"><button class="btn red" id="pr">'+tri('Печать / PDF','Drukuj / PDF','Друк / PDF')+'</button><button class="btn line" id="cp">'+tri('Копировать обоснование','Kopiuj uzasadnienie','Капіраваць абгрунтаванне')+'</button></div>';
-  document.getElementById('pr').onclick=function(){window.print();};
+   '<div class="btns no-print"><button class="btn red" id="pr">'+tri('Печать / PDF','Drukuj / PDF','Друк / PDF')+'</button>'+'<span class="hint" id="prSt" style="display:block;width:100%"></span><button class="btn line" id="cp">'+tri('Копировать обоснование','Kopiuj uzasadnienie','Капіраваць абгрунтаванне')+'</button></div>';
+  document.getElementById('pr').onclick=function(){var st=document.getElementById('prSt');doPrint(data(),st);};
   document.getElementById('cp').onclick=function(){var t=document.getElementById('uzText').textContent;var b=this;function done(){b.innerHTML=tri('Скопировано ✓','Skopiowano ✓','Скапіравана ✓');}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fallback(t);done();});}else{fallback(t);done();}};
   out.scrollIntoView({behavior:'smooth',block:'start'});
@@ -1093,7 +1112,7 @@ var SAMPLE={voi:'6',place:'WARSZAWA',sign:today(),sur:'IVANOU',prevSur:'',rod:'I
   permit:'czasowy',permOrg:'WOJEWODA MAZOWIECKI',permDate:'2024-03-01',kpS:'RP',kpN:'1234567',kpI:'2024-03-15',kpE:'2027-03-01',kpOrg:'WOJEWODA MAZOWIECKI',reason:'expiry',pasN:'MP1234567',pasE:'2024-08-09',minor:false,teen:false};
 document.getElementById('exOut').innerHTML=build(SAMPLE);
 renderLive();
-document.getElementById('prEx').addEventListener('click',function(){window.print();});
+document.getElementById('prEx').addEventListener('click',function(){doPrint(SAMPLE,document.getElementById('prExSt'));});
 var MINE=null,rb=document.getElementById('restoreMine');
 function snap(){var o={},any=false;[].forEach.call(form.elements,function(e){if(!e.name)return;var v=e.type==='checkbox'?e.checked:e.value;o[e.name]=v;
   if(e.type==='checkbox'?v!==e.defaultChecked:(e.tagName==='SELECT'?false:String(v).trim()!==''))any=true;});return any?o:null;}
