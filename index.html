@@ -254,6 +254,49 @@ footer a{color:var(--muted)}
 .gtog.sm{margin-top:12px;max-width:260px}
 .gtog.sm button{padding:6px 10px;font-size:13px}
 #liveForm{margin-top:24px}
+
+/* ===== clickable highlight + motion ===== */
+@keyframes sheen{0%,70%{background-position:-160% 0}100%{background-position:260% 0}}
+@keyframes breathe{0%,100%{box-shadow:0 0 0 0 rgba(122,162,255,.0),0 6px 18px -8px rgba(122,162,255,.55)}50%{box-shadow:0 0 0 4px rgba(122,162,255,.14),0 8px 22px -8px rgba(122,162,255,.7)}}
+@keyframes ripple{from{transform:scale(0);opacity:.45}to{transform:scale(2.6);opacity:0}}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(3px)}}
+.btn,.vbtn,.mini,.tab,.langs button,.seg button,.gtog button,.quick button,.links a,[data-go]{position:relative;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  transition:transform .15s ease,box-shadow .25s ease,background-color .25s ease,border-color .25s ease,color .25s ease,filter .25s ease}
+/* primary: filled, glowing, with a light sweep */
+.btn:not(.line){background-image:linear-gradient(100deg,transparent 35%,rgba(255,255,255,.38) 50%,transparent 65%);background-size:250% 100%;background-repeat:no-repeat;
+  animation:sheen 4.5s ease-in-out infinite,breathe 3s ease-in-out infinite}
+.btn:not(.line):disabled{animation:none;opacity:.6}
+/* secondary: clear accent outline */
+.btn.line,.vbtn:not(.on),.gtog button:not(.on),.mini{border:1.5px solid color-mix(in srgb,var(--blue) 55%,transparent)!important;color:var(--ink)}
+.mini{color:var(--blue)}
+/* tiles on the home page: accent edge + arrow */
+.quick button{border:1px solid color-mix(in srgb,var(--blue) 35%,var(--line))!important}
+.quick button b::after{content:" →";color:var(--blue);display:inline-block;animation:nudge 2.2s ease-in-out infinite}
+/* link rows */
+.links a{border-left:3px solid var(--blue)!important}
+.links a span.ic{transition:transform .25s ease}
+/* inline text links: animated underline */
+.step a:not(.btn),.hint a,.lead a,.note a,.callout a,.box p a,[data-st] a,footer a{color:var(--blue);text-decoration:none;
+  background:linear-gradient(currentColor,currentColor) 0 100%/100% 1.5px no-repeat;transition:background-size .3s ease,color .2s}
+/* tabs */
+.tab:not(.on){color:var(--ink);opacity:.82}
+/* hover (mouse) */
+@media (hover:hover){
+  .btn:hover,.vbtn:hover,.gtog button:hover,.mini:hover{transform:translateY(-2px);filter:brightness(1.08)}
+  .btn.line:hover,.vbtn:not(.on):hover,.gtog button:not(.on):hover{background-color:var(--blue-soft)}
+  .quick button:hover{border-color:var(--blue)!important;transform:translateY(-3px);box-shadow:0 10px 26px -12px rgba(122,162,255,.6)}
+  .links a:hover{background-color:var(--blue-soft)}
+  .links a:hover span.ic{transform:scale(1.12) rotate(-6deg)}
+  .tab:not(.on):hover{opacity:1;color:var(--blue)}
+  .step a:not(.btn):hover,.hint a:hover,.lead a:hover,.note a:hover,.callout a:hover,.box p a:hover,[data-st] a:hover,footer a:hover{background-size:0 1.5px}
+}
+/* press */
+.btn:active,.vbtn:active,.mini:active,.gtog button:active,.quick button:active,.links a:active,.tab:active,.langs button:active,.seg button:active{transform:scale(.96)}
+/* keyboard focus */
+.btn:focus-visible,.vbtn:focus-visible,.mini:focus-visible,.tab:focus-visible,.quick button:focus-visible,.links a:focus-visible,.gtog button:focus-visible,.langs button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+/* tap ripple (added by script) */
+.rpl{position:absolute;border-radius:50%;pointer-events:none;background:currentColor;opacity:.35;animation:ripple .6s ease-out forwards}
+
 /* ===== print (must stay last) ===== */
 @media print{
   :root{color-scheme:light;--ink:#000;--paper:#fff;--card:#fff;--muted:#444;--line:#bbb;--field:#fff;--blue:#1d3f8f;--red:#1d3f8f;--blue-soft:#eef2fb;--red-soft:#eef2fb;--accent2:#b0102a;--warn-soft:#fff;--ok-soft:#fff;--shadow:none}
@@ -367,7 +410,7 @@ footer a{color:var(--muted)}
       <div class="formwrap no-print" id="liveForm">
         <h3><span data-l="ru">Ваш бланк</span><span data-l="pl">Twój formularz</span><span data-l="be">Ваш бланк</span></h3>
         <p class="lead" style="font-size:14px"><span data-l="ru">Заполняется сам, пока вы вводите данные выше. От руки останется только расписаться: в рамке части F и рядом с датами в F и G.</span><span data-l="pl">Wypełnia się sam, gdy wpisujesz dane powyżej. Odręcznie zostają tylko podpisy: w ramce części F i przy datach w F i G.</span><span data-l="be">Запаўняецца сам, пакуль вы ўводзіце даныя вышэй. Ад рукі застанецца толькі распісацца: у рамцы часткі F і побач з датамі ў F і G.</span></p>
-        <div class="savebar"><button class="btn red" type="button" data-save><span data-l="ru">Сохранить PDF</span><span data-l="pl">Zapisz PDF</span><span data-l="be">Захаваць PDF</span></button><span class="hint" data-st></span></div>
+        <div class="savebar"><button class="btn red" type="button" data-save><span data-l="ru">Сохранить PDF</span><span data-l="pl">Zapisz PDF</span><span data-l="be">Захаваць PDF</span></button><button class="btn line" type="button" data-print><span data-l="ru">Печать</span><span data-l="pl">Drukuj</span><span data-l="be">Друк</span></button><span class="hint" data-st style="display:block;width:100%"></span></div>
         <div class="fwarn"></div><div data-host></div>
       </div>
       <div id="out"></div>
@@ -1065,6 +1108,7 @@ form.addEventListener('input',scheduleLive);form.addEventListener('change',sched
 (function(){
   var btn=liveWrap.querySelector('[data-save]'),st=liveWrap.querySelector('[data-st]');
   btn.addEventListener('click',function(){makePdf(data(),st,btn);});
+  var pb=liveWrap.querySelector('[data-print]');pb.addEventListener('click',function(){printPdf(data(),st,pb);});
 })();
 /* ---------- save file: Claude viewer (downloads), phone share sheet, or browser download ---------- */
 var IN_CLAUDE=!!(window.claude&&typeof window.claude.use==='function');
@@ -1092,6 +1136,30 @@ function makePdf(o,st,btn){
     return saveFile(name,bytes,st);
   }).catch(function(){st.innerHTML=tri('Не удалось создать PDF. Проверьте интернет и попробуйте ещё раз.','Nie udało się utworzyć PDF. Sprawdź internet i spróbuj ponownie.','Не ўдалося стварыць PDF. Праверце інтэрнэт і паспрабуйце яшчэ раз.');})
   .then(function(){if(btn)btn.disabled=false;});
+}
+/* print the filled form: desktop prints the PDF directly; phones open the system menu (Print / Save) */
+var TOUCH=window.matchMedia&&matchMedia('(pointer:coarse)').matches;
+function printPdf(o,st,btn){
+  if(IN_CLAUDE){st.innerHTML=tri('В Claude печать недоступна — сохраняю PDF, распечатайте его из «Файлов».','W Claude drukowanie jest niedostępne — zapisuję PDF, wydrukuj go z „Plików”.','У Claude друк недаступны — захоўваю PDF, раздрукуйце яго з «Файлаў».');return makePdf(o,st,btn);}
+  st.innerHTML=tri('Готовлю PDF для печати…','Przygotowuję PDF do druku…','Рыхтую PDF для друку…');btn.disabled=true;
+  return FormFill.pdf(o,VOI,uzFor(o)).then(function(bytes){
+    var name='wniosek-'+(up(o.sur)||'dokument').replace(/[^A-Z0-9]+/g,'-')+'.pdf';
+    var blob=new Blob([bytes],{type:'application/pdf'}),url=URL.createObjectURL(blob);
+    var file=null;try{file=new File([blob],name,{type:'application/pdf'});}catch(e){}
+    var canShare=file&&navigator.canShare&&navigator.canShare({files:[file]});
+    var openLink='<a href="'+url+'" target="_blank" rel="noopener">'+tri('открыть PDF','otwórz PDF','адкрыць PDF')+'</a>';
+    if(TOUCH){
+      st.innerHTML=(canShare?'<button type="button" class="mini" data-pshare>'+tri('Открыть меню печати','Otwórz menu drukowania','Адкрыць меню друку')+'</button> '+tri('и выберите «Напечатать». Или ','i wybierz „Drukuj”. Albo ','і выберыце «Надрукаваць». Або '):tri('Нажмите ','Kliknij ','Націсніце '))+openLink+tri(' → «Поделиться» → «Напечатать».',' → „Udostępnij” → „Drukuj”.',' → «Падзяліцца» → «Надрукаваць».');
+      var sb=st.querySelector('[data-pshare]');
+      if(sb)sb.addEventListener('click',function(){navigator.share({files:[file],title:name}).catch(function(){});});
+    }else{
+      var fr=document.createElement('iframe');fr.style.cssText='position:fixed;right:0;bottom:0;width:0;height:0;border:0';fr.src=url;
+      fr.onload=function(){try{fr.contentWindow.focus();fr.contentWindow.print();st.innerHTML=tri('Открылось окно печати. Если нет — ','Otworzyło się okno drukowania. Jeśli nie — ','Адкрылася акно друку. Калі не — ')+openLink+tri(' и напечатайте оттуда.',' i wydrukuj stamtąd.',' і надрукуйце адтуль.');}
+        catch(e){st.innerHTML=openLink+tri(' и напечатайте из просмотра PDF.',' i wydrukuj z podglądu PDF.',' і надрукуйце з прагляду PDF.');}};
+      document.body.appendChild(fr);
+    }
+  }).catch(function(){st.innerHTML=tri('Не удалось создать PDF. Проверьте интернет и попробуйте ещё раз.','Nie udało się utworzyć PDF. Sprawdź internet i spróbuj ponownie.','Не ўдалося стварыць PDF. Праверце інтэрнэт і паспрабуйце яшчэ раз.');})
+  .then(function(){btn.disabled=false;});
 }
 /* print: works in browsers; inside the Claude viewer printing is blocked, so save a PDF instead */
 function doPrint(o,st){if(IN_CLAUDE){makePdf(o,st);}else{window.print();}}
@@ -1224,6 +1292,15 @@ if(pc){pc.addEventListener('click',function(){var t=pc.previousElementSibling.te
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb);}else{fb();}});}
 var start=(location.hash||'').slice(1);
 show(document.getElementById(start)&&document.getElementById(start).classList.contains('panel')?start:'home');
+/* tap ripple on every clickable control */
+(function(){try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var SEL='.btn,.vbtn,.mini,.tab,.langs button,.seg button,.gtog button,.quick button,.links a';
+document.addEventListener('pointerdown',function(e){var el=e.target.closest&&e.target.closest(SEL);if(!el||el.disabled)return;
+  var r=el.getBoundingClientRect(),d=Math.max(r.width,r.height),sp=document.createElement('span');sp.className='rpl';
+  sp.style.width=sp.style.height=d+'px';sp.style.left=(e.clientX-r.left-d/2)+'px';sp.style.top=(e.clientY-r.top-d/2)+'px';
+  el.appendChild(sp);setTimeout(function(){sp.remove();},650);},{passive:true});
+}catch(e){}})();
+
 })();
 </script>
 </body>
