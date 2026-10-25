@@ -356,6 +356,7 @@ footer a{color:var(--muted)}
       <div class="btns no-print">
         <button class="btn red" id="go"><span data-l="ru">Показать, как заполнить</span><span data-l="pl">Pokaż, jak wypełnić</span><span data-l="be">Паказаць, як запоўніць</span></button>
         <button class="btn line" id="fillSample"><span data-l="ru">Заполнить примером</span><span data-l="pl">Wypełnij przykładem</span><span data-l="be">Запоўніць прыкладам</span></button>
+        <button class="btn line" id="restoreMine" type="button" style="display:none"><span data-l="ru">↩ Вернуть мои данные</span><span data-l="pl">↩ Przywróć moje dane</span><span data-l="be">↩ Вярнуць мае даныя</span></button>
       </div>
       <div class="formwrap no-print" id="liveUz">
         <h3><span data-l="ru">Обоснование (uzasadnienie)</span><span data-l="pl">Uzasadnienie</span><span data-l="be">Абгрунтаванне (uzasadnienie)</span></h3>
@@ -1042,7 +1043,7 @@ function build(o){
   var uz=up(o.place)+', '+dPl(o.sign)+' r.\n\n'+nm+'\nur. '+dPl(o.dob)+'\n'+[up(o.str),up(o.house)+(o.flat?'/'+up(o.flat):''),(o.zip||'')+' '+up(o.city)].join(' ')+'\n\nWOJEWODA '+v[0]+'\n\nUZASADNIENIE\n\n'+
     'Wnoszę o wydanie polskiego dokumentu podróży dla cudzoziemca na podstawie art. 252a ustawy z dnia 12 grudnia 2013 r. o cudzoziemcach. '+
     'Jestem '+(f?'obywatelką':'obywatelem')+' Republiki Białorusi i '+(f?'posiadam':'posiadam')+' '+PERMITS[o.permit].replace('zezwolenie','zezwolenie').replace('ochronę','ochronę')+' w Rzeczypospolitej Polskiej. '+
-    r+' Nie mam możliwości uzyskania nowego paszportu Republiki Białorusi. Polski dokument podróży dla cudzoziemca jest mi niezbędny do wyjazdu poza terytorium Rzeczypospolitej Polskiej.\n\n'+nm;
+    r+(o.permit==='ochrona'?'\n\nOchrona uzupełniająca została mi udzielona, ponieważ w razie powrotu do Republiki Białorusi groziłoby mi rzeczywiste ryzyko doznania poważnej krzywdy. Z tego powodu nie mogę zwrócić się do władz Republiki Białorusi, w tym do jej placówek konsularnych, o wydanie lub przedłużenie paszportu. Ponadto od września 2023 r. białoruskie placówki konsularne za granicą nie wydają ani nie przedłużają paszportów, a uzyskanie paszportu wymagałoby wyjazdu na Białoruś, co w mojej sytuacji jest niemożliwe. Uzyskanie nowego dokumentu podróży jest więc dla mnie niemożliwe.\n\n':' Nie mam możliwości uzyskania nowego paszportu Republiki Białorusi. ')+'Polski dokument podróży dla cudzoziemca jest mi niezbędny do wyjazdu poza terytorium Rzeczypospolitej Polskiej.\n\n'+nm;
   h+=sec('✉',tri('Обоснование (uzasadnienie)','Uzasadnienie','Абгрунтаванне (uzasadnienie)'),
     act('info','i',tri('Отдельный лист — некоторые urzędy (Варшава, Гданьск) его просят. Распечатайте или перепишите и подпишите.','Osobna kartka — niektóre urzędy (Warszawa, Gdańsk) o nią proszą.','Асобны ліст — некаторыя urzędy (Варшава, Гданьск) яго просяць. Раздрукуйце або перапішыце і падпішыце.'))+
     '<div class="uz" id="uzText">'+esc(uz)+'</div>');
@@ -1093,9 +1094,20 @@ var SAMPLE={voi:'6',place:'WARSZAWA',sign:today(),sur:'IVANOU',prevSur:'',rod:'I
 document.getElementById('exOut').innerHTML=build(SAMPLE);
 renderLive();
 document.getElementById('prEx').addEventListener('click',function(){window.print();});
+var MINE=null,rb=document.getElementById('restoreMine');
+function snap(){var o={},any=false;[].forEach.call(form.elements,function(e){if(!e.name)return;var v=e.type==='checkbox'?e.checked:e.value;o[e.name]=v;
+  if(e.type==='checkbox'?v!==e.defaultChecked:(e.tagName==='SELECT'?false:String(v).trim()!==''))any=true;});return any?o:null;}
+function isSample(){return Object.keys(SAMPLE).every(function(k){var e=form[k];if(!e)return true;return e.type==='checkbox'?e.checked===!!SAMPLE[k]:e.value===String(SAMPLE[k]);});}
 document.getElementById('fillSample').addEventListener('click',function(){
+  if(!isSample()){var m=snap();if(m)MINE=m;}
   Object.keys(SAMPLE).forEach(function(k){var e=form[k];if(!e)return;if(e.type==='checkbox')e.checked=SAMPLE[k];else e.value=SAMPLE[k];});
+  if(MINE)rb.style.display='';
   renderLive();
+});
+rb.addEventListener('click',function(){if(!MINE)return;
+  Object.keys(MINE).forEach(function(k){var e=form[k];if(!e)return;if(e.type==='checkbox')e.checked=MINE[k];else e.value=MINE[k];});
+  [].forEach.call(form.elements,function(e){if(e.name&&e.tagName!=='BUTTON'){try{e.dispatchEvent(new Event('change',{bubbles:true}));}catch(x){}}});
+  MINE=null;rb.style.display='none';renderLive();
 });
 
 /* ---------- mode switch ---------- */
