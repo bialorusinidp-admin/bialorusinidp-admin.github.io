@@ -889,6 +889,10 @@ function kv(k,v){return '<div class="kv"><span class="k">'+k+'</span><span class
 function act(cls,icon,txt){return '<div class="do '+cls+'"><i>'+icon+'</i><span>'+txt+'</span></div>';}
 function sec(letter,title,body){return '<div class="sec"><h4><span class="lt">'+letter+'</span>'+title+'</h4>'+body+'</div>';}
 
+function protOrg(o){var g=up(o.permOrg);return (!g||g==='SZEF UDSC'||g.indexOf('URZĘDU DO SPRAW')>=0)?'Szefa Urzędu do Spraw Cudzoziemców':g;}
+function protDec(o){return 'decyzją '+protOrg(o)+(o.permDate?' z dnia '+dPl(o.permDate)+' r.':'');}
+var PROT_CANT='Z uwagi na okoliczności, które stanowiły podstawę udzielenia mi ochrony uzupełniającej, nie mogę zwrócić się do organów ani placówek dyplomatycznych i konsularnych Republiki Białoruś ';
+var NO_PASS='od września 2023 r. placówki dyplomatyczne i konsularne Republiki Białoruś za granicą nie wydają ani nie wymieniają paszportów';
 function build(o){
   var v=VOI[+o.voi]||VOI[6], f=o.sex==='K', mar=MARITAL[o.mar]||MARITAL.single;
   var signer=o.minor?tri('подпись родителя/опекуна','podpis rodzica/opiekuna','подпіс бацькі/апекуна'):tri('ваша подпись','Twój podpis','ваш подпіс');
@@ -954,8 +958,9 @@ function build(o){
   else if(o.reason==='destroy')r='Mój paszport'+pas+' uległ zniszczeniu.';
   else r='Nie posiadam dokumentu podróży.';
   var uz=up(o.place)+', '+dPl(o.sign)+' r.\n\n'+nm+'\nur. '+dPl(o.dob)+'\n'+[up(o.str),up(o.house)+(o.flat?'/'+up(o.flat):''),(o.zip||'')+' '+up(o.city)].join(' ')+'\n\nWOJEWODA '+v[0]+'\n\nOŚWIADCZENIE\n\n'+
-    (f?'Uprzedzona':'Uprzedzony')+' o odpowiedzialności karnej za składanie fałszywych zeznań z art. 233 § 1 Kodeksu karnego oświadczam, że jestem '+(f?'obywatelką':'obywatelem')+' Republiki Białoruś i posiadam '+PERMITS[o.permit]+' w Rzeczypospolitej Polskiej. '+
-    r+' Nie mam możliwości uzyskania nowego paszportu Republiki Białoruś, ponieważ od września 2023 r. placówki dyplomatyczne i konsularne Republiki Białoruś za granicą nie wydają ani nie wymieniają paszportów. Polski dokument podróży dla cudzoziemca jest mi niezbędny do wyjazdu poza terytorium Rzeczypospolitej Polskiej, dlatego wnoszę o jego wydanie na podstawie art. 252a ustawy z dnia 12 grudnia 2013 r. o cudzoziemcach.\n\n'+nm;
+    (f?'Uprzedzona':'Uprzedzony')+' o odpowiedzialności karnej za składanie fałszywych zeznań z art. 233 § 1 Kodeksu karnego oświadczam, że jestem '+(f?'obywatelką':'obywatelem')+' Republiki Białoruś i '+(o.permit==='ochrona'
+      ?'korzystam w Rzeczypospolitej Polskiej z ochrony uzupełniającej udzielonej '+protDec(o)+' '+r+' '+PROT_CANT+'o wydanie nowego paszportu ani udać się w tym celu na terytorium Republiki Białoruś. Ponadto '+NO_PASS+'.'
+      :'posiadam '+PERMITS[o.permit]+' w Rzeczypospolitej Polskiej. '+r+' Nie mam możliwości uzyskania nowego paszportu Republiki Białoruś, ponieważ '+NO_PASS+'.')+' Polski dokument podróży dla cudzoziemca jest mi niezbędny do wyjazdu poza terytorium Rzeczypospolitej Polskiej, dlatego wnoszę o jego wydanie na podstawie art. 252a ustawy z dnia 12 grudnia 2013 r. o cudzoziemcach.\n\n'+nm;
   h+=sec('✉',tri('Заявление (oświadczenie)','Oświadczenie','Заява (oświadczenie)'),
     act('info','i',tri('Отдельный лист под уголовной ответственностью (art. 233 § 1 KK). Всё в нём должно быть правдой. Распечатайте и подпишите.','Osobna kartka pod rygorem odpowiedzialności karnej (art. 233 § 1 KK). Wszystko musi być prawdą. Wydrukuj i podpisz.','Асобны ліст пад крымінальнай адказнасцю (art. 233 § 1 KK). Усё ў ім павінна быць праўдай. Раздрукуйце і падпішыце.'))+
     '<div class="uz" id="uzText">'+esc(uz)+'</div>');
@@ -984,6 +989,8 @@ function oswDefault(o){
   else if(o.reason==='loss')r=(f?'Utraciłam':'Utraciłem')+' swój paszport obywatela Republiki Białoruś'+pas+'.';
   else if(o.reason==='destroy')r='Mój paszport obywatela Republiki Białoruś'+pas+' uległ zniszczeniu.';
   else r='Nie posiadam paszportu obywatela Republiki Białoruś.';
+  if(o.permit==='ochrona')return 'nie posiadam ważnego paszportu ani innego ważnego dokumentu podróży. '+r+
+    ' Korzystam w Rzeczypospolitej Polskiej z ochrony uzupełniającej udzielonej '+protDec(o)+' '+PROT_CANT+'o wydanie paszportu ani zaświadczenia o niemożności jego wydania, ani udać się w tym celu na terytorium Republiki Białoruś. Ponadto '+NO_PASS+'.';
   return 'nie posiadam ważnego paszportu ani innego ważnego dokumentu podróży. '+r+
     ' Od września 2023 r. placówki dyplomatyczne i konsularne Republiki Białoruś za granicą nie wydają ani nie wymieniają paszportów, dlatego nie mam możliwości uzyskania nowego paszportu ani zaświadczenia placówki konsularnej o niemożności jego wydania. Wyjazd na terytorium Republiki Białoruś w celu uzyskania paszportu nie jest dla mnie możliwy.';
 }
