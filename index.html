@@ -254,49 +254,6 @@ footer a{color:var(--muted)}
 .gtog.sm{margin-top:12px;max-width:260px}
 .gtog.sm button{padding:6px 10px;font-size:13px}
 #liveForm{margin-top:24px}
-
-/* ===== clickable highlight + motion ===== */
-@keyframes sheen{0%,70%{background-position:-160% 0}100%{background-position:260% 0}}
-@keyframes breathe{0%,100%{box-shadow:0 0 0 0 rgba(122,162,255,.0),0 6px 18px -8px rgba(122,162,255,.55)}50%{box-shadow:0 0 0 4px rgba(122,162,255,.14),0 8px 22px -8px rgba(122,162,255,.7)}}
-@keyframes ripple{from{transform:scale(0);opacity:.45}to{transform:scale(2.6);opacity:0}}
-@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(3px)}}
-.btn,.vbtn,.mini,.tab,.langs button,.seg button,.gtog button,.quick button,.links a,[data-go]{position:relative;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent;
-  transition:transform .15s ease,box-shadow .25s ease,background-color .25s ease,border-color .25s ease,color .25s ease,filter .25s ease}
-/* primary: filled, glowing, with a light sweep */
-.btn:not(.line){background-image:linear-gradient(100deg,transparent 35%,rgba(255,255,255,.38) 50%,transparent 65%);background-size:250% 100%;background-repeat:no-repeat;
-  animation:sheen 4.5s ease-in-out infinite,breathe 3s ease-in-out infinite}
-.btn:not(.line):disabled{animation:none;opacity:.6}
-/* secondary: clear accent outline */
-.btn.line,.vbtn:not(.on),.gtog button:not(.on),.mini{border:1.5px solid color-mix(in srgb,var(--blue) 55%,transparent)!important;color:var(--ink)}
-.mini{color:var(--blue)}
-/* tiles on the home page: accent edge + arrow */
-.quick button{border:1px solid color-mix(in srgb,var(--blue) 35%,var(--line))!important}
-.quick button b::after{content:" →";color:var(--blue);display:inline-block;animation:nudge 2.2s ease-in-out infinite}
-/* link rows */
-.links a{border-left:3px solid var(--blue)!important}
-.links a span.ic{transition:transform .25s ease}
-/* inline text links: animated underline */
-.step a:not(.btn),.hint a,.lead a,.note a,.callout a,.box p a,[data-st] a,footer a{color:var(--blue);text-decoration:none;
-  background:linear-gradient(currentColor,currentColor) 0 100%/100% 1.5px no-repeat;transition:background-size .3s ease,color .2s}
-/* tabs */
-.tab:not(.on){color:var(--ink);opacity:.82}
-/* hover (mouse) */
-@media (hover:hover){
-  .btn:hover,.vbtn:hover,.gtog button:hover,.mini:hover{transform:translateY(-2px);filter:brightness(1.08)}
-  .btn.line:hover,.vbtn:not(.on):hover,.gtog button:not(.on):hover{background-color:var(--blue-soft)}
-  .quick button:hover{border-color:var(--blue)!important;transform:translateY(-3px);box-shadow:0 10px 26px -12px rgba(122,162,255,.6)}
-  .links a:hover{background-color:var(--blue-soft)}
-  .links a:hover span.ic{transform:scale(1.12) rotate(-6deg)}
-  .tab:not(.on):hover{opacity:1;color:var(--blue)}
-  .step a:not(.btn):hover,.hint a:hover,.lead a:hover,.note a:hover,.callout a:hover,.box p a:hover,[data-st] a:hover,footer a:hover{background-size:0 1.5px}
-}
-/* press */
-.btn:active,.vbtn:active,.mini:active,.gtog button:active,.quick button:active,.links a:active,.tab:active,.langs button:active,.seg button:active{transform:scale(.96)}
-/* keyboard focus */
-.btn:focus-visible,.vbtn:focus-visible,.mini:focus-visible,.tab:focus-visible,.quick button:focus-visible,.links a:focus-visible,.gtog button:focus-visible,.langs button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-/* tap ripple (added by script) */
-.rpl{position:absolute;border-radius:50%;pointer-events:none;background:currentColor;opacity:.35;animation:ripple .6s ease-out forwards}
-
 /* ===== print (must stay last) ===== */
 @media print{
   :root{color-scheme:light;--ink:#000;--paper:#fff;--card:#fff;--muted:#444;--line:#bbb;--field:#fff;--blue:#1d3f8f;--red:#1d3f8f;--blue-soft:#eef2fb;--red-soft:#eef2fb;--accent2:#b0102a;--warn-soft:#fff;--ok-soft:#fff;--shadow:none}
@@ -334,7 +291,6 @@ footer a{color:var(--muted)}
     <button class="tab" data-tab="home"><span data-l="ru">О нас</span><span data-l="pl">O nas</span><span data-l="be">Пра нас</span></button>
     <button class="tab" data-tab="wniosek">Wniosek</button>
     <button class="tab" data-tab="bank"><span data-l="ru">Банк</span><span data-l="pl">Bank</span><span data-l="be">Банк</span></button>
-    <button class="tab" data-tab="prp"><span data-l="ru">Счёт PRP</span><span data-l="pl">Konto PRP</span><span data-l="be">Рахунак PRP</span></button>
     <button class="tab" data-tab="guide"><span data-l="ru">Инструкция</span><span data-l="pl">Poradnik</span><span data-l="be">Інструкцыя</span></button>
     <button class="tab" data-tab="tg">Telegram</button>
     <button class="tab" data-tab="fb">Facebook</button>
@@ -354,10 +310,9 @@ footer a{color:var(--muted)}
     <div class="quick">
       <button data-go="wniosek"><span class="n">01</span><b>Wniosek</b><small><span data-l="ru">Конструктор и пример</span><span data-l="pl">Kreator i wzór</span><span data-l="be">Канструктар і ўзор</span></small></button>
       <button data-go="bank"><span class="n">02</span><b>Bank Millennium</b><small><span data-l="ru">Что делать при блокировке</span><span data-l="pl">Co robić przy blokadzie</span><span data-l="be">Што рабіць пры блакаванні</span></small></button>
-      <button data-go="prp"><span class="n">03</span><b><span data-l="ru">Счёт PRP</span><span data-l="pl">Konto PRP</span><span data-l="be">Рахунак PRP</span></b><small>Podstawowy rachunek płatniczy</small></button>
-      <button data-go="guide"><span class="n">04</span><b><span data-l="ru">Инструкция</span><span data-l="pl">Poradnik</span><span data-l="be">Інструкцыя</span></b><small><span data-l="ru">Как получить документ</span><span data-l="pl">Jak uzyskać dokument</span><span data-l="be">Як атрымаць дакумент</span></small></button>
-      <button data-go="tg"><span class="n">05</span><b>Telegram</b><small><span data-l="ru">Чат и канал</span><span data-l="pl">Czat i kanał</span><span data-l="be">Чат і канал</span></small></button>
-      <button data-go="fb"><span class="n">06</span><b>Facebook</b><small><span data-l="ru">Наша группа</span><span data-l="pl">Nasza grupa</span><span data-l="be">Наша група</span></small></button>
+      <button data-go="guide"><span class="n">03</span><b><span data-l="ru">Инструкция</span><span data-l="pl">Poradnik</span><span data-l="be">Інструкцыя</span></b><small><span data-l="ru">Как получить документ</span><span data-l="pl">Jak uzyskać dokument</span><span data-l="be">Як атрымаць дакумент</span></small></button>
+      <button data-go="tg"><span class="n">04</span><b>Telegram</b><small><span data-l="ru">Чат и канал</span><span data-l="pl">Czat i kanał</span><span data-l="be">Чат і канал</span></small></button>
+      <button data-go="fb"><span class="n">05</span><b>Facebook</b><small><span data-l="ru">Наша группа</span><span data-l="pl">Nasza grupa</span><span data-l="be">Наша група</span></small></button>
     </div>
     <div class="box">
       <h3><span data-l="ru">Контакты</span><span data-l="pl">Kontakt</span><span data-l="be">Кантакты</span></h3>
@@ -399,7 +354,6 @@ footer a{color:var(--muted)}
       <div class="btns no-print">
         <button class="btn red" id="go"><span data-l="ru">Показать, как заполнить</span><span data-l="pl">Pokaż, jak wypełnić</span><span data-l="be">Паказаць, як запоўніць</span></button>
         <button class="btn line" id="fillSample"><span data-l="ru">Заполнить примером</span><span data-l="pl">Wypełnij przykładem</span><span data-l="be">Запоўніць прыкладам</span></button>
-        <button class="btn line" id="restoreMine" type="button" style="display:none"><span data-l="ru">↩ Вернуть мои данные</span><span data-l="pl">↩ Przywróć moje dane</span><span data-l="be">↩ Вярнуць мае даныя</span></button>
       </div>
       <div class="formwrap no-print" id="liveUz">
         <h3><span data-l="ru">Обоснование (uzasadnienie)</span><span data-l="pl">Uzasadnienie</span><span data-l="be">Абгрунтаванне (uzasadnienie)</span></h3>
@@ -410,7 +364,7 @@ footer a{color:var(--muted)}
       <div class="formwrap no-print" id="liveForm">
         <h3><span data-l="ru">Ваш бланк</span><span data-l="pl">Twój formularz</span><span data-l="be">Ваш бланк</span></h3>
         <p class="lead" style="font-size:14px"><span data-l="ru">Заполняется сам, пока вы вводите данные выше. От руки останется только расписаться: в рамке части F и рядом с датами в F и G.</span><span data-l="pl">Wypełnia się sam, gdy wpisujesz dane powyżej. Odręcznie zostają tylko podpisy: w ramce części F i przy datach w F i G.</span><span data-l="be">Запаўняецца сам, пакуль вы ўводзіце даныя вышэй. Ад рукі застанецца толькі распісацца: у рамцы часткі F і побач з датамі ў F і G.</span></p>
-        <div class="savebar"><button class="btn red" type="button" data-save><span data-l="ru">Сохранить PDF</span><span data-l="pl">Zapisz PDF</span><span data-l="be">Захаваць PDF</span></button><button class="btn line" type="button" data-print><span data-l="ru">Печать</span><span data-l="pl">Drukuj</span><span data-l="be">Друк</span></button><span class="hint" data-st style="display:block;width:100%"></span></div>
+        <div class="savebar"><button class="btn red" type="button" data-save><span data-l="ru">Сохранить PDF</span><span data-l="pl">Zapisz PDF</span><span data-l="be">Захаваць PDF</span></button><span class="hint" data-st></span></div>
         <div class="fwarn"></div><div data-host></div>
       </div>
       <div id="out"></div>
@@ -423,7 +377,7 @@ footer a{color:var(--muted)}
         <span data-l="be">Прыклад для выдуманай асобы: дарослы, часовы побыт, у пашпарта скончыўся тэрмін.</span>
       </p>
       <div id="exOut"></div>
-      <div class="btns no-print"><button class="btn" id="prEx" type="button"><span data-l="ru">Печать / PDF</span><span data-l="pl">Drukuj / PDF</span><span data-l="be">Друк / PDF</span></button><span class="hint" id="prExSt" style="display:block;width:100%"></span></div>
+      <div class="btns no-print"><button class="btn" id="prEx" type="button"><span data-l="ru">Печать / PDF</span><span data-l="pl">Drukuj / PDF</span><span data-l="be">Друк / PDF</span></button></div>
       <div class="box no-print">
         <h3><span data-l="ru">Скан заполненного бланка</span><span data-l="pl">Skan wypełnionego wniosku</span><span data-l="be">Скан запоўненага бланка</span></h3>
         <p><span data-l="ru">Образец настоящего заполненного бланка из инструкции (PDF).</span><span data-l="pl">Wzór prawdziwego wypełnionego formularza z poradnika (PDF).</span><span data-l="be">Узор сапраўднага запоўненага бланка з інструкцыі (PDF).</span></p>
@@ -485,31 +439,9 @@ footer a{color:var(--muted)}
     <div class="step">
       <div class="step-head"><span class="step-num">2</span><div><h3><span data-l="ru">Обжалование (odwołanie)</span><span data-l="pl">Odwołanie</span><span data-l="be">Абскарджанне (odwołanie)</span></h3><p class="sub"><span data-l="ru">Если ответ на рекламацию не устроил — подайте там же.</span><span data-l="pl">Jeśli odpowiedź nie satysfakcjonuje — złóż w tym samym miejscu.</span><span data-l="be">Калі адказ не задаволіў — падайце там жа.</span></p></div></div>
       <div class="f"><label><span data-l="ru">Номер рекламации и дата ответа</span><span data-l="pl">Numer reklamacji i data odpowiedzi</span><span data-l="be">Нумар рэкламацыі і дата адказу</span></label><input id="b-num" type="text" placeholder="np. RK/123456, 05.11.2026"></div>
-      <div class="vtabs">
-        <button class="vbtn on" data-v="c"><span data-l="ru">Карта побыту истекла</span><span data-l="pl">Karta pobytu wygasła</span><span data-l="be">Тэрмін карты побыту скончыўся</span></button>
-        <button class="vbtn" data-v="d"><span data-l="ru">Нет паспорта, есть ДП</span><span data-l="pl">Brak paszportu, mam DP</span><span data-l="be">Няма пашпарта, ёсць ДП</span></button>
-      </div>
-      <div id="v-c">
-      <p class="hint"><span data-l="ru">Ваша ситуация:</span><span data-l="pl">Twoja sytuacja:</span><span data-l="be">Ваша сітуацыя:</span></p>
-      <div class="gtog sm" id="kst">
-        <button type="button" class="on" data-st="thr"><span data-l="ru">Только угрожают</span><span data-l="pl">Tylko grożą</span><span data-l="be">Толькі пагражаюць</span></button>
-        <button type="button" data-st="blk"><span data-l="ru">Счёт уже заблокирован</span><span data-l="pl">Konto już zablokowane</span><span data-l="be">Рахунак ужо заблакаваны</span></button>
-      </div>
-      <div class="callout"><span data-l="ru">Перед отправкой отредактируйте текст: во фразе «zaświadczenia o toczącym się postępowaniu / stempla w paszporcie» оставьте только то, что у вас есть, — подтверждение (zaświadczenie) или штамп в паспорте.</span><span data-l="pl">Przed wysłaniem zmień tekst: we fragmencie „zaświadczenia o toczącym się postępowaniu / stempla w paszporcie” zostaw tylko to, co masz — zaświadczenie albo stempel w paszporcie.</span><span data-l="be">Перад адпраўкай адрэдагуйце тэкст: у фразе «zaświadczenia o toczącym się postępowaniu / stempla w paszporcie» пакіньце толькі тое, што ў вас ёсць, — пацвярджэнне (zaświadczenie) або штамп у пашпарце.</span></div>
       <div class="pre" id="t-odw"></div>
       <button class="btn blue" data-copy="odw"><span data-l="ru">Копировать текст</span><span data-l="pl">Kopiuj tekst</span><span data-l="be">Капіраваць тэкст</span></button>
       <button class="btn line" data-toggle="t-odw">↕</button>
-      </div>
-      <div id="v-d" style="display:none">
-      <p class="hint"><span data-l="ru">Ваша ситуация:</span><span data-l="pl">Twoja sytuacja:</span><span data-l="be">Ваша сітуацыя:</span></p>
-      <div class="gtog sm" id="dpst">
-        <button type="button" class="on" data-st="thr"><span data-l="ru">Только угрожают</span><span data-l="pl">Tylko grożą</span><span data-l="be">Толькі пагражаюць</span></button>
-        <button type="button" data-st="blk"><span data-l="ru">Счёт уже заблокирован</span><span data-l="pl">Konto już zablokowane</span><span data-l="be">Рахунак ужо заблакаваны</span></button>
-      </div>
-      <div class="pre" id="t-odwdp"></div>
-      <button class="btn blue" data-copy="odwdp"><span data-l="ru">Копировать текст</span><span data-l="pl">Kopiuj tekst</span><span data-l="be">Капіраваць тэкст</span></button>
-      <button class="btn line" data-toggle="t-odwdp">↕</button>
-      </div>
     </div>
 
     <div class="step">
@@ -555,126 +487,6 @@ footer a{color:var(--muted)}
       <span data-l="ru">SMS и письма от банка, переписку, ответы на рекламации, документы о легальном пребывании и ипотечный договор, если есть.</span><span data-l="pl">SMS-y i listy z banku, korespondencję, odpowiedzi na reklamacje, dokumenty pobytowe i umowę kredytu, jeśli jest.</span><span data-l="be">SMS і лісты ад банка, перапіску, адказы на рэкламацыі, дакументы аб легальным знаходжанні і іпатэчны дагавор, калі ёсць.</span>
     </div>
     <p class="hint"><span data-l="ru">Тексты подготовлены участниками сообщества беларусов в Польше. Это не юридическая консультация.</span><span data-l="pl">Teksty przygotowane przez społeczność Białorusinów w Polsce. To nie jest porada prawna.</span><span data-l="be">Тэксты падрыхтаваны ўдзельнікамі супольнасці беларусаў у Польшчы. Гэта не юрыдычная кансультацыя.</span></p>
-  </section>
-
-  <!-- PRP -->
-  <section class="panel" id="prp">
-    <h2><span data-l="ru">Базовый платёжный счёт</span><span data-l="pl">Rachunek podstawowy</span><span data-l="be">Базавы плацежны рахунак</span></h2>
-    <p class="hint" style="margin-top:0;margin-bottom:10px"><b>PRP</b> — <i>podstawowy rachunek płatniczy</i></p>
-    <p class="lead">
-      <span data-l="ru">Если нет счёта в польском банке, банк обязан открыть вам бесплатный базовый счёт с картой и переводами. Гражданство, карта побыту и работа значения не имеют.</span>
-      <span data-l="pl">Jeśli nie masz rachunku w polskim banku, bank ma obowiązek otworzyć Ci bezpłatny rachunek podstawowy z kartą i przelewami. Obywatelstwo, karta pobytu i praca nie mają znaczenia.</span>
-      <span data-l="be">Калі няма рахунку ў польскім банку, банк абавязаны адкрыць вам бясплатны базавы рахунак з карткай і пераводамі. Грамадзянства, карта побыту і праца значэння не маюць.</span>
-    </p>
-    <span class="badge"><span data-l="ru">Просите именно podstawowy rachunek płatniczy, не konto osobiste</span><span data-l="pl">Proś o podstawowy rachunek płatniczy, nie o konto osobiste</span><span data-l="be">Прасіце менавіта podstawowy rachunek płatniczy, не konto osobiste</span></span>
-
-    <div class="step">
-      <div class="step-head"><span class="step-num">1</span><div><h3><span data-l="ru">Проверьте, есть ли у вас право</span><span data-l="pl">Sprawdź, czy masz prawo</span><span data-l="be">Праверце, ці ёсць у вас права</span></h3></div></div>
-      <ul>
-        <li><span data-l="ru">Вы законно находитесь в Польше (гражданство не важно).</span><span data-l="pl">Przebywasz legalnie w Polsce (obywatelstwo nie ma znaczenia).</span><span data-l="be">Вы законна знаходзіцеся ў Польшчы (грамадзянства не важнае).</span></li>
-        <li><span data-l="ru">У вас нет другого счёта в польском банке, с которого можно делать переводы и платить картой.</span><span data-l="pl">Nie masz innego rachunku w polskim banku, z którego można robić przelewy i płacić kartą.</span><span data-l="be">У вас няма іншага рахунку ў польскім банку, з якога можна рабіць пераводы і плаціць карткай.</span></li>
-        <li><span data-l="ru">Заявление подаётся именно на PRP. Его предлагают практически все крупные банки.</span><span data-l="pl">Wniosek dotyczy właśnie PRP. Oferują go praktycznie wszystkie duże banki.</span><span data-l="be">Заява падаецца менавіта на PRP. Яго прапануюць практычна ўсе буйныя банкі.</span></li>
-      </ul>
-      <p class="hint"><span data-l="ru">Art. 59ia Ustawy o usługach płatniczych и директива 2014/92/UE (ст. 16): это прямое право, а не решение банка.</span><span data-l="pl">Art. 59ia Ustawy o usługach płatniczych i dyrektywa 2014/92/UE (art. 16): to bezpośrednie prawo, a nie decyzja banku.</span><span data-l="be">Art. 59ia Ustawy o usługach płatniczych і дырэктыва 2014/92/UE (арт. 16): гэта прамое права, а не рашэнне банка.</span></p>
-    </div>
-
-    <div class="step">
-      <div class="step-head"><span class="step-num">2</span><div><h3><span data-l="ru">Соберите документы</span><span data-l="pl">Przygotuj dokumenty</span><span data-l="be">Збярыце дакументы</span></h3><div class="sub"><span data-l="ru">Банк не вправе требовать больше, чем нужно для подтверждения личности и законного пребывания.</span><span data-l="pl">Bank nie może wymagać więcej, niż potrzeba do potwierdzenia tożsamości i legalnego pobytu.</span><span data-l="be">Банк не мае права патрабаваць больш, чым трэба для пацвярджэння асобы і законнага знаходжання.</span></div></div></div>
-      <ul>
-        <li><span data-l="ru">Документ личности: паспорт, карта побыту, dokument podróży dla cudzoziemca, TZTC или другой действующий документ, выданный польским органом.</span><span data-l="pl">Dokument tożsamości: paszport, karta pobytu, dokument podróży dla cudzoziemca, TZTC lub inny ważny dokument wydany przez polski organ.</span><span data-l="be">Дакумент асобы: пашпарт, карта побыту, dokument podróży dla cudzoziemca, TZTC або іншы дзейны дакумент, выдадзены польскім органам.</span></li>
-        <li><span data-l="ru">Meldunek, если есть.</span><span data-l="pl">Meldunek, jeśli jest.</span><span data-l="be">Meldunek, калі ёсць.</span></li>
-        <li><span data-l="ru">PESEL, если присвоен.</span><span data-l="pl">PESEL, jeśli nadany.</span><span data-l="be">PESEL, калі прысвоены.</span></li>
-        <li><span data-l="ru">На телефоне: страница PRP на сайте выбранного банка (ссылки ниже).</span><span data-l="pl">W telefonie: strona PRP wybranego banku (linki poniżej).</span><span data-l="be">На тэлефоне: старонка PRP на сайце абранага банка (спасылкі ніжэй).</span></li>
-      </ul>
-      <details>
-        <summary><span data-l="ru">Если у вас TZTC: аргументы</span><span data-l="pl">Jeśli masz TZTC: argumenty</span><span data-l="be">Калі ў вас TZTC: аргументы</span></summary>
-        <div><span data-l="ru">• gov.pl / UdSC: TZTC — документ, подтверждающий личность иностранца в процедуре международной защиты.
-• Art. 55 ustawy o udzielaniu cudzoziemcom ochrony: TZTC подтверждает личность и право пребывания до окончательного решения.
-• Реестр ЕС PRADO: TZTC указан как официальный документ личности (POL-HP-03001).
-• Письмо UKNF банкам: TZTC нужно принимать как документ, удостоверяющий личность.</span><span data-l="pl">• gov.pl / UdSC: TZTC to dokument potwierdzający tożsamość cudzoziemca w procedurze o udzielenie ochrony międzynarodowej.
-• Art. 55 ustawy o udzielaniu cudzoziemcom ochrony: TZTC potwierdza tożsamość i uprawnia do pobytu do zakończenia postępowania.
-• Rejestr UE PRADO: TZTC jako oficjalny dokument tożsamości (POL-HP-03001).
-• Pismo UKNF do banków: TZTC należy uznawać za dokument stwierdzający tożsamość.</span><span data-l="be">• gov.pl / UdSC: TZTC — дакумент, які пацвярджае асобу замежніка ў працэдуры міжнароднай абароны.
-• Art. 55 ustawy o udzielaniu cudzoziemcom ochrony: TZTC пацвярджае асобу і права знаходжання да канчатковага рашэння.
-• Рэестр ЕС PRADO: TZTC пазначаны як афіцыйны дакумент асобы (POL-HP-03001).
-• Ліст UKNF банкам: TZTC трэба прымаць як дакумент, які сведчыць асобу.</span></div>
-      </details>
-    </div>
-
-    <div class="step">
-      <div class="step-head"><span class="step-num">3</span><div><h3><span data-l="ru">В отделении банка</span><span data-l="pl">W oddziale banku</span><span data-l="be">У аддзяленні банка</span></h3></div></div>
-      <ul>
-        <li><span data-l="ru">Сразу назовите продукт: podstawowy rachunek płatniczy. На предложение konto osobiste откажитесь и повторите.</span><span data-l="pl">Od razu nazwij produkt: podstawowy rachunek płatniczy. Na propozycję konta osobistego odmów i powtórz.</span><span data-l="be">Адразу назавіце прадукт: podstawowy rachunek płatniczy. На прапанову konto osobiste адмоўцеся і паўтарыце.</span></li>
-        <li><span data-l="ru">Если консультант «не знает» такого счёта, покажите страницу PRP на сайте этого банка.</span><span data-l="pl">Jeśli doradca „nie zna” takiego rachunku, pokaż stronę PRP na stronie tego banku.</span><span data-l="be">Калі кансультант «не ведае» такога рахунку, пакажыце старонку PRP на сайце гэтага банка.</span></li>
-        <li><span data-l="ru">Если требуют лишнее (карту побыту на 12 месяцев и т.п.), объясните, что для PRP нужен только документ личности и законное пребывание.</span><span data-l="pl">Jeśli wymagają więcej (karty pobytu na 12 miesięcy itp.), wyjaśnij, że do PRP wystarczy dokument tożsamości i legalny pobyt.</span><span data-l="be">Калі патрабуюць лішняе (карту побыту на 12 месяцаў і г.д.), растлумачце, што для PRP патрэбны толькі дакумент асобы і законнае знаходжанне.</span></li>
-        <li><span data-l="ru">Не помогает — просите руководителя отделения (kierownik oddziału). Обычно он звонит в головной офис и получает подтверждение.</span><span data-l="pl">Nie pomaga — poproś kierownika oddziału. Zwykle dzwoni do centrali i dostaje potwierdzenie.</span><span data-l="be">Не дапамагае — прасіце кіраўніка аддзялення (kierownik oddziału). Звычайна ён тэлефануе ў галоўны офіс і атрымлівае пацвярджэнне.</span></li>
-        <li><span data-l="ru">Дальше: подписание договора, установка приложения. Карта приходит по почте.</span><span data-l="pl">Dalej: podpisanie umowy, instalacja aplikacji. Karta przychodzi pocztą.</span><span data-l="be">Далей: подпіс дагавора, усталёўка праграмы. Картка прыходзіць поштай.</span></li>
-      </ul>
-      <div class="callout"><b><span data-l="ru">Про белорусское гражданство.</span><span data-l="pl">O obywatelstwie białoruskim.</span><span data-l="be">Пра беларускае грамадзянства.</span></b> <span data-l="ru">UKNF напомнил банкам: отказ не может основываться только на гражданстве страны под санкциями. Нужна индивидуальная оценка риска, а решение должно быть обосновано и задокументировано.</span><span data-l="pl">UKNF przypomniał bankom: odmowa nie może wynikać wyłącznie z obywatelstwa państwa objętego sankcjami. Potrzebna jest indywidualna analiza ryzyka, a decyzja musi być uzasadniona i udokumentowana.</span><span data-l="be">UKNF нагадаў банкам: адмова не можа грунтавацца толькі на грамадзянстве краіны пад санкцыямі. Патрэбна індывідуальная ацэнка рызыкі, а рашэнне павінна быць абгрунтаваным і задакументаваным.</span></div>
-    </div>
-
-    <div class="step">
-      <div class="step-head"><span class="step-num">4</span><div><h3><span data-l="ru">Фразы для банка</span><span data-l="pl">Zwroty do banku</span><span data-l="be">Фразы для банка</span></h3></div></div>
-      <div class="pre open">Dzień dobry, chciałabym / chciałbym otworzyć podstawowy rachunek płatniczy (PRP), nie konto osobiste.
-
-Zgodnie z art. 59ia ustawy o usługach płatniczych mam prawo do podstawowego rachunku płatniczego. Karta pobytu nie jest wymagana.
-
-Na stronie Państwa banku jest informacja o tym rachunku — mogę pokazać.
-
-Czy mogę porozmawiać z kierownikiem oddziału?
-
-Proszę o odmowę na piśmie wraz z uzasadnieniem.</div>
-      <button class="btn blue" type="button" id="prpCopy"><span data-l="ru">Копировать фразы</span><span data-l="pl">Kopiuj zwroty</span><span data-l="be">Капіраваць фразы</span></button>
-    </div>
-
-    <div class="step">
-      <div class="step-head"><span class="step-num">5</span><div><h3><span data-l="ru">Если всё равно отказали</span><span data-l="pl">Jeśli mimo to odmówili</span><span data-l="be">Калі ўсё роўна адмовілі</span></h3></div></div>
-      <ul>
-        <li><span data-l="ru">Законно отказать можно только если у вас уже есть счёт в польском банке, банк не может вас идентифицировать (или есть обоснованные AML-подозрения), либо вы дали ложные данные.</span><span data-l="pl">Odmowa jest zgodna z prawem tylko, gdy masz już rachunek w polskim banku, bank nie może Cię zidentyfikować (lub ma uzasadnione podejrzenia AML) albo podano nieprawdziwe dane.</span><span data-l="be">Законна адмовіць можна толькі калі ў вас ужо ёсць рахунак у польскім банку, банк не можа вас ідэнтыфікаваць (або ёсць абгрунтаваныя AML-падазрэнні), ці вы далі ілжывыя даныя.</span></li>
-        <li><span data-l="ru">Попросите отказ письменно: по директиве 2014/92/UE (ст. 19) банк сообщает об отказе письменно, бесплатно и с причиной.</span><span data-l="pl">Poproś o odmowę na piśmie: zgodnie z dyrektywą 2014/92/UE (art. 19) bank informuje o odmowie pisemnie, bezpłatnie i z uzasadnieniem.</span><span data-l="be">Папрасіце адмову пісьмова: паводле дырэктывы 2014/92/UE (арт. 19) банк паведамляе пра адмову пісьмова, бясплатна і з прычынай.</span></li>
-        <li><span data-l="ru">Попробуйте другое отделение или другой банк.</span><span data-l="pl">Spróbuj w innym oddziale lub innym banku.</span><span data-l="be">Паспрабуйце іншае аддзяленне або іншы банк.</span></li>
-        <li><span data-l="ru">Подайте reklamację в банк, затем — к <a href="https://rf.gov.pl" target="_blank" rel="noopener">Rzecznik Finansowy</a> или в <a href="https://www.knf.gov.pl" target="_blank" rel="noopener">KNF</a>.</span><span data-l="pl">Złóż reklamację w banku, a potem — do <a href="https://rf.gov.pl" target="_blank" rel="noopener">Rzecznika Finansowego</a> lub <a href="https://www.knf.gov.pl" target="_blank" rel="noopener">KNF</a>.</span><span data-l="be">Падайце reklamację ў банк, потым — да <a href="https://rf.gov.pl" target="_blank" rel="noopener">Rzecznik Finansowy</a> або ў <a href="https://www.knf.gov.pl" target="_blank" rel="noopener">KNF</a>.</span></li>
-      </ul>
-    </div>
-
-    <div class="box">
-      <h3><span data-l="ru">Страницы PRP в банках</span><span data-l="pl">Strony PRP w bankach</span><span data-l="be">Старонкі PRP у банках</span></h3>
-      <p><span data-l="ru">На страницах — условия, тарифы и бланк заявления (wniosek).</span><span data-l="pl">Na stronach — warunki, opłaty i formularz wniosku.</span><span data-l="be">На старонках — умовы, тарыфы і бланк заявы (wniosek).</span></p>
-      <div class="links">
-        <a href="https://www.pkobp.pl/klient-indywidualny/konta/podstawowy-rachunek-platniczy" target="_blank" rel="noopener"><span class="ic">→</span>PKO BP</a>
-        <a href="https://www.pekao.com.pl/klient-indywidualny/codzienne-bankowanie/konta-osobiste/rachunek-podstawowy.html" target="_blank" rel="noopener"><span class="ic">→</span>Bank Pekao</a>
-        <a href="https://www.mbank.pl/indywidualny/uslugi/uslugi/podstawowy-rachunek-platniczy/" target="_blank" rel="noopener"><span class="ic">→</span>mBank</a>
-        <a href="https://www.erste.pl/klient-indywidualny/konta/konto-podstawowe" target="_blank" rel="noopener"><span class="ic">→</span>Erste Bank Polska (Konto Podstawowe)</a>
-        <a href="https://www.ing.pl/indywidualni/konta-osobiste/konto-prp-podstawowy-rachunek-platniczy" target="_blank" rel="noopener"><span class="ic">→</span>ING</a>
-        <a href="https://www.bankmillennium.pl/delegate/managedfiles/819/latest" target="_blank" rel="noopener"><span class="ic">→</span>Bank Millennium</a>
-        <a href="https://www.aliorbank.pl/klienci-indywidualni/konta-osobiste/rachunek-podstawowy.html" target="_blank" rel="noopener"><span class="ic">→</span>Alior Bank</a>
-        <a href="https://www.bnpparibas.pl/klienci-indywidualni/konta/rachunek-podstawowy" target="_blank" rel="noopener"><span class="ic">→</span>BNP Paribas</a>
-        <a href="https://www.credit-agricole.pl/klienci-indywidualni/konta/podstawowy-rachunek-platniczy" target="_blank" rel="noopener"><span class="ic">→</span>Credit Agricole</a>
-        <a href="https://citibank.pl/files/documents/accounts/Toipi-PRP-15092022.pdf" target="_blank" rel="noopener"><span class="ic">→</span>Citi Handlowy</a>
-        <a href="https://www.velobank.pl/centralne_repozytorium_dokumentow/8E14D8D6A5D0EC2D00F16EBC1F841983E305C0A0810916BA2ED5C8CC16ADBD30" target="_blank" rel="noopener"><span class="ic">→</span>VeloBank</a>
-        <a href="https://www.bosbank.pl/__data/assets/pdf_file/0017/21761/Regulamin-rachunku-PRP_.pdf" target="_blank" rel="noopener"><span class="ic">→</span>BOŚ Bank</a>
-        <a href="https://www.pocztowy.pl/pdf/konta/2026/DOKUMENTprp09-2025.pdf" target="_blank" rel="noopener"><span class="ic">→</span>Bank Pocztowy</a>
-        <a href="https://www.bankbps.pl/images/Dokumenty/10.2025/DOKUMENT%20DOT%20OPLAT-%20PRP.pdf" target="_blank" rel="noopener"><span class="ic">→</span>Bank BPS</a>
-        <a href="https://www.toyotabank.pl/sites/default/files/dokumenty-klient-indywidualny/toyota-bank/WZOR_UMOWY_KONTA_PODSTAWOWEGO.pdf" target="_blank" rel="noopener"><span class="ic">→</span>Toyota Bank</a>
-      </div>
-      <p class="hint"><span data-l="ru">У Citi, VeloBank, BOŚ, Bank Pocztowy, BPS и Toyota Bank ссылка ведёт на PDF-документ (тарифы, регламент или образец договора). Erste: счёт открывают только в отделении, не в Strefa Erste.</span><span data-l="pl">W przypadku Citi, VeloBanku, BOŚ, Banku Pocztowego, BPS i Toyota Banku link prowadzi do dokumentu PDF (opłaty, regulamin lub wzór umowy). Erste: rachunek otwiera się tylko w oddziale, nie w Strefie Erste.</span><span data-l="be">У Citi, VeloBank, BOŚ, Bank Pocztowy, BPS і Toyota Bank спасылка вядзе на PDF-дакумент (тарыфы, рэгламент або ўзор дагавора). Erste: рахунак адкрываюць толькі ў аддзяленні, не ў Strefa Erste.</span></p>
-    </div>
-
-    <div class="box">
-      <h3><span data-l="ru">Правовая база</span><span data-l="pl">Podstawa prawna</span><span data-l="be">Прававая база</span></h3>
-      <div class="links">
-        <a href="https://isap.sejm.gov.pl/isap.nsf/download.xsp/WDU20111991175/U/D20111175Lj.pdf" target="_blank" rel="noopener"><span class="ic">§</span>Ustawa o usługach płatniczych, art. 59ia</a>
-        <a href="https://eur-lex.europa.eu/legal-content/PL/TXT/PDF/?uri=CELEX%3A32014L0092" target="_blank" rel="noopener"><span class="ic">§</span>Dyrektywa 2014/92/UE</a>
-        <a href="https://www.gov.pl/web/finanse/dostep-konsumentow-do-bezplatnego-rachunku-podstawowego" target="_blank" rel="noopener"><span class="ic">§</span>gov.pl — rachunek podstawowy</a>
-        <a href="https://www.consilium.europa.eu/prado/pl/POL-HP-03001/index.html" target="_blank" rel="noopener"><span class="ic">§</span>PRADO — TZTC</a>
-        <a href="https://bip.knf.gov.pl/knf/pl/komponenty/img/zasady_dostepu_do_podstawowego_rachunku_platniczego_49835.pdf" target="_blank" rel="noopener"><span class="ic">§</span>KNF — zasady dostępu do PRP</a>
-        <a href="https://bip.knf.gov.pl/knf/pl/komponenty/img/KNF_pismo_PAD_20-07-2017_57528.pdf" target="_blank" rel="noopener"><span class="ic">§</span>KNF — pismo do banków (PAD, 2017)</a>
-        <a href="https://rf.gov.pl/wp-content/uploads/2020/05/Rachunki_podstawowe_analiza_2019.pdf" target="_blank" rel="noopener"><span class="ic">§</span>Rzecznik Finansowy — analiza rachunków podstawowych</a>
-        <a href="https://rf.gov.pl/wp-content/uploads/2024/04/Prezentacja-PRP_sposob-na-darmowe-konto_26_10.pdf" target="_blank" rel="noopener"><span class="ic">§</span>Rzecznik Finansowy — PRP: sposób na darmowe konto</a>
-        <a href="https://telegra.ph/Bazovyj-platyozhnyj-schyot-v-Polshe-01-25" target="_blank" rel="noopener"><span class="ic">✎</span><span data-l="ru">Полная статья в Telegraph (RU)</span><span data-l="pl">Pełny artykuł w Telegraph (RU)</span><span data-l="be">Поўны артыкул у Telegraph (RU)</span></a>
-      </div>
-      <p class="hint"><span data-l="ru">По материалам статьи «Базовый платёжный счёт в Польше» и реального опыта открытия PRP с TZTC. Это не юридическая консультация.</span><span data-l="pl">Na podstawie artykułu „Bazowy rachunek płatniczy w Polsce” i realnego doświadczenia otwarcia PRP z TZTC. To nie jest porada prawna.</span><span data-l="be">Паводле артыкула «Базавы плацежны рахунак у Польшчы» і рэальнага досведу адкрыцця PRP з TZTC. Гэта не юрыдычная кансультацыя.</span></p>
-    </div>
   </section>
 
   <!-- Инструкция -->
@@ -971,11 +783,11 @@ var F=[
 
  {sec:'D2',t:'D2. Pobyt w RP',sd:tri('Данные вашего побыта и карты побыту','Dane pobytu i karty pobytu','Даныя вашага побыту і карты побыту')},
  {id:'permit',type:'select',opts:[['czasowy','Pobyt czasowy'],['staly','Pobyt stały'],['rezydent','Rezydent długoterminowy UE'],['ochrona','Ochrona uzupełniająca'],['human','Pobyt ze względów humanitarnych']],l:'Posiadam',h:tri('Какой у вас побыт','Rodzaj pobytu','Які ў вас побыт')},
- {id:'permOrg',l:'Wydane przez',h:tri('Кто выдал решение (decyzja), напр. WOJEWODA MAZOWIECKI','Organ, który wydał decyzję','Хто выдаў рашэнне, напр. WOJEWODA MAZOWIECKI')},
+ {id:'permOrg',l:'Wydane przez',h:tri('Кто выдал решение (decyzja). Обычно воевода; при ochrona uzupełniająca — SZEF UDSC (Szef Urzędu do Spraw Cudzoziemców)','Organ, który wydał decyzję. Zwykle wojewoda; przy ochronie uzupełniającej — SZEF UDSC','Хто выдаў рашэнне. Звычайна ваявода; пры ochrona uzupełniająca — SZEF UDSC')},
  {id:'permDate',type:'date',l:'Data wydania',h:tri('Дата решения (decyzji)','Data decyzji','Дата рашэння')},
  {row:[{id:'kpS',l:'Karta: seria',h:tri('Серия (2 буквы)','Seria','Серыя')},{id:'kpN',l:'Numer',h:tri('Номер','Numer','Нумар')}]},
  {row:[{id:'kpI',type:'date',l:'Data wydania',h:tri('Выдана','Wydana','Выдадзена')},{id:'kpE',type:'date',l:'Ważna do',h:tri('Действует до','Ważna do','Дзейнічае да')}]},
- {id:'kpOrg',l:'Organ wydający',h:tri('Кто выдал карту','Kto wydał kartę','Хто выдаў карту')},
+ {id:'kpOrg',l:'Organ wydający',h:tri('Кто выдал карту. При ochrona uzupełniająca карту выдаёт SZEF UDSC','Kto wydał kartę. Przy ochronie uzupełniającej — SZEF UDSC','Хто выдаў карту. Пры ochrona uzupełniająca — SZEF UDSC')},
  {id:'reason',type:'select',opts:[['expiry','Upływ terminu ważności paszportu'],['loss','Utrata paszportu'],['destroy','Zniszczenie paszportu'],['none','Brak dokumentu podróży']],l:'Uzasadnienie',h:tri('Почему нужен документ','Powód','Чаму патрэбны дакумент')},
  {row:[{id:'pasN',l:'Nr paszportu',h:tri('Для обоснования','Do uzasadnienia','Для абгрунтавання')},{id:'pasE',type:'date',l:'Ważny do',h:tri('Срок действия','Data ważności','Тэрмін дзеяння')}]},
 
@@ -1004,10 +816,12 @@ form.sign.value=today();
 /* auto-fill issuer fields from voivodeship */
 function syncVoi(force){
   var v=VOI[+form.voi.value];
-  ['permOrg','kpOrg'].forEach(function(n){if(force||!form[n].value)form[n].value='WOJEWODA '+v[0];});
+  var org=form.permit.value==='ochrona'?'SZEF UDSC':'WOJEWODA '+v[0];
+  ['permOrg','kpOrg'].forEach(function(n){if(force||!form[n].value)form[n].value=org;});
   if(force||!form.place.value)form.place.value=v[2];
 }
 form.voi.addEventListener('change',function(){syncVoi(true);});
+form.permit.addEventListener('change',function(){var p=form.place.value;syncVoi(true);form.place.value=p;});
 syncVoi(false);
 
 function data(){
@@ -1086,7 +900,7 @@ function build(o){
   var uz=up(o.place)+', '+dPl(o.sign)+' r.\n\n'+nm+'\nur. '+dPl(o.dob)+'\n'+[up(o.str),up(o.house)+(o.flat?'/'+up(o.flat):''),(o.zip||'')+' '+up(o.city)].join(' ')+'\n\nWOJEWODA '+v[0]+'\n\nUZASADNIENIE\n\n'+
     'Wnoszę o wydanie polskiego dokumentu podróży dla cudzoziemca na podstawie art. 252a ustawy z dnia 12 grudnia 2013 r. o cudzoziemcach. '+
     'Jestem '+(f?'obywatelką':'obywatelem')+' Republiki Białorusi i '+(f?'posiadam':'posiadam')+' '+PERMITS[o.permit].replace('zezwolenie','zezwolenie').replace('ochronę','ochronę')+' w Rzeczypospolitej Polskiej. '+
-    r+(o.permit==='ochrona'?'\n\nOchrona uzupełniająca została mi udzielona, ponieważ w razie powrotu do Republiki Białorusi groziłoby mi rzeczywiste ryzyko doznania poważnej krzywdy. Z tego powodu nie mogę zwrócić się do władz Republiki Białorusi, w tym do jej placówek konsularnych, o wydanie lub przedłużenie paszportu. Ponadto od września 2023 r. białoruskie placówki konsularne za granicą nie wydają ani nie przedłużają paszportów, a uzyskanie paszportu wymagałoby wyjazdu na Białoruś, co w mojej sytuacji jest niemożliwe. Uzyskanie nowego dokumentu podróży jest więc dla mnie niemożliwe.\n\n':' Nie mam możliwości uzyskania nowego paszportu Republiki Białorusi. ')+'Polski dokument podróży dla cudzoziemca jest mi niezbędny do wyjazdu poza terytorium Rzeczypospolitej Polskiej.\n\n'+nm;
+    r+' Nie mam możliwości uzyskania nowego paszportu Republiki Białorusi. Polski dokument podróży dla cudzoziemca jest mi niezbędny do wyjazdu poza terytorium Rzeczypospolitej Polskiej.\n\n'+nm;
   h+=sec('✉',tri('Обоснование (uzasadnienie)','Uzasadnienie','Абгрунтаванне (uzasadnienie)'),
     act('info','i',tri('Отдельный лист — некоторые urzędy (Варшава, Гданьск) его просят. Распечатайте или перепишите и подпишите.','Osobna kartka — niektóre urzędy (Warszawa, Gdańsk) o nią proszą.','Асобны ліст — некаторыя urzędy (Варшава, Гданьск) яго просяць. Раздрукуйце або перапішыце і падпішыце.'))+
     '<div class="uz" id="uzText">'+esc(uz)+'</div>');
@@ -1107,67 +921,23 @@ function scheduleLive(){clearTimeout(liveTimer);liveTimer=setTimeout(renderLive,
 form.addEventListener('input',scheduleLive);form.addEventListener('change',scheduleLive);
 (function(){
   var btn=liveWrap.querySelector('[data-save]'),st=liveWrap.querySelector('[data-st]');
-  btn.addEventListener('click',function(){makePdf(data(),st,btn);});
-  var pb=liveWrap.querySelector('[data-print]');pb.addEventListener('click',function(){printPdf(data(),st,pb);});
-})();
-/* ---------- save file: Claude viewer (downloads), phone share sheet, or browser download ---------- */
-var IN_CLAUDE=!!(window.claude&&typeof window.claude.use==='function');
-var DL=IN_CLAUDE?window.claude.use('downloads').catch(function(){return null;}):Promise.resolve(null);
-function saveFile(name,bytes,st){
-  var blob=new Blob([bytes],{type:'application/pdf'});
-  return DL.then(function(dl){
-    if(dl)return dl.save({filename:name,data:blob}).then(function(){st.innerHTML=tri('Готово ✓','Gotowe ✓','Гатова ✓');},function(e){
-      st.innerHTML=e&&e.code==='declined'?tri('Сохранение отменено.','Zapis anulowany.','Захаванне адменена.'):tri('Здесь сохранить не получилось. Откройте сайт в браузере.','Nie udało się zapisać tutaj. Otwórz stronę w przeglądarce.','Тут захаваць не атрымалася. Адкрыйце сайт у браўзеры.');});
-    var url=URL.createObjectURL(blob);
-    var a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();
-    var file=null;try{file=new File([blob],name,{type:'application/pdf'});}catch(e){}
-    var canShare=file&&navigator.canShare&&navigator.canShare({files:[file]});
-    st.innerHTML=tri('Готово. Если файл не скачался: ','Gotowe. Jeśli plik się nie pobrał: ','Гатова. Калі файл не спампаваўся: ')+
-      '<a href="'+url+'" target="_blank" rel="noopener">'+tri('открыть PDF','otwórz PDF','адкрыць PDF')+'</a>'+
-      (canShare?' · <button type="button" class="mini" data-share>'+tri('Сохранить / печать','Zapisz / drukuj','Захаваць / друк')+'</button>':'');
-    var sb=st.querySelector('[data-share]');
-    if(sb)sb.addEventListener('click',function(){navigator.share({files:[file],title:name}).catch(function(){});});
+  btn.addEventListener('click',function(){
+    var o=data();
+    st.innerHTML=tri('Готовлю PDF…','Przygotowuję PDF…','Рыхтую PDF…');btn.disabled=true;
+    FormFill.pdf(o,VOI,uzFor(o)).then(function(bytes){
+      var blob=new Blob([bytes],{type:'application/pdf'}),url=URL.createObjectURL(blob);
+      var name='wniosek-'+(up(o.sur)||'dokument').replace(/[^A-Z0-9]+/g,'-')+'.pdf';
+      var a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();
+      st.innerHTML=tri('Готово. Если файл не скачался — ','Gotowe. Jeśli plik się nie pobrał — ','Гатова. Калі файл не спампаваўся — ')+'<a href="'+url+'" target="_blank" rel="noopener">'+tri('откройте PDF','otwórz PDF','адкрыйце PDF')+'</a>';
+      btn.disabled=false;
+    }).catch(function(){btn.disabled=false;st.innerHTML=tri('Не удалось создать PDF. Проверьте интернет и попробуйте ещё раз.','Nie udało się utworzyć PDF. Sprawdź internet i spróbuj ponownie.','Не ўдалося стварыць PDF. Праверце інтэрнэт і паспрабуйце яшчэ раз.');});
   });
-}
-function makePdf(o,st,btn){
-  st.innerHTML=tri('Готовлю PDF…','Przygotowuję PDF…','Рыхтую PDF…');if(btn)btn.disabled=true;
-  return FormFill.pdf(o,VOI,uzFor(o)).then(function(bytes){
-    var name='wniosek-'+(up(o.sur)||'dokument').replace(/[^A-Z0-9]+/g,'-')+'.pdf';
-    return saveFile(name,bytes,st);
-  }).catch(function(){st.innerHTML=tri('Не удалось создать PDF. Проверьте интернет и попробуйте ещё раз.','Nie udało się utworzyć PDF. Sprawdź internet i spróbuj ponownie.','Не ўдалося стварыць PDF. Праверце інтэрнэт і паспрабуйце яшчэ раз.');})
-  .then(function(){if(btn)btn.disabled=false;});
-}
-/* print the filled form: desktop prints the PDF directly; phones open the system menu (Print / Save) */
-var TOUCH=window.matchMedia&&matchMedia('(pointer:coarse)').matches;
-function printPdf(o,st,btn){
-  if(IN_CLAUDE){st.innerHTML=tri('В Claude печать недоступна — сохраняю PDF, распечатайте его из «Файлов».','W Claude drukowanie jest niedostępne — zapisuję PDF, wydrukuj go z „Plików”.','У Claude друк недаступны — захоўваю PDF, раздрукуйце яго з «Файлаў».');return makePdf(o,st,btn);}
-  st.innerHTML=tri('Готовлю PDF для печати…','Przygotowuję PDF do druku…','Рыхтую PDF для друку…');btn.disabled=true;
-  return FormFill.pdf(o,VOI,uzFor(o)).then(function(bytes){
-    var name='wniosek-'+(up(o.sur)||'dokument').replace(/[^A-Z0-9]+/g,'-')+'.pdf';
-    var blob=new Blob([bytes],{type:'application/pdf'}),url=URL.createObjectURL(blob);
-    var file=null;try{file=new File([blob],name,{type:'application/pdf'});}catch(e){}
-    var canShare=file&&navigator.canShare&&navigator.canShare({files:[file]});
-    var openLink='<a href="'+url+'" target="_blank" rel="noopener">'+tri('открыть PDF','otwórz PDF','адкрыць PDF')+'</a>';
-    if(TOUCH){
-      st.innerHTML=(canShare?'<button type="button" class="mini" data-pshare>'+tri('Открыть меню печати','Otwórz menu drukowania','Адкрыць меню друку')+'</button> '+tri('и выберите «Напечатать». Или ','i wybierz „Drukuj”. Albo ','і выберыце «Надрукаваць». Або '):tri('Нажмите ','Kliknij ','Націсніце '))+openLink+tri(' → «Поделиться» → «Напечатать».',' → „Udostępnij” → „Drukuj”.',' → «Падзяліцца» → «Надрукаваць».');
-      var sb=st.querySelector('[data-pshare]');
-      if(sb)sb.addEventListener('click',function(){navigator.share({files:[file],title:name}).catch(function(){});});
-    }else{
-      var fr=document.createElement('iframe');fr.style.cssText='position:fixed;right:0;bottom:0;width:0;height:0;border:0';fr.src=url;
-      fr.onload=function(){try{fr.contentWindow.focus();fr.contentWindow.print();st.innerHTML=tri('Открылось окно печати. Если нет — ','Otworzyło się okno drukowania. Jeśli nie — ','Адкрылася акно друку. Калі не — ')+openLink+tri(' и напечатайте оттуда.',' i wydrukuj stamtąd.',' і надрукуйце адтуль.');}
-        catch(e){st.innerHTML=openLink+tri(' и напечатайте из просмотра PDF.',' i wydrukuj z podglądu PDF.',' і надрукуйце з прагляду PDF.');}};
-      document.body.appendChild(fr);
-    }
-  }).catch(function(){st.innerHTML=tri('Не удалось создать PDF. Проверьте интернет и попробуйте ещё раз.','Nie udało się utworzyć PDF. Sprawdź internet i spróbuj ponownie.','Не ўдалося стварыць PDF. Праверце інтэрнэт і паспрабуйце яшчэ раз.');})
-  .then(function(){btn.disabled=false;});
-}
-/* print: works in browsers; inside the Claude viewer printing is blocked, so save a PDF instead */
-function doPrint(o,st){if(IN_CLAUDE){makePdf(o,st);}else{window.print();}}
+})();
 var out=document.getElementById('out');
 document.getElementById('go').addEventListener('click',function(){
   out.innerHTML=build(data())+
-   '<div class="btns no-print"><button class="btn red" id="pr">'+tri('Печать / PDF','Drukuj / PDF','Друк / PDF')+'</button>'+'<span class="hint" id="prSt" style="display:block;width:100%"></span><button class="btn line" id="cp">'+tri('Копировать обоснование','Kopiuj uzasadnienie','Капіраваць абгрунтаванне')+'</button></div>';
-  document.getElementById('pr').onclick=function(){var st=document.getElementById('prSt');doPrint(data(),st);};
+   '<div class="btns no-print"><button class="btn red" id="pr">'+tri('Печать / PDF','Drukuj / PDF','Друк / PDF')+'</button><button class="btn line" id="cp">'+tri('Копировать обоснование','Kopiuj uzasadnienie','Капіраваць абгрунтаванне')+'</button></div>';
+  document.getElementById('pr').onclick=function(){window.print();};
   document.getElementById('cp').onclick=function(){var t=document.getElementById('uzText').textContent;var b=this;function done(){b.innerHTML=tri('Скопировано ✓','Skopiowano ✓','Скапіравана ✓');}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fallback(t);done();});}else{fallback(t);done();}};
   out.scrollIntoView({behavior:'smooth',block:'start'});
@@ -1180,21 +950,10 @@ var SAMPLE={voi:'6',place:'WARSZAWA',sign:today(),sur:'IVANOU',prevSur:'',rod:'I
   permit:'czasowy',permOrg:'WOJEWODA MAZOWIECKI',permDate:'2024-03-01',kpS:'RP',kpN:'1234567',kpI:'2024-03-15',kpE:'2027-03-01',kpOrg:'WOJEWODA MAZOWIECKI',reason:'expiry',pasN:'MP1234567',pasE:'2024-08-09',minor:false,teen:false};
 document.getElementById('exOut').innerHTML=build(SAMPLE);
 renderLive();
-document.getElementById('prEx').addEventListener('click',function(){doPrint(SAMPLE,document.getElementById('prExSt'));});
-var MINE=null,rb=document.getElementById('restoreMine');
-function snap(){var o={},any=false;[].forEach.call(form.elements,function(e){if(!e.name)return;var v=e.type==='checkbox'?e.checked:e.value;o[e.name]=v;
-  if(e.type==='checkbox'?v!==e.defaultChecked:(e.tagName==='SELECT'?false:String(v).trim()!==''))any=true;});return any?o:null;}
-function isSample(){return Object.keys(SAMPLE).every(function(k){var e=form[k];if(!e)return true;return e.type==='checkbox'?e.checked===!!SAMPLE[k]:e.value===String(SAMPLE[k]);});}
+document.getElementById('prEx').addEventListener('click',function(){window.print();});
 document.getElementById('fillSample').addEventListener('click',function(){
-  if(!isSample()){var m=snap();if(m)MINE=m;}
   Object.keys(SAMPLE).forEach(function(k){var e=form[k];if(!e)return;if(e.type==='checkbox')e.checked=SAMPLE[k];else e.value=SAMPLE[k];});
-  if(MINE)rb.style.display='';
   renderLive();
-});
-rb.addEventListener('click',function(){if(!MINE)return;
-  Object.keys(MINE).forEach(function(k){var e=form[k];if(!e)return;if(e.type==='checkbox')e.checked=MINE[k];else e.value=MINE[k];});
-  [].forEach.call(form.elements,function(e){if(e.name&&e.tagName!=='BUTTON'){try{e.dispatchEvent(new Event('change',{bubbles:true}));}catch(x){}}});
-  MINE=null;rb.style.display='none';renderLive();
 });
 
 /* ---------- mode switch ---------- */
@@ -1219,22 +978,12 @@ function tRekb(m){return ['Szanowni Państwo,','',
 'składam reklamację w związku z odmową uznania mojego polskiego dokumentu podróży dla cudzoziemca na potrzeby obsługi mojego rachunku bankowego. Posiadam ważny dokument pobytowy w Polsce oraz dokument podróży wydany przez polskie władze.','',
 'Proszę o:','1. wskazanie konkretnej podstawy prawnej odmowy;','2. wyjaśnienie, czy i jakie usługi bankowe mają zostać ograniczone oraz na jakiej podstawie;','3. ponowne rozpatrzenie sprawy z uwzględnieniem mojego statusu pobytowego i przedstawionych dokumentów.','',
 'Z wyrazami szacunku,',m.name].join('\n');}
-var KST='thr';
-function tOdw(m){var b=KST==='blk';return ['Odwołanie od odpowiedzi na reklamację nr '+m.num,'','Do Bank Millennium S.A.','','Szanowni Państwo,','',
-'nie zgadzam się z odpowiedzią Banku na moją reklamację i wnoszę o ponowne rozpatrzenie sprawy dotyczącej '+(b?'blokady':'ryzyka zablokowania')+' mojego rachunku z powodu braku aktualnej karty pobytu.','',
-'Oczekuję na zakończenie postępowania w sprawie zezwolenia na pobyt. Opóźnienie wynika z przyczyn ode mnie niezależnych, a w zakresie objętym art. 100d ustawy o pomocy obywatelom Ukrainy bieg określonych terminów został zawieszony.','',
-'Zgodnie z art. 1u rozporządzenia Rady (WE) nr 765/2006 ograniczenia dotyczące depozytów i określonych usług bankowych nie oznaczają automatycznego zakazu utrzymywania wszystkich rachunków obywateli Białorusi. Motyw 8 rozporządzenia (UE) 2025/2041 wyjaśnia ponadto zakres ograniczeń dotyczących usług płatniczych.','',
-'Wnoszę o '+(b?'niezwłoczne odblokowanie rachunku, ':'')+'indywidualną ocenę mojej sytuacji, wskazanie konkretnej podstawy prawnej '+(b?'blokady':'ewentualnej blokady')+' rachunku oraz zaakceptowanie zaświadczenia o toczącym się postępowaniu / stempla w paszporcie jako dokumentów uzupełniających.','',
-'W przypadku podtrzymania stanowiska Banku rozważę skierowanie sprawy do Rzecznika Finansowego.','',
-'Z poważaniem,','',m.name,'','[Data]'].join('\n');}
-var DPST='thr';
-function tOdwDp(m){return ['Odwołanie od odpowiedzi na reklamację nr '+m.num,'','Szanowni Państwo,','',
-'nie zgadzam się z odpowiedzią Banku na moją reklamację i wnoszę o ponowne rozpatrzenie sprawy dotyczącej '+(DPST==='blk'?'blokady mojego rachunku':'ryzyka zablokowania lub zamknięcia mojego rachunku')+' z powodu posiadania polskiego dokumentu podróży.','',
-'Brak możliwości uzyskania lub przedłużenia paszportu wynika z przyczyn ode mnie niezależnych. Posiadam polski dokument podróży dla cudzoziemca, wydany przez Polskę.','',
-'Art. 36 i 37 ustawy z dnia 1 marca 2018 r. o przeciwdziałaniu praniu pieniędzy oraz finansowaniu terroryzmu regulują zasady identyfikacji i weryfikacji klienta. Nie ustanawiają jednak wprost ogólnego obowiązku posiadania ważnego paszportu państwa pochodzenia jako warunku utrzymywania rachunku bankowego. Również rozporządzenie Rady (WE) nr 765/2006 nie ustanawia takiego ogólnego wymogu.','',
-'W związku z powyższym wnoszę o:','',
-(DPST==='blk'?'1. Niezwłoczne odblokowanie mojego rachunku.':'1. Pisemne potwierdzenie, że rachunek nie zostanie zablokowany ani zamknięty wyłącznie z powodu posługiwania się polskim dokumentem podróży dla cudzoziemca zamiast ważnego paszportu białoruskiego.'),'',
-'Z wyrazami szacunku,',m.name].join('\n');}
+function tOdw(m){return ['Odwołanie od odpowiedzi na reklamację nr '+m.num,'',
+'Nie zgadzam się z odpowiedzią Banku na moją reklamację. Odpowiedź nie wskazuje, jakie konkretnie dokumenty mogę przedstawić, aby uniknąć zablokowania rachunku w sytuacji, gdy:',
+'– czekam na wydanie nowej karty pobytu, a postępowanie trwa z przyczyn ode mnie niezależnych (w tym zawieszenia biegu terminów na podstawie art. 100d ustawy o pomocy obywatelom Ukrainy w związku z konfliktem zbrojnym na terytorium tego państwa),',
+'– nie mogę uzyskać paszportu białoruskiego, ponieważ od września 2023 r. białoruskie placówki konsularne nie wydają ani nie przedłużają paszportów, a jedynym dostępnym mi dokumentem jest polski dokument podróży dla cudzoziemca.','',
+'Wnoszę o ponowne rozpatrzenie sprawy oraz o jednoznaczne wskazanie: (1) czy Bank akceptuje polski dokument podróży dla cudzoziemca jako dokument tożsamości, (2) czy Bank akceptuje zaświadczenie o toczącym się postępowaniu w sprawie zezwolenia na pobyt jako potwierdzenie legalnego pobytu, (3) jakie inne dokumenty mogę przedstawić.','',
+'W przypadku podtrzymania stanowiska Banku rozważę skierowanie wniosku do Rzecznika Finansowego.','',m.name].join('\n');}
 function tKnf(m){return ['Szanowni Państwo,','',
 'Zwracam się z uprzejmą prośbą o zajęcie stanowiska przez Komisję Nadzoru Finansowego w sprawie praktyk Banku Millennium SA polegających na blokowaniu rachunków bankowych klientów będących obywatelami państw trzecich, w szczególności Białorusi, którzy oczekują na zakończenie procedury legalizacji pobytu i wydanie nowej karty pobytu.','',
 'Jako osoba legalnie przebywająca w Polsce '+m.dop+' wszelkich wymaganych formalności związanych z legalizacją pobytu oraz otwarciem rachunku bankowego. Ze względu na powszechnie znane, wielomiesięczne opóźnienia w rozpatrywaniu spraw przez urzędy wojewódzkie uzyskanie decyzji i nowej karty pobytu może trwać bardzo długo. Sytuacja ta nie jest zależna od cudzoziemca, który nie ma żadnego wpływu na tempo prowadzonego postępowania administracyjnego.','',
@@ -1247,26 +996,22 @@ function tKnf(m){return ['Szanowni Państwo,','',
 '2. Wyjaśnienie, czy Bank Millennium SA ma prawo odmawiać uznania polskiego dokumentu podróży dla cudzoziemca oraz jakie inne dokumenty tożsamości mogą przedstawić obywatele Białorusi, którzy nie mają możliwości uzyskania paszportu krajowego.','',
 'Z poważaniem,',m.name,m.contact].join('\n');}
 function mark(t){var h=esc(t);[NAME,CONTACT,NUM].forEach(function(p){h=h.split(esc(p)).join('<span class="ph">'+esc(p)+'</span>');});return h;}
-function bRender(){var m=bm();$('t-rek').innerHTML=mark(tRek(m));$('t-rekb').innerHTML=mark(tRekb(m));$('t-odw').innerHTML=mark(tOdw(m));$('t-odwdp').innerHTML=mark(tOdwDp(m));$('t-knf').innerHTML=mark(tKnf(m));$('rekb-subj').textContent=REKB_S;$('knf-subj').textContent=KNF_S;}
+function bRender(){var m=bm();$('t-rek').innerHTML=mark(tRek(m));$('t-rekb').innerHTML=mark(tRekb(m));$('t-odw').innerHTML=mark(tOdw(m));$('t-knf').innerHTML=mark(tKnf(m));$('rekb-subj').textContent=REKB_S;$('knf-subj').textContent=KNF_S;}
 ['b-name','b-contact','b-num'].forEach(function(id){$(id).addEventListener('input',bRender);});
 $('b-g').addEventListener('change',bRender);
-function setG(g){$('b-g').value=g;document.querySelectorAll('.gtog button[data-g]').forEach(function(b){b.classList.toggle('on',b.dataset.g===g);});bRender();}
-document.querySelectorAll('.gtog button[data-g]').forEach(function(b){b.addEventListener('click',function(){setG(b.dataset.g);});});
+function setG(g){$('b-g').value=g;document.querySelectorAll('.gtog button').forEach(function(b){b.classList.toggle('on',b.dataset.g===g);});bRender();}
+document.querySelectorAll('.gtog button').forEach(function(b){b.addEventListener('click',function(){setG(b.dataset.g);});});
 bRender();
 var bank=$('bank');
 bank.addEventListener('click',function(e){
   var c=e.target.closest('[data-copy]');
-  if(c){var m=bm(),map={millmail:'kontakt@bankmillennium.pl',waw:'konsument@um.warszawa.pl',wro:'brk@um.wroc.pl',knfmail:'knf@knf.gov.pl',rekbsubj:REKB_S,knfsubj:KNF_S,rek:tRek(m),rekb:tRekb(m),odw:tOdw(m),odwdp:tOdwDp(m),knf:tKnf(m)};
+  if(c){var m=bm(),map={millmail:'kontakt@bankmillennium.pl',waw:'konsument@um.warszawa.pl',wro:'brk@um.wroc.pl',knfmail:'knf@knf.gov.pl',rekbsubj:REKB_S,knfsubj:KNF_S,rek:tRek(m),rekb:tRekb(m),odw:tOdw(m),knf:tKnf(m)};
     var t=map[c.dataset.copy];
     var ok=function(){c.classList.add('done');setTimeout(function(){c.classList.remove('done');},1500);};
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fallback(t);ok();});}else{fallback(t);ok();}
     return;}
-  var ks=e.target.closest('#kst button');
-  if(ks){KST=ks.dataset.st;$('kst').querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===ks);});bRender();return;}
-  var st=e.target.closest('#dpst button');
-  if(st){DPST=st.dataset.st;$('dpst').querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===st);});bRender();return;}
   var v=e.target.closest('.vbtn');
-  if(v){var g=v.closest('.vtabs');g.querySelectorAll('.vbtn').forEach(function(x){x.classList.toggle('on',x===v);var el=$('v-'+x.dataset.v);if(el)el.style.display=x===v?'':'none';});return;}
+  if(v){bank.querySelectorAll('.vbtn').forEach(function(x){x.classList.toggle('on',x===v);});$('v-a').style.display=v.dataset.v==='a'?'':'none';$('v-b').style.display=v.dataset.v==='b'?'':'none';return;}
   var tg=e.target.closest('[data-toggle]');
   if(tg){$(tg.dataset.toggle).classList.toggle('open');}
 });
@@ -1286,21 +1031,8 @@ function show(id){
 }
 tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.tab);});});
 document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){show(b.dataset.go);window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});});});
-var pc=document.getElementById('prpCopy');
-if(pc){pc.addEventListener('click',function(){var t=pc.previousElementSibling.textContent;var ok=function(){pc.classList.add('done');setTimeout(function(){pc.classList.remove('done');},1500);};
-  var fb=function(){try{if(typeof fallback==='function'){fallback(t);}else{var r=document.createRange();r.selectNodeContents(pc.previousElementSibling);var sel=window.getSelection();sel.removeAllRanges();sel.addRange(r);document.execCommand('copy');}}catch(e){}ok();};
-  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb);}else{fb();}});}
 var start=(location.hash||'').slice(1);
 show(document.getElementById(start)&&document.getElementById(start).classList.contains('panel')?start:'home');
-/* tap ripple on every clickable control */
-(function(){try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-var SEL='.btn,.vbtn,.mini,.tab,.langs button,.seg button,.gtog button,.quick button,.links a';
-document.addEventListener('pointerdown',function(e){var el=e.target.closest&&e.target.closest(SEL);if(!el||el.disabled)return;
-  var r=el.getBoundingClientRect(),d=Math.max(r.width,r.height),sp=document.createElement('span');sp.className='rpl';
-  sp.style.width=sp.style.height=d+'px';sp.style.left=(e.clientX-r.left-d/2)+'px';sp.style.top=(e.clientY-r.top-d/2)+'px';
-  el.appendChild(sp);setTimeout(function(){sp.remove();},650);},{passive:true});
-}catch(e){}})();
-
 })();
 </script>
 </body>
