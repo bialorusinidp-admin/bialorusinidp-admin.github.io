@@ -449,6 +449,8 @@ footer::before{content:none!important;display:none!important}
 html[data-theme="light"] .soc-i{color:#b9655a;border-color:rgba(185,101,90,.4)}
 html:not([data-theme="light"]) .soc-i{color:#d98a7e;border-color:rgba(217,138,126,.45)}
 @media (hover:hover){.soc-i:hover{background:#b9655a!important;color:#fff!important;border-color:#b9655a!important}}
+.f input[type=checkbox]{accent-color:#4f6b69;width:20px;height:20px;flex:none}
+html:not([data-theme="light"]) .f input[type=checkbox]{accent-color:#9fb2ae}
 /* ===== print (must stay last) ===== */
 @media print{
   :root{color-scheme:light;--ink:#000;--paper:#fff;--card:#fff;--muted:#444;--line:#bbb;--field:#fff;--blue:#1d3f8f;--red:#1d3f8f;--blue-soft:#eef2fb;--red-soft:#eef2fb;--accent2:#b0102a;--warn-soft:#fff;--ok-soft:#fff;--shadow:none}
@@ -945,15 +947,14 @@ function build(o,VOI){
   put('permOrg',o.permOrg,'D2 wydane przez');put('permDate',digitsDate(o.permDate));
   put('kpS',o.kpS);put('kpN',o.kpN,'karta pobytu');put('kpI',digitsDate(o.kpI));put('kpE',digitsDate(o.kpE));
   put('kpOrg',o.kpOrg,'organ wydający');
-  var rc=MAP.cb.reason[o.reason];if(rc)cb(rc[1],rc[0]);
+  var rc=MAP.cb.reason[o.reason==='prevdp'?'expiry':o.reason];if(rc)cb(rc[1],rc[0]);
 
   // F, G
   put('date_f',signDate);put('date_g',signDate);
 
   // attachments
-  var att=['KOPIA KARTY POBYTU','POTWIERDZENIE ZAMELDOWANIA / UMOWA NAJMU','2 FOTOGRAFIE'];
-  if(o.reason!=='none')att.unshift('KOPIA PASZPORTU (WSZYSTKIE ZAPEŁNIONE STRONY)');
-  if(o.minor)att=att.concat(['KOPIA PASZPORTU RODZICA/OPIEKUNA','KOPIA KARTY POBYTU RODZICA/OPIEKUNA','KOPIA AKTU URODZENIA Z TŁUMACZENIEM PRZYSIĘGŁYM']);
+  var att=window.BDP_att?window.BDP_att(o):[];
+  if(att.length>8)warn.push('Załączniki (max 8)');
   att.slice(0,8).forEach(function(a,i){var l=MAP.att[i];txt(l[0],l[1],l[2],a,8.5,440,true);});
   return {pages:pages,warn:warn};
 }
@@ -1093,7 +1094,7 @@ var VOI=[['DOLNOŚLĄSKI','DOLNOŚLĄSKIE','WROCŁAW'],['KUJAWSKO-POMORSKI','KUJ
 var MARITAL={single:['KAWALER','PANNA'],married:['ŻONATY','MĘŻATKA'],divorced:['ROZWIEDZIONY','ROZWIEDZIONA'],widowed:['WDOWIEC','WDOWA']};
 var EYES=['NIEBIESKIE','SZARE','ZIELONE','PIWNE','BRĄZOWE','CZARNE','SZARO-NIEBIESKIE','SZARO-ZIELONE'];
 var PERMITS={czasowy:'zezwolenie na pobyt czasowy',staly:'zezwolenie na pobyt stały',rezydent:'zezwolenie na pobyt rezydenta długoterminowego UE',ochrona:'ochronę uzupełniającą',human:'zgodę na pobyt ze względów humanitarnych'};
-var REASONS={expiry:'upływ terminu ważności własnego dokumentu podróży',loss:'utrata własnego dokumentu podróży',destroy:'zniszczenie własnego dokumentu podróży',none:'brak dokumentu podróży'};
+var REASONS={prevdp:'upływ terminu ważności własnego dokumentu podróży',expiry:'upływ terminu ważności własnego dokumentu podróży',loss:'utrata własnego dokumentu podróży',destroy:'zniszczenie własnego dokumentu podróży',none:'brak dokumentu podróży'};
 
 /* ---------- form definition ---------- */
 var voiOpts=VOI.map(function(v,i){return [String(i),'WOJEWODA '+v[0]+' ('+v[2]+')'];});
@@ -1136,8 +1137,19 @@ var F=[
  {row:[{id:'kpS',l:'Karta: seria',h:tri('Серия (2 буквы)','Seria','Серыя')},{id:'kpN',l:'Numer',h:tri('Номер','Numer','Нумар')}]},
  {row:[{id:'kpI',type:'date',l:'Data wydania',h:tri('Выдана','Wydana','Выдадзена')},{id:'kpE',type:'date',l:'Ważna do',h:tri('Действует до','Ważna do','Дзейнічае да')}]},
  {id:'kpOrg',l:'Organ wydający',h:tri('Кто выдал карту. При ochrona uzupełniająca карту выдаёт SZEF UDSC','Kto wydał kartę. Przy ochronie uzupełniającej — SZEF UDSC','Хто выдаў карту. Пры ochrona uzupełniająca — SZEF UDSC')},
- {id:'reason',type:'select',opts:[['expiry','Upływ terminu ważności paszportu'],['loss','Utrata paszportu'],['destroy','Zniszczenie paszportu'],['none','Brak dokumentu podróży']],l:'Uzasadnienie',h:tri('Почему нужен документ','Powód','Чаму патрэбны дакумент')},
- {row:[{id:'pasN',l:'Nr paszportu',h:tri('Для обоснования','Do uzasadnienia','Для абгрунтавання')},{id:'pasE',type:'date',l:'Ważny do',h:tri('Срок действия','Data ważności','Тэрмін дзеяння')}]},
+ {id:'reason',type:'select',opts:[['expiry','Upływ terminu ważności paszportu'],['prevdp','Upływ terminu ważności poprzedniego dokumentu podróży'],['loss','Utrata paszportu'],['destroy','Zniszczenie paszportu'],['none','Brak dokumentu podróży']],l:'Uzasadnienie',h:tri('Почему нужен документ. Если раньше уже был dokument podróży и у него закончился срок — выберите «poprzedniego dokumentu podróży»','Powód. Jeśli masz już poprzedni dokument podróży, któremu upłynął termin ważności — wybierz „poprzedniego dokumentu podróży”','Чаму патрэбны дакумент. Калі раней ужо быў dokument podróży і ў яго скончыўся тэрмін — абярыце «poprzedniego dokumentu podróży»')},
+ {row:[{id:'pasN',l:'Nr paszportu / dokumentu',h:tri('Паспорта или прежнего dokument podróży — для обоснования','Paszportu lub poprzedniego dokumentu podróży','Пашпарта або ранейшага dokument podróży — для абгрунтавання')},{id:'pasE',type:'date',l:'Ważny do',h:tri('Срок действия','Data ważności','Тэрмін дзеяння')}]},
+
+ {sec:'Z',t:tri('Załączniki — что прикладываете','Załączniki — co dołączasz','Załączniki — што прыкладаеце'),sd:tri('Отметьте копии, которые приложите. Они впишутся в бланк с пункта 3 (поместится 8).','Zaznacz kopie, które dołączysz. Zostaną wpisane od punktu 3 (zmieści się 8).','Адзначце копіі, якія прыкладзеце. Яны ўпішуцца ў бланк з пункта 3 (зменіцца 8).')},
+ {id:'att_pas',type:'cb',l:tri('Копия паспорта (все заполненные страницы)','Kopia paszportu (wszystkie zapełnione strony)','Копія пашпарта (усе запоўненыя старонкі)')},
+ {id:'att_dp',type:'cb',l:tri('Копия прежнего dokument podróży','Kopia poprzedniego dokumentu podróży','Копія ранейшага dokument podróży')},
+ {id:'att_kp',type:'cb',l:tri('Копия карты побыту','Kopia karty pobytu','Копія карты побыту')},
+ {id:'att_dec',type:'cb',l:tri('Копия решения (decyzji) о побыте / защите','Kopia decyzji o pobycie / ochronie','Копія рашэння (decyzji) пра побыт / абарону')},
+ {id:'att_zam',type:'cb',l:tri('Подтверждение meldunku или договор аренды','Potwierdzenie zameldowania lub umowa najmu','Пацвярджэнне meldunku або дагавор найму')},
+ {id:'att_foto',type:'cb',l:tri('2 фотографии','2 fotografie','2 фотаздымкі')},
+ {id:'att_par',type:'cb',l:tri('Для ребёнка: копии паспорта и карты побыту родителя/опекуна','Dla dziecka: kopie paszportu i karty pobytu rodzica/opiekuna','Для дзіцяці: копіі пашпарта і карты побыту бацькі/апекуна')},
+ {id:'att_akt',type:'cb',l:tri('Для ребёнка: копия свидетельства о рождении с присяжным переводом','Dla dziecka: kopia aktu urodzenia z tłumaczeniem przysięgłym','Для дзіцяці: копія пасведчання аб нараджэнні з прысяжным перакладам')},
+ {id:'att_other',l:tri('Другое','Inne','Іншае'),h:tri('Если прикладываете что-то ещё — впишите по-польски, через «;»','Inne załączniki — po polsku, oddzielone „;”','Калі прыкладаеце нешта яшчэ — упішыце па-польску, праз «;»')},
 
  {sec:'X',t:tri('Дополнительно','Dodatkowo','Дадаткова')},
  {id:'minor',type:'cb',l:tri('Заявление на ребёнка (до 18 лет)','Wniosek dla dziecka (do 18 lat)','Заява на дзіця (да 18 гадоў)')},
@@ -1160,6 +1172,29 @@ F.forEach(function(f){
 html+='</div>';
 var form=document.getElementById('wf');form.innerHTML=html;
 form.sign.value=today();
+/* attachments: defaults follow reason / minor until the user touches them */
+var attTouched={};
+function attDefaults(){
+  var r=form.reason.value,m=form.minor.checked;
+  var d={att_pas:r==='expiry'||r==='loss'||r==='destroy',att_dp:r==='prevdp',att_kp:true,att_dec:false,att_zam:true,att_foto:true,att_par:m,att_akt:m};
+  Object.keys(d).forEach(function(k){if(!attTouched[k])form[k].checked=d[k];});
+}
+['att_pas','att_dp','att_kp','att_dec','att_zam','att_foto','att_par','att_akt'].forEach(function(k){form[k].addEventListener('change',function(){attTouched[k]=true;});});
+form.reason.addEventListener('change',attDefaults);form.minor.addEventListener('change',attDefaults);
+attDefaults();
+window.BDP_att=function(o){
+  var L=[];
+  if(o.att_pas)L.push('KOPIA PASZPORTU (WSZYSTKIE ZAPEŁNIONE STRONY)');
+  if(o.att_dp)L.push('KOPIA POPRZEDNIEGO DOKUMENTU PODRÓŻY');
+  if(o.att_kp)L.push('KOPIA KARTY POBYTU');
+  if(o.att_dec)L.push('KOPIA DECYZJI O UDZIELENIU ZEZWOLENIA / OCHRONY');
+  if(o.att_zam)L.push('POTWIERDZENIE ZAMELDOWANIA / UMOWA NAJMU');
+  if(o.att_foto)L.push('2 FOTOGRAFIE');
+  if(o.att_par){L.push('KOPIA PASZPORTU RODZICA/OPIEKUNA');L.push('KOPIA KARTY POBYTU RODZICA/OPIEKUNA');}
+  if(o.att_akt)L.push('KOPIA AKTU URODZENIA Z TŁUMACZENIEM PRZYSIĘGŁYM');
+  String(o.att_other||'').split(';').forEach(function(x){x=up(x);if(x)L.push(x);});
+  return L;
+};
 
 /* auto-fill issuer fields from voivodeship */
 function syncVoi(force){
@@ -1234,10 +1269,9 @@ function build(o){
   else fTxt=tri('Ребёнку меньше 13 — <b>рамку оставьте пустой</b>. Остальные подписи — родителя/опекуна.','Dziecko poniżej 13 lat — <b>ramkę zostaw pustą</b>. Pozostałe podpisy — rodzic/opiekun.','Дзіцяці менш за 13 — <b>рамку пакіньце пустой</b>. Астатнія подпісы — бацькі/апекуна.');
   h+=sec('F','Wzór podpisu',act('info','✍',fTxt)+kv(tri('Дата','Data','Дата'),d(o.sign)));
 
-  var att=['KOPIA KARTY POBYTU','POTWIERDZENIE ZAMELDOWANIA / UMOWA NAJMU','2 FOTOGRAFIE'];
-  if(o.reason!=='none')att.unshift('KOPIA PASZPORTU (WSZYSTKIE ZAPEŁNIONE STRONY)');
-  if(o.minor)att=att.concat(['KOPIA PASZPORTU RODZICA/OPIEKUNA','KOPIA KARTY POBYTU RODZICA/OPIEKUNA','KOPIA AKTU URODZENIA Z TŁUMACZENIEM PRZYSIĘGŁYM']);
+  var att=window.BDP_att(o);
   var attHtml='';att.forEach(function(a,i){attHtml+=kv((i+3)+'.',a);});
+  if(att.length>8)attHtml+=act('cross','!',tri('В бланке только 8 строк (3–10). Лишнее впишите от руки или сократите список.','Na formularzu jest tylko 8 wierszy (3–10). Resztę dopisz ręcznie lub skróć listę.','У бланку толькі 8 радкоў (3–10). Лішняе ўпішыце ад рукі або скараціце спіс.'));
   h+=sec('📎','Załączniki',act('info','i',tri('Пункты 1–2 уже напечатаны. Впишите с пункта 3:','Punkty 1–2 są wydrukowane. Dopisz od punktu 3:','Пункты 1–2 ужо надрукаваныя. Упішыце з пункта 3:'))+attHtml+
     act('info','i',tri('Достаточно обычных копий, нотариально заверять не нужно.','Wystarczą zwykłe kopie, bez notariusza.','Дастаткова звычайных копій, натарыяльна завяраць не трэба.')));
 
@@ -1246,6 +1280,7 @@ function build(o){
   /* uzasadnienie */
   var nm=up(o.name)+' '+up(o.sur), pas=o.pasN?' nr '+up(o.pasN):'', r;
   if(o.reason==='expiry')r='Termin ważności mojego paszportu'+pas+(o.pasE?' upłynął dnia '+dPl(o.pasE)+' r.':' upłynął.');
+  else if(o.reason==='prevdp')r='Termin ważności mojego poprzedniego polskiego dokumentu podróży dla cudzoziemca'+pas+(o.pasE?' upłynął dnia '+dPl(o.pasE)+' r.':' upłynął.');
   else if(o.reason==='loss')r=(f?'Utraciłam':'Utraciłem')+' swój paszport'+pas+'.';
   else if(o.reason==='destroy')r='Mój paszport'+pas+' uległ zniszczeniu.';
   else r='Nie posiadam dokumentu podróży.';
@@ -1278,6 +1313,7 @@ function isMaz(o){return String(o.voi)==='6';}
 function oswDefault(o){
   var f=o.sex==='K',pas=o.pasN?' nr '+up(o.pasN):'',r;
   if(o.reason==='expiry')r='Termin ważności mojego paszportu obywatela Republiki Białoruś'+pas+(o.pasE?' upłynął dnia '+dPl(o.pasE)+' r.':' upłynął.');
+  else if(o.reason==='prevdp')r='Termin ważności mojego poprzedniego polskiego dokumentu podróży dla cudzoziemca'+pas+(o.pasE?' upłynął dnia '+dPl(o.pasE)+' r.':' upłynął.')+' Nie posiadam ważnego paszportu obywatela Republiki Białoruś.';
   else if(o.reason==='loss')r=(f?'Utraciłam':'Utraciłem')+' swój paszport obywatela Republiki Białoruś'+pas+'.';
   else if(o.reason==='destroy')r='Mój paszport obywatela Republiki Białoruś'+pas+' uległ zniszczeniu.';
   else r='Nie posiadam paszportu obywatela Republiki Białoruś.';
@@ -1347,7 +1383,7 @@ function fallback(t){var a=document.createElement('textarea');a.value=t;document
 /* ---------- sample ---------- */
 var SAMPLE={voi:'6',place:'WARSZAWA',sign:today(),sur:'IVANOU',prevSur:'',rod:'IVANOU',name:'IVAN',prevName:'',father:'SIARHEI',mother:'ALENA',dob:'1990-05-14',sex:'M',pob:'MIŃSK',cob:'BIAŁORUŚ',mar:'single',h:'182',eyes:'PIWNE',marks:'',tel:'500 600 700',
   pow:'WARSZAWA',gm:'WARSZAWA',city:'WARSZAWA',str:'UL. PRZYKŁADOWA',house:'1',flat:'2',zip:'00-001',
-  permit:'czasowy',permOrg:'WOJEWODA MAZOWIECKI',permDate:'2024-03-01',kpS:'RP',kpN:'1234567',kpI:'2024-03-15',kpE:'2027-03-01',kpOrg:'WOJEWODA MAZOWIECKI',reason:'expiry',pasN:'MP1234567',pasE:'2024-08-09',minor:false,teen:false};
+  permit:'czasowy',permOrg:'WOJEWODA MAZOWIECKI',permDate:'2024-03-01',kpS:'RP',kpN:'1234567',kpI:'2024-03-15',kpE:'2027-03-01',kpOrg:'WOJEWODA MAZOWIECKI',reason:'expiry',pasN:'MP1234567',pasE:'2024-08-09',minor:false,teen:false,att_pas:true,att_dp:false,att_kp:true,att_dec:false,att_zam:true,att_foto:true,att_par:false,att_akt:false,att_other:''};
 document.getElementById('exOut').innerHTML=build(SAMPLE);
 renderLive();
 document.getElementById('prEx').addEventListener('click',function(){window.print();});
