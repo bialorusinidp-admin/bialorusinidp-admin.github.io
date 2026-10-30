@@ -4,7 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Białorusini a dokument podróży</title>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#eef2f0">
+<script>
+/* apply saved theme before paint (default: light) */
+(function(){var t='light';try{t=localStorage.getItem('theme')||'light';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:light;--ink:#16161d;--paper:#faf7f2;--card:#ffffff;--red:#d4213d;--red-soft:#fbe9ec;--muted:#6b6b76;--line:#ebe5dc;--field:#fff;--ok:#1f7a4d;--ok-soft:#e5f4ec;--blue:#2457b3;--blue-soft:#eaf0fb;--warn:#8a5a00;--warn-soft:#fdf3dc}
 
@@ -117,122 +122,6 @@ footer{text-align:center;font-size:13px;color:var(--muted);padding:10px 16px 40p
 [data-l]{display:none}
 html[lang="ru"] [data-l="ru"],html[lang="pl"] [data-l="pl"],html[lang="be"] [data-l="be"]{display:revert}
 
-/* ===== redesign: light, airy, blue ===== */
-:root{--ink:#0f1b33;--paper:#f2f5fb;--card:#ffffff;--red:#2457b3;--red-soft:#e9f0fc;--muted:#5f6b80;--line:#e3e9f3;--field:#f7f9fd;--blue:#2457b3;--blue-soft:#e9f0fc;--accent2:#d4213d;--shadow:0 1px 2px rgba(15,27,51,.04),0 6px 20px rgba(15,27,51,.06)}
-body,button,input,select,.tab,.seg button,.vbtn,.langs button,.btn,.mini{font-family:Manrope,system-ui,-apple-system,sans-serif}
-.flag{display:none}
-header.wrap{padding-top:12px}
-header .top{padding-top:8px}
-.mark{color:var(--blue);font-weight:700}
-.langs{background:var(--card);border:0;box-shadow:var(--shadow);border-radius:999px;padding:3px}
-.langs button{border-radius:999px;font-weight:700}
-.langs button.on{background:var(--blue);color:#fff}
-h1{font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(30px,8vw,46px);letter-spacing:-1px;line-height:1.05;margin:18px 0 0;background:linear-gradient(135deg,#ffffff 0%,#e6eefc 100%);border-radius:24px;padding:26px 22px 28px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-h1::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(36,87,179,.18),transparent 70%)}
-h1 span{display:block;font-style:normal;font-weight:700;color:var(--accent2);font-size:.62em;letter-spacing:-.3px;margin-top:6px}
-.tabs{margin-top:16px;background:rgba(242,245,251,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.tabs .wrap{gap:2px;padding-top:4px;padding-bottom:0}
-.tab{background:transparent;border:0;border-radius:0;color:var(--muted);padding:12px 12px 11px;border-bottom:3px solid transparent;font-weight:700}
-.tab.on{background:transparent;color:var(--blue);border-bottom-color:var(--blue)}
-h2{font-family:Manrope,sans-serif;font-weight:800;letter-spacing:-.5px;font-size:26px}
-.box,.fs,.step,.sheet .sec,.quick button,.contact{border:0;box-shadow:var(--shadow);border-radius:20px}
-.quick button{padding:18px}
-.quick button:last-child:nth-child(odd){grid-column:1/-1}
-.quick .n{font-family:Manrope,sans-serif;color:var(--blue);font-size:13px;font-weight:800;letter-spacing:1px;background:var(--blue-soft);display:inline-block;padding:2px 8px;border-radius:999px;margin-bottom:8px}
-.btn{background:var(--blue);color:#fff;border-radius:14px;font-weight:700}
-.btn.red,.step .btn.blue{background:var(--blue)}
-.btn.line{background:var(--card);color:var(--ink);border:1px solid var(--line)}
-.seg{border:0;box-shadow:var(--shadow);border-radius:14px}
-.seg button{font-weight:700}
-.seg button.on{background:var(--blue);color:#fff}
-.note{background:#fff7e6;color:#5a4300}
-.note.ok{background:#e9f7ef;color:#1d5b3a}
-.f input,.f select{background:var(--field);border:1px solid var(--line);border-radius:12px}
-.f input:focus,.f select:focus{outline:2px solid var(--blue);outline-offset:1px;background:#fff}
-ul.check li::before{background:var(--blue-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232457b3' stroke-width='3'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/12px no-repeat}
-.sheet .sec h4 .lt,.step-num{font-family:Manrope,sans-serif;color:var(--blue);font-weight:800}
-.step-num{font-size:15px;width:34px;height:34px;border-radius:50%;background:var(--blue-soft);display:grid;place-items:center;align-self:flex-start}
-.step-head{align-items:flex-start}
-.do.cross i{background:var(--accent2)}
-.do.x i{background:var(--blue);color:#fff}
-.pre,.uz{background:var(--field);border-radius:14px}
-.vbtn{font-weight:700}
-.links a{background:var(--field);border:0;border-radius:14px}
-.links a span.ic{background:var(--blue)}
-.badge{border-radius:999px}
-footer{padding-top:24px}
-
-
-/* hero image */
-h1.hero{min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;background:#0c1120;isolation:isolate}
-h1.hero::after{display:none}
-h1.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;z-index:-2}
-h1.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(12,17,32,.97) 0%,rgba(12,17,32,.75) 38%,rgba(12,17,32,.1) 75%)}
-h1.hero{color:#fff}
-@media (min-width:560px){h1.hero{min-height:360px}}
-
-/* animation */
-@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.14) translate(-1.5%,-1%)}}
-@keyframes up{from{opacity:.001;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes shine{0%{background-position:-150% 0}60%,100%{background-position:250% 0}}
-h1.hero img{animation:kb 22s ease-in-out infinite alternate}
-h1.hero{animation:up .7s ease-out both}
-h1.hero span{animation:up .7s .25s ease-out both}
-h1.hero > *:not(img){position:relative}
-h1.hero span{background:linear-gradient(100deg,var(--accent2) 40%,#ffd0d8 50%,var(--accent2) 60%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:up .7s .25s ease-out both,shine 6s 1.2s ease-in-out infinite}
-.panel.on .quick button,.panel.on .box,.panel.on .step,.panel.on .fs{animation:up .5s ease-out both}
-.panel.on .quick button:nth-child(2){animation-delay:.06s}
-.panel.on .quick button:nth-child(3){animation-delay:.12s}
-.panel.on .quick button:nth-child(4){animation-delay:.18s}
-.panel.on .quick button:nth-child(5){animation-delay:.24s}
-.panel.on .step:nth-of-type(2){animation-delay:.05s}
-.panel.on .step:nth-of-type(3){animation-delay:.1s}
-.quick button,.box,.step,.links a,.btn{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-@media (hover:hover){
-  .quick button:hover,.links a:hover{transform:translateY(-3px);border-color:var(--blue)}
-  .btn:hover{transform:translateY(-1px)}
-}
-.tab{transition:color .2s,border-color .2s}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-
-/* ===== dark theme ===== */
-:root{color-scheme:dark;--ink:#e9edf6;--paper:#0c1120;--card:#151c2e;--muted:#9aa6bd;--line:#26304a;--field:#0f1628;--blue:#7aa2ff;--red:#7aa2ff;--blue-soft:#1d2a4a;--red-soft:#1d2a4a;--accent2:#ff6b81;--ok:#5fd39a;--ok-soft:#14301f;--warn:#f2c46b;--warn-soft:#33280f;--shadow:0 1px 0 rgba(255,255,255,.03) inset,0 8px 24px rgba(0,0,0,.35)}
-body{background:var(--paper);color:var(--ink)}
-h1{background:linear-gradient(135deg,#18213a 0%,#0f1730 100%);color:var(--ink);border:1px solid var(--line)}
-h1::after{background:radial-gradient(circle,rgba(122,162,255,.28),transparent 70%)}
-.tabs{background:rgba(12,17,32,.9)}
-.langs{background:var(--card)}
-.langs button{color:var(--muted)}
-.langs button.on,.seg button.on,.vbtn.on{background:var(--blue);color:#0c1120}
-.btn,.btn.red,.step .btn.blue{background:var(--blue);color:#0c1120}
-.btn.line{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.box,.fs,.step,.sheet .sec,.quick button,.contact,.seg{background:var(--card);border:1px solid var(--line)}
-.quick button,.vbtn,.tab{color:var(--ink)}
-.tab{color:var(--muted)}
-.tab.on{color:var(--blue)}
-.note{background:var(--warn-soft);color:#f6dfae}
-.note.ok{background:var(--ok-soft);color:#bfe9d1}
-.f input,.f select{color:var(--ink)}
-.f input::placeholder{color:#6c7895}
-.f input:focus,.f select:focus{background:var(--field)}
-.pre,.uz,.links a{background:var(--field);color:var(--ink)}
-.links a{color:var(--ink)}
-.links a span.ic{background:var(--blue);color:#0c1120}
-.do.x i{background:var(--blue);color:#0c1120}
-.do.info i{background:var(--line);color:var(--ink)}
-ul.check li::before{background:var(--blue-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237aa2ff' stroke-width='3'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/12px no-repeat}
-.mini{background:var(--blue-soft);color:var(--blue)}
-.vbtn{background:var(--card);border-color:var(--line)}
-.note[style]{background:var(--blue-soft)!important;color:var(--ink)}
-footer a{color:var(--muted)}
-
-@media print{
-  .flag,header,.tabs,footer,.no-print,.panel:not(#wniosek){display:none!important}
-  #wniosek{display:block!important;padding:0}
-  body{background:#fff;color:#000}
-  .sheet .sec{border:1px solid #999}
-}
-
 /* filled form preview */
 .formwrap{margin-top:22px}
 .formwrap h3{font-size:18px;font-weight:800;margin-bottom:4px}
@@ -257,6 +146,275 @@ footer a{color:var(--muted)}
 #oswText{width:100%;font:15px/1.5 Manrope,system-ui,sans-serif;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:12px;padding:12px;resize:vertical}
 #oswText:focus{outline:2px solid var(--blue);outline-offset:1px}
 #oswBlock .savebar .btn{margin-top:10px}
+
+/* ===== V1 «Карэлія»: dark slate-teal, spaced caps, faded ornament panels ===== */
+:root{color-scheme:dark;
+  --ink:#e4ebe8;--paper:#1b2729;--card:#223133;--card2:#4b5e61;--muted:#9fb0ad;--line:#33464a;--field:#182325;
+  --red:#c9d8d2;--red-soft:#2b3d40;--blue:#c9d8d2;--blue-soft:#2b3d40;--accent:#b9655a;
+  --ok:#8fd0a8;--ok-soft:#1d3a2c;--warn:#e7c27a;--warn-soft:#3a3220;
+  --sans:"Raleway","Inter",system-ui,-apple-system,sans-serif;
+  --band:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 11' shape-rendering='crispEdges'%3E%3Cg fill='%23b9655a'%3E%3Crect x=%223%22 y=%224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%224%22 width=%221%22 height=%221%22/%3E%3Crect x=%224%22 y=%223%22 width=%221%22 height=%221%22/%3E%3Crect x=%224%22 y=%229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%221%22 width=%221%22 height=%221%22/%3E%3Crect x=%225%22 y=%2210%22 width=%221%22 height=%221%22/%3E%3Crect x=%228%22 y=%223%22 width=%221%22 height=%221%22/%3E%3Crect x=%220%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%221%22 y=%226%22 width=%221%22 height=%221%22/%3E%3Crect x=%222%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2213%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2215%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%226%22 width=%221%22 height=%221%22/%3E%3Crect x=%225%22 y=%220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%229%22 width=%221%22 height=%221%22/%3E%3Crect x=%223%22 y=%226%22 width=%221%22 height=%221%22/%3E%3Crect x=%228%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%229%22 y=%224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2210%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%222%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%226%22 y=%221%22 width=%221%22 height=%221%22/%3E%3Crect x=%226%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%226%22 width=%221%22 height=%221%22/%3E%3Crect x=%223%22 y=%222%22 width=%221%22 height=%221%22/%3E%3Crect x=%224%22 y=%221%22 width=%221%22 height=%221%22/%3E%3Crect x=%224%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%225%22 y=%222%22 width=%221%22 height=%221%22/%3E%3Crect x=%223%22 y=%228%22 width=%221%22 height=%221%22/%3E%3Crect x=%225%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%225%22 y=%228%22 width=%221%22 height=%221%22/%3E%3Crect x=%228%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%229%22 y=%226%22 width=%221%22 height=%221%22/%3E%3Crect x=%221%22 y=%224%22 width=%221%22 height=%221%22/%3E%3Crect x=%222%22 y=%223%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%222%22 width=%221%22 height=%221%22/%3E%3Crect x=%226%22 y=%223%22 width=%221%22 height=%221%22/%3E%3Crect x=%226%22 y=%229%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%228%22 width=%221%22 height=%221%22/%3E%3C/g%3E%3C/svg%3E");--ros:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 41 41' shape-rendering='crispEdges'%3E%3Cg fill='rgba%28228%2C235%2C232%2C.13%29'%3E%3Crect x=%2215%22 y=%2221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2213%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2217%22 y=%223%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2236%22 y=%2216%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2215%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2213%22 y=%2217%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2210%22 width=%221%22 height=%221%22/%3E%3Crect x=%2224%22 y=%2226%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%226%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2216%22 y=%2222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2219%22 y=%2239%22 width=%221%22 height=%221%22/%3E%3Crect x=%2225%22 y=%2225%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2228%22 width=%221%22 height=%221%22/%3E%3Crect x=%2218%22 y=%2228%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2212%22 y=%2218%22 width=%221%22 height=%221%22/%3E%3Crect x=%2237%22 y=%2217%22 width=%221%22 height=%221%22/%3E%3Crect x=%2219%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%2222%22 y=%2228%22 width=%221%22 height=%221%22/%3E%3Crect x=%2223%22 y=%2227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%2224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2217%22 y=%2223%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2240%22 width=%221%22 height=%221%22/%3E%3Crect x=%2221%22 y=%2239%22 width=%221%22 height=%221%22/%3E%3Crect x=%2230%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2213%22 width=%221%22 height=%221%22/%3E%3Crect x=%2210%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2226%22 y=%2216%22 width=%221%22 height=%221%22/%3E%3Crect x=%2238%22 y=%2218%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2212%22 width=%221%22 height=%221%22/%3E%3Crect x=%2210%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2215%22 y=%2225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2218%22 y=%2212%22 width=%221%22 height=%221%22/%3E%3Crect x=%2216%22 y=%2224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2231%22 width=%221%22 height=%221%22/%3E%3Crect x=%2239%22 y=%2219%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2230%22 width=%221%22 height=%221%22/%3E%3Crect x=%2222%22 y=%2212%22 width=%221%22 height=%221%22/%3E%3Crect x=%2234%22 y=%2214%22 width=%221%22 height=%221%22/%3E%3Crect x=%2228%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2236%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%223%22 y=%2217%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2231%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2212%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2232%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%221%22 y=%2219%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2216%22 y=%2226%22 width=%221%22 height=%221%22/%3E%3Crect x=%2239%22 y=%2221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2240%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2223%22 y=%2213%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2226%22 width=%221%22 height=%221%22/%3E%3Crect x=%2221%22 y=%2225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2212%22 y=%2222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2235%22 width=%221%22 height=%221%22/%3E%3Crect x=%2228%22 y=%2218%22 width=%221%22 height=%221%22/%3E%3Crect x=%225%22 y=%2225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%228%22 width=%221%22 height=%221%22/%3E%3Crect x=%2224%22 y=%2214%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%221%22 y=%2221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2213%22 y=%2223%22 width=%221%22 height=%221%22/%3E%3Crect x=%2226%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2210%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2218%22 y=%2216%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2210%22 width=%221%22 height=%221%22/%3E%3Crect x=%2222%22 y=%2216%22 width=%221%22 height=%221%22/%3E%3Crect x=%2228%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%229%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2237%22 y=%2223%22 width=%221%22 height=%221%22/%3E%3Crect x=%224%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2212%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2210%22 width=%221%22 height=%221%22/%3E%3Crect x=%2213%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2230%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2224%22 y=%2216%22 width=%221%22 height=%221%22/%3E%3Crect x=%2227%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2225%22 y=%2215%22 width=%221%22 height=%221%22/%3E%3Crect x=%2219%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2230%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2228%22 width=%221%22 height=%221%22/%3E%3Crect x=%222%22 y=%2222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2235%22 y=%2215%22 width=%221%22 height=%221%22/%3E%3Crect x=%2235%22 y=%2225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2221%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%2223%22 y=%2217%22 width=%221%22 height=%221%22/%3E%3Crect x=%2226%22 y=%2234%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2230%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2221%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%223%22 y=%2223%22 width=%221%22 height=%221%22/%3E%3Crect x=%2227%22 y=%2217%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2212%22 width=%221%22 height=%221%22/%3E%3Crect x=%2226%22 y=%226%22 width=%221%22 height=%221%22/%3E%3Crect x=%2218%22 y=%222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2224%22 y=%2218%22 width=%221%22 height=%221%22/%3E%3Crect x=%2216%22 y=%2214%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2230%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2222%22 y=%222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2225%22 y=%2235%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2214%22 width=%221%22 height=%221%22/%3E%3Crect x=%2222%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%2216%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2232%22 width=%221%22 height=%221%22/%3E%3Crect x=%224%22 y=%2224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2223%22 y=%2237%22 width=%221%22 height=%221%22/%3E%3Crect x=%2219%22 y=%2215%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%2217%22 y=%2227%22 width=%221%22 height=%221%22/%3E%3Crect x=%220%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2225%22 y=%2219%22 width=%221%22 height=%221%22/%3E%3Crect x=%2216%22 y=%2216%22 width=%221%22 height=%221%22/%3E%3Crect x=%228%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2230%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2210%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2231%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2223%22 y=%223%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2219%22 width=%221%22 height=%221%22/%3E%3Crect x=%2238%22 y=%2222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2221%22 y=%2215%22 width=%221%22 height=%221%22/%3E%3Crect x=%226%22 y=%2226%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2228%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2224%22 y=%224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2236%22 y=%2224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2228%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2225%22 y=%2221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2212%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2218%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2230%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2223%22 y=%2223%22 width=%221%22 height=%221%22/%3E%3Crect x=%2219%22 y=%221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2234%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2217%22 y=%2213%22 width=%221%22 height=%221%22/%3E%3Crect x=%2210%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2227%22 y=%2223%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%229%22 width=%221%22 height=%221%22/%3E%3Crect x=%225%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2219%22 y=%2219%22 width=%221%22 height=%221%22/%3E%3Crect x=%2225%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2228%22 y=%2222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2215%22 y=%2215%22 width=%221%22 height=%221%22/%3E%3Crect x=%2221%22 y=%221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2212%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2226%22 y=%2224%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2218%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2221%22 y=%2219%22 width=%221%22 height=%221%22/%3E%3Crect x=%2224%22 y=%2236%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2227%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2218%22 y=%2238%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%2216%22 y=%224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2219%22 y=%2221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2222%22 y=%2238%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%2234%22 width=%221%22 height=%221%22/%3E%3Crect x=%2228%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2235%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%226%22 y=%2214%22 width=%221%22 height=%221%22/%3E%3Crect x=%2232%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2213%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2232%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%226%22 width=%221%22 height=%221%22/%3E%3Crect x=%2221%22 y=%2221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2215%22 y=%2235%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2231%22 width=%221%22 height=%221%22/%3E%3Crect x=%225%22 y=%2215%22 width=%221%22 height=%221%22/%3E%3Crect x=%2217%22 y=%2217%22 width=%221%22 height=%221%22/%3E%3Crect x=%2210%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2234%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2210%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2219%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2228%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%226%22 width=%221%22 height=%221%22/%3E%3Crect x=%2224%22 y=%2222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2215%22 y=%2219%22 width=%221%22 height=%221%22/%3E%3Crect x=%2216%22 y=%2218%22 width=%221%22 height=%221%22/%3E%3Crect x=%2212%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%2218%22 y=%2224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2216%22 y=%2236%22 width=%221%22 height=%221%22/%3E%3Crect x=%224%22 y=%2216%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%228%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2222%22 y=%2224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2230%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2236%22 width=%221%22 height=%221%22/%3E%3Crect x=%2234%22 y=%2226%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2212%22 width=%221%22 height=%221%22/%3E%3Crect x=%2219%22 y=%2225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2221%22 width=%221%22 height=%221%22/%3E%3Crect x=%222%22 y=%2218%22 width=%221%22 height=%221%22/%3E%3Crect x=%2217%22 y=%2237%22 width=%221%22 height=%221%22/%3E%3Crect x=%229%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2230%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%228%22 width=%221%22 height=%221%22/%3E%3Crect x=%2224%22 y=%2224%22 width=%221%22 height=%221%22/%3E%3C/g%3E%3C/svg%3E");
+}
+body,button,input,select,textarea,.tab,.seg button,.vbtn,.langs button,.btn,.mini,.gtog button{font-family:var(--sans)}
+body{background:var(--paper);color:var(--ink);font-weight:400}
+.flag{display:block;height:11px;border:0;background:var(--band) 0 0/18px 11px repeat-x;opacity:.75;margin:18px auto 0;max-width:680px;width:calc(100% - 32px)}
+
+.top{padding-top:14px;border-bottom:1px solid var(--line);padding-bottom:14px}
+.mark{font:400 13px var(--sans);letter-spacing:.5px;text-transform:none;color:var(--muted)}
+.langs{border:1px solid var(--line);border-radius:0}
+.langs button{color:var(--muted);font:500 12px var(--sans);letter-spacing:1px}
+.langs button.on{background:var(--card2);color:#fff}
+
+/* hero: full photo, spaced caps in the middle */
+h1.hero{all:unset;position:relative;display:grid;place-items:center;text-align:center;margin:18px 0 0;min-height:330px;overflow:hidden;isolation:isolate;
+  font-family:var(--sans);font-weight:300;color:#f2f5f3;text-transform:uppercase;letter-spacing:.42em;font-size:clamp(22px,6.6vw,40px);line-height:1.2;padding:0 0 0 .42em}
+h1.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;z-index:-2;filter:saturate(.55) brightness(.7) contrast(1.05) hue-rotate(-8deg)}
+h1.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(27,39,41,.25),rgba(27,39,41,.55) 70%,rgba(27,39,41,.9))}
+h1.hero span{display:block;letter-spacing:.32em;font-size:.42em;font-weight:400;color:#cfdad6;margin-top:10px;text-transform:uppercase}
+
+/* tabs: segmented strip like the reference */
+.tabs{margin-top:0;background:rgba(27,39,41,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:0}
+.tabs .wrap{gap:0;padding:0 16px}
+.tab{flex:1 0 auto;border:0;border-radius:0;background:linear-gradient(90deg,#3c4f50,#53676a);color:#dfe7e4;font:500 11px var(--sans);letter-spacing:1.4px;text-transform:uppercase;padding:13px 14px}
+.tab:nth-child(2){background:linear-gradient(90deg,#55665c,#4b5e61)}
+.tab:nth-child(3){background:linear-gradient(90deg,#4b5e61,#6a7c7e)}
+.tab:nth-child(4){background:linear-gradient(90deg,#3d4c4f,#4f5f61)}
+.tab:nth-child(5){background:linear-gradient(90deg,#59573f,#4b5e61)}
+.tab:nth-child(6){background:linear-gradient(90deg,#46585b,#384a4d)}
+.tab.on{background:#9fb2ae;color:#13201f}
+
+h2{font-family:var(--sans);font-weight:300;font-size:clamp(28px,7vw,38px);letter-spacing:-.3px;line-height:1.1;margin-bottom:12px}
+.lead{color:var(--muted);font-size:15.5px}
+.box h3,.fs h3,.step h3,.formwrap h3{font-weight:400;font-size:20px;letter-spacing:-.2px}
+
+/* blocks: square panels, some with faded rosette */
+.box,.fs,.step,.sheet .sec,.contact{background:var(--card);border:0;border-radius:0;box-shadow:none;position:relative;overflow:hidden}
+.box::after,.step:nth-of-type(odd)::after{content:"";position:absolute;right:-70px;top:-70px;width:240px;height:240px;background:var(--ros) center/contain no-repeat;pointer-events:none}
+.step:nth-of-type(even){background:var(--card2)}
+.step:nth-of-type(even) .sub,.step:nth-of-type(even) .hint{color:#d4dedb}
+.box>*,.step>*{position:relative;z-index:1}
+
+.quick{gap:4px;margin-top:20px}
+.quick button{border:0;border-radius:0;background:var(--card);min-height:150px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;padding:18px}
+.quick button:nth-child(2),.quick button:nth-child(3){background:var(--card2)}
+.quick button::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;background:var(--ros) center/contain no-repeat}
+.quick .n{order:-1;margin-bottom:auto;font:300 26px var(--sans);color:#fff;letter-spacing:0;background:none;padding:0}
+.quick b{font-weight:400;font-size:19px;line-height:1.15}
+.quick small{color:#c8d3d0;font-size:12.5px;line-height:1.35;margin-top:6px}
+.quick button:last-child:nth-child(odd){grid-column:1/-1;min-height:110px}
+
+.btn,.btn.red,.step .btn.blue{background:#dfe8e4;color:#16211f;border-radius:0;font:600 12px var(--sans);letter-spacing:1.4px;text-transform:uppercase;padding:14px 18px}
+.btn.line{background:transparent;color:var(--ink);border:1px solid #6f8486}
+.btn.done{background:var(--ok-soft);color:var(--ok)}
+.mini{border-radius:0;background:var(--red-soft);color:var(--ink)}
+.seg{border:1px solid var(--line);border-radius:0;background:transparent}
+.seg button{border-radius:0;font:500 12px var(--sans);letter-spacing:1.2px;text-transform:uppercase}
+.seg button.on,.vbtn.on,.gtog button.on{background:#9fb2ae;color:#13201f}
+.vbtn{border-radius:0;background:var(--card);color:var(--ink);border-color:var(--line)}
+.gtog button{border-radius:0;background:var(--field);color:var(--ink)}
+.gtog button.on small{color:#13201f}
+.note{background:#2a3a35;color:#dbe6df;border-radius:0;border-left:2px solid var(--accent)}
+.note.ok{background:var(--ok-soft);color:#cdeedb}
+.note[style]{background:var(--card2)!important;color:#fff}
+.callout,.badge{border-radius:0}
+.step-num{font:300 30px var(--sans);color:#fff}
+.step a,.step summary,.savebar .hint a{color:#cfe0da}
+.f input,.f select,#oswText{background:var(--field);border:1px solid var(--line);border-radius:0;color:var(--ink)}
+.f input:focus,.f select:focus,#oswText:focus{outline:1px solid #9fb2ae;outline-offset:0}
+.f input::placeholder{color:#6d807d}
+.pre,.uz{background:var(--field);border-radius:0;color:var(--ink);border-color:var(--line)}
+.sheet .sec h4 .lt{font:300 22px var(--sans);color:#fff}
+.do.x i{background:#9fb2ae;color:#13201f}.do.cross i{background:var(--accent)}.do.info i{background:var(--line);color:var(--ink)}
+ul.check li::before{background:#33474a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e4ebe8' stroke-width='3'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/11px no-repeat;border-radius:0}
+.links a{background:var(--card);border:0;border-radius:0;color:var(--ink)}
+.links a span.ic{background:var(--card2);border-radius:0}
+.fpage{border-radius:0}
+footer{color:var(--muted);border-top:1px solid var(--line);max-width:680px;margin:20px auto 0;padding-top:24px}
+footer::before{content:"";display:block;height:11px;margin:0 auto 18px;width:126px;background:var(--band) 0 0/18px 11px repeat-x;opacity:.75}
+@keyframes up{from{opacity:.001;transform:translateY(10px)}to{opacity:1;transform:none}}
+.panel.on .quick button,.panel.on .box,.panel.on .step,.panel.on .fs{animation:up .6s ease-out both}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media (min-width:700px){.quick{grid-template-columns:repeat(3,1fr)}.quick button:last-child:nth-child(odd){grid-column:auto}}
+/* ===== Карэлія — rounded + motion ===== */
+:root{--r:22px;--r-sm:14px}
+.flag{border-radius:999px;animation:bandflow 30s linear infinite}
+@keyframes bandflow{to{background-position:-180px 0}}
+.top{border-bottom:0}
+.langs{border-radius:999px;overflow:hidden}
+.langs button{border-radius:999px;transition:background .3s,color .3s}
+
+/* hero */
+h1.hero{border-radius:28px;animation:heroIn 1s ease-out both}
+h1.hero img{animation:kb 26s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.16) translate(-2%,-1.5%)}}
+@keyframes heroIn{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+h1.hero{animation:heroIn 1s ease-out both,spread 1.6s .2s cubic-bezier(.2,.7,.2,1) both}
+@keyframes spread{from{letter-spacing:.9em;opacity:0}to{letter-spacing:.42em;opacity:1}}
+h1.hero span{animation:fadeUp 1s .9s ease-out both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+h1.hero::after{content:none;display:none}
+
+/* tabs: rounded segmented strip */
+.tabs{padding:10px 0}
+.tabs .wrap{padding:0 16px}
+.tab{transition:background .35s,color .35s,transform .2s}
+.tab:first-child{border-radius:var(--r-sm) 0 0 var(--r-sm)}
+.tab:last-child{border-radius:0 var(--r-sm) var(--r-sm) 0}
+.tab.on{border-radius:var(--r-sm);transform:scale(1.04);box-shadow:0 6px 18px -8px rgba(0,0,0,.6);position:relative;z-index:1}
+
+/* blocks */
+.box,.fs,.step,.sheet .sec,.contact,.quick button,.note,.pre,.uz,.links a,.fpage,.callout{border-radius:var(--r)}
+.contact,.links a{border-radius:var(--r-sm)}
+.quick{gap:10px}
+.quick button{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,background .35s}
+@media (hover:hover){.quick button:hover,.links a:hover{transform:translateY(-5px);box-shadow:0 18px 30px -16px rgba(0,0,0,.7)}}
+.quick button:active{transform:scale(.98)}
+.quick button::after,.box::after,.step:nth-of-type(odd)::after{animation:breathe 7s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:.55}}
+.quick .n{transition:transform .35s}
+@media (hover:hover){.quick button:hover .n{transform:translateX(4px)}}
+
+/* controls */
+.btn,.btn.red,.step .btn.blue,.btn.line{border-radius:999px;transition:transform .2s,box-shadow .2s,background .2s}
+@media (hover:hover){.btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px -10px rgba(0,0,0,.7)}}
+.btn:active{transform:scale(.97)}
+.mini,.vbtn,.badge{border-radius:999px}
+.seg{border-radius:999px;padding:4px}
+.seg button{border-radius:999px;transition:background .3s,color .3s}
+.gtog button{border-radius:var(--r-sm);transition:background .3s,color .3s}
+.f input,.f select,#oswText{border-radius:var(--r-sm);transition:border-color .2s,box-shadow .2s}
+.f input:focus,.f select:focus,#oswText:focus{outline:0;border-color:#9fb2ae;box-shadow:0 0 0 4px rgba(159,178,174,.18)}
+.note{border-left:0;box-shadow:inset 3px 0 0 var(--accent)}
+.links a span.ic,.step-num{border-radius:12px}
+ul.check li::before{border-radius:6px}
+footer{border-top:0}
+
+/* scroll reveal (class added by script) */
+.panel.on .quick button,.panel.on .box,.panel.on .step,.panel.on .fs{animation:none}
+.rv{opacity:0;transform:translateY(28px) scale(.98);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.quick button.rv:nth-child(2){transition-delay:.08s}.quick button.rv:nth-child(3){transition-delay:.16s}.quick button.rv:nth-child(4){transition-delay:.24s}.quick button.rv:nth-child(5){transition-delay:.32s}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
+
+/* ===== desktop / tablet ===== */
+@media (min-width:700px){
+  .quick{grid-template-columns:repeat(6,1fr)}
+  .quick button{grid-column:span 2}
+  .quick button:nth-child(4),.quick button:nth-child(5){grid-column:span 3}
+  .quick button:last-child:nth-child(odd){grid-column:span 3}
+  .tab{flex:1 0 auto;text-align:center}
+}
+@media (min-width:1000px){
+  .wrap{max-width:1040px;padding:0 24px}
+  .flag{max-width:992px}
+  .tabs .wrap{padding:0 24px}
+  h1.hero{min-height:460px;font-size:52px}
+  h1.hero span{font-size:.4em}
+  .panel{padding-top:40px}
+  #home .lead{max-width:640px;font-size:17px}
+  h2{font-size:44px}
+  .quick button{min-height:190px;padding:24px}
+  .quick b{font-size:22px}
+  .quick small{font-size:14px}
+  .quick button::after{width:220px;height:220px;right:-70px;top:-70px}
+  .panel:not(#home)>*{max-width:780px;margin-left:auto;margin-right:auto}
+  footer{max-width:992px}
+}
+
+/* ===== ornaments animated on every tab ===== */
+.fs,.step{position:relative;overflow:hidden}
+.fs>*,.step>*{position:relative;z-index:1}
+.fs::after,.step::after{content:"";position:absolute;right:-70px;top:-70px;width:240px;height:240px;background:var(--ros) center/contain no-repeat;pointer-events:none;z-index:0}
+.fs:nth-of-type(even)::after,.step:nth-of-type(even)::after{right:auto;left:-80px;top:auto;bottom:-80px}
+/* heading ornament band under every page title */
+.panel h2::after{content:"";display:block;width:126px;height:11px;margin-top:14px;background:var(--band) 0 0/18px 11px repeat-x;opacity:.85;animation:bandflow 14s linear infinite}
+/* corner rosettes: pop in when a tab opens, then breathe and drift */
+@keyframes ornIn{from{opacity:0;transform:scale(.55) rotate(-25deg)}to{opacity:1;transform:none}}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1);opacity:1}33%{transform:translate(-8px,6px) scale(1.08);opacity:.6}66%{transform:translate(6px,-4px) scale(.96);opacity:.85}}
+.panel.on .quick button::after,.panel.on .box::after,.panel.on .fs::after,.panel.on .step::after{animation:ornIn 1s cubic-bezier(.2,.7,.2,1) both,drift 9s 1s ease-in-out infinite}
+.panel.on .quick button:nth-child(2)::after,.panel.on .fs:nth-of-type(2)::after,.panel.on .step:nth-of-type(2)::after{animation-delay:.12s,1.6s}
+.panel.on .quick button:nth-child(3)::after,.panel.on .fs:nth-of-type(3)::after,.panel.on .step:nth-of-type(3)::after{animation-delay:.24s,2.4s}
+.panel.on .quick button:nth-child(4)::after,.panel.on .fs:nth-of-type(4)::after,.panel.on .step:nth-of-type(4)::after{animation-delay:.36s,3.2s}
+.panel.on .quick button:nth-child(5)::after,.panel.on .fs:nth-of-type(5)::after,.panel.on .step:nth-of-type(5)::after{animation-delay:.48s,4s}
+/* little ornament mark on the active tab */
+.tab{position:relative}
+.tab.on::after{content:"";position:absolute;left:50%;bottom:2px;width:12px;height:8px;margin-left:-6px;background:var(--band) 0 0/14px 8px no-repeat;opacity:.9;animation:tabMark .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes tabMark{from{opacity:0;transform:translateY(4px) scale(.4)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.panel h2::after,.panel.on .quick button::after,.panel.on .box::after,.panel.on .fs::after,.panel.on .step::after,.tab.on::after{animation:none!important}}
+html[data-theme="light"]{color-scheme:light;
+  --ink:#1c2a2c;--paper:#eef2f0;--card:#ffffff;--card2:#d6e1de;--muted:#5f716f;--line:#d3dcd9;--field:#f6f8f7;
+  --red:#3f5a58;--red-soft:#e3ebe8;--blue:#3f5a58;--blue-soft:#e3ebe8;--accent:#b9655a;
+  --ok:#2f6b46;--ok-soft:#e1efe6;--warn:#6f5212;--warn-soft:#f5ecd6;
+  --band:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 11' shape-rendering='crispEdges'%3E%3Cg fill='%23b9655a'%3E%3Crect x=%223%22 y=%224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%224%22 width=%221%22 height=%221%22/%3E%3Crect x=%224%22 y=%223%22 width=%221%22 height=%221%22/%3E%3Crect x=%224%22 y=%229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%221%22 width=%221%22 height=%221%22/%3E%3Crect x=%225%22 y=%2210%22 width=%221%22 height=%221%22/%3E%3Crect x=%228%22 y=%223%22 width=%221%22 height=%221%22/%3E%3Crect x=%220%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%221%22 y=%226%22 width=%221%22 height=%221%22/%3E%3Crect x=%222%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2213%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2215%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%226%22 width=%221%22 height=%221%22/%3E%3Crect x=%225%22 y=%220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%229%22 width=%221%22 height=%221%22/%3E%3Crect x=%223%22 y=%226%22 width=%221%22 height=%221%22/%3E%3Crect x=%228%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%229%22 y=%224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2210%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%222%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%226%22 y=%221%22 width=%221%22 height=%221%22/%3E%3Crect x=%226%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%226%22 width=%221%22 height=%221%22/%3E%3Crect x=%223%22 y=%222%22 width=%221%22 height=%221%22/%3E%3Crect x=%224%22 y=%221%22 width=%221%22 height=%221%22/%3E%3Crect x=%224%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%225%22 y=%222%22 width=%221%22 height=%221%22/%3E%3Crect x=%223%22 y=%228%22 width=%221%22 height=%221%22/%3E%3Crect x=%225%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%225%22 y=%228%22 width=%221%22 height=%221%22/%3E%3Crect x=%228%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%229%22 y=%226%22 width=%221%22 height=%221%22/%3E%3Crect x=%221%22 y=%224%22 width=%221%22 height=%221%22/%3E%3Crect x=%222%22 y=%223%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%222%22 width=%221%22 height=%221%22/%3E%3Crect x=%226%22 y=%223%22 width=%221%22 height=%221%22/%3E%3Crect x=%226%22 y=%229%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%228%22 width=%221%22 height=%221%22/%3E%3C/g%3E%3C/svg%3E");--ros:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 41 41' shape-rendering='crispEdges'%3E%3Cg fill='rgba%2863%2C90%2C88%2C.10%29'%3E%3Crect x=%2215%22 y=%2221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2213%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2217%22 y=%223%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2236%22 y=%2216%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2215%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2213%22 y=%2217%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2210%22 width=%221%22 height=%221%22/%3E%3Crect x=%2224%22 y=%2226%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%226%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2216%22 y=%2222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2219%22 y=%2239%22 width=%221%22 height=%221%22/%3E%3Crect x=%2225%22 y=%2225%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2228%22 width=%221%22 height=%221%22/%3E%3Crect x=%2218%22 y=%2228%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2212%22 y=%2218%22 width=%221%22 height=%221%22/%3E%3Crect x=%2237%22 y=%2217%22 width=%221%22 height=%221%22/%3E%3Crect x=%2219%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%2222%22 y=%2228%22 width=%221%22 height=%221%22/%3E%3Crect x=%2223%22 y=%2227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%2224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2217%22 y=%2223%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2240%22 width=%221%22 height=%221%22/%3E%3Crect x=%2221%22 y=%2239%22 width=%221%22 height=%221%22/%3E%3Crect x=%2230%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2213%22 width=%221%22 height=%221%22/%3E%3Crect x=%2210%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2226%22 y=%2216%22 width=%221%22 height=%221%22/%3E%3Crect x=%2238%22 y=%2218%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2212%22 width=%221%22 height=%221%22/%3E%3Crect x=%2210%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2215%22 y=%2225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2218%22 y=%2212%22 width=%221%22 height=%221%22/%3E%3Crect x=%2216%22 y=%2224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2231%22 width=%221%22 height=%221%22/%3E%3Crect x=%2239%22 y=%2219%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2230%22 width=%221%22 height=%221%22/%3E%3Crect x=%2222%22 y=%2212%22 width=%221%22 height=%221%22/%3E%3Crect x=%2234%22 y=%2214%22 width=%221%22 height=%221%22/%3E%3Crect x=%2228%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2236%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%223%22 y=%2217%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2231%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2212%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2232%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%221%22 y=%2219%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2216%22 y=%2226%22 width=%221%22 height=%221%22/%3E%3Crect x=%2239%22 y=%2221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2240%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2223%22 y=%2213%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2226%22 width=%221%22 height=%221%22/%3E%3Crect x=%2221%22 y=%2225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2212%22 y=%2222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2235%22 width=%221%22 height=%221%22/%3E%3Crect x=%2228%22 y=%2218%22 width=%221%22 height=%221%22/%3E%3Crect x=%225%22 y=%2225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%228%22 width=%221%22 height=%221%22/%3E%3Crect x=%2224%22 y=%2214%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%221%22 y=%2221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2213%22 y=%2223%22 width=%221%22 height=%221%22/%3E%3Crect x=%2226%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2210%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2218%22 y=%2216%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2210%22 width=%221%22 height=%221%22/%3E%3Crect x=%2222%22 y=%2216%22 width=%221%22 height=%221%22/%3E%3Crect x=%2228%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%229%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2237%22 y=%2223%22 width=%221%22 height=%221%22/%3E%3Crect x=%224%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2212%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2210%22 width=%221%22 height=%221%22/%3E%3Crect x=%2213%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2230%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2224%22 y=%2216%22 width=%221%22 height=%221%22/%3E%3Crect x=%2227%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2225%22 y=%2215%22 width=%221%22 height=%221%22/%3E%3Crect x=%2219%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2230%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2228%22 width=%221%22 height=%221%22/%3E%3Crect x=%222%22 y=%2222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2235%22 y=%2215%22 width=%221%22 height=%221%22/%3E%3Crect x=%2235%22 y=%2225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2221%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%2223%22 y=%2217%22 width=%221%22 height=%221%22/%3E%3Crect x=%2226%22 y=%2234%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2230%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2221%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%223%22 y=%2223%22 width=%221%22 height=%221%22/%3E%3Crect x=%2227%22 y=%2217%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2212%22 width=%221%22 height=%221%22/%3E%3Crect x=%2226%22 y=%226%22 width=%221%22 height=%221%22/%3E%3Crect x=%2218%22 y=%222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2224%22 y=%2218%22 width=%221%22 height=%221%22/%3E%3Crect x=%2216%22 y=%2214%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2230%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2222%22 y=%222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2225%22 y=%2235%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2214%22 width=%221%22 height=%221%22/%3E%3Crect x=%2222%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%2216%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2232%22 width=%221%22 height=%221%22/%3E%3Crect x=%224%22 y=%2224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2223%22 y=%2237%22 width=%221%22 height=%221%22/%3E%3Crect x=%2219%22 y=%2215%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%2217%22 y=%2227%22 width=%221%22 height=%221%22/%3E%3Crect x=%220%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2225%22 y=%2219%22 width=%221%22 height=%221%22/%3E%3Crect x=%2216%22 y=%2216%22 width=%221%22 height=%221%22/%3E%3Crect x=%228%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2230%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2210%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2231%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2223%22 y=%223%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2219%22 width=%221%22 height=%221%22/%3E%3Crect x=%2238%22 y=%2222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2221%22 y=%2215%22 width=%221%22 height=%221%22/%3E%3Crect x=%226%22 y=%2226%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2228%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2224%22 y=%224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2236%22 y=%2224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2228%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2225%22 y=%2221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2212%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2218%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2230%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2223%22 y=%2223%22 width=%221%22 height=%221%22/%3E%3Crect x=%2219%22 y=%221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2234%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2217%22 y=%2213%22 width=%221%22 height=%221%22/%3E%3Crect x=%2210%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2227%22 y=%2223%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%229%22 width=%221%22 height=%221%22/%3E%3Crect x=%225%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2219%22 y=%2219%22 width=%221%22 height=%221%22/%3E%3Crect x=%2225%22 y=%225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2228%22 y=%2222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2215%22 y=%2215%22 width=%221%22 height=%221%22/%3E%3Crect x=%2221%22 y=%221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2212%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2226%22 y=%2224%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2218%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2221%22 y=%2219%22 width=%221%22 height=%221%22/%3E%3Crect x=%2224%22 y=%2236%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2229%22 width=%221%22 height=%221%22/%3E%3Crect x=%2227%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2218%22 y=%2238%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%2216%22 y=%224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2219%22 y=%2221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2222%22 y=%2238%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%2234%22 width=%221%22 height=%221%22/%3E%3Crect x=%2228%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2235%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%226%22 y=%2214%22 width=%221%22 height=%221%22/%3E%3Crect x=%2232%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2213%22 width=%221%22 height=%221%22/%3E%3Crect x=%2233%22 y=%2232%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%226%22 width=%221%22 height=%221%22/%3E%3Crect x=%2221%22 y=%2221%22 width=%221%22 height=%221%22/%3E%3Crect x=%2215%22 y=%2235%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2231%22 width=%221%22 height=%221%22/%3E%3Crect x=%225%22 y=%2215%22 width=%221%22 height=%221%22/%3E%3Crect x=%2217%22 y=%2217%22 width=%221%22 height=%221%22/%3E%3Crect x=%2210%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2234%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2210%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2219%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2228%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%226%22 width=%221%22 height=%221%22/%3E%3Crect x=%2224%22 y=%2222%22 width=%221%22 height=%221%22/%3E%3Crect x=%2215%22 y=%2219%22 width=%221%22 height=%221%22/%3E%3Crect x=%2216%22 y=%2218%22 width=%221%22 height=%221%22/%3E%3Crect x=%2212%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%2218%22 y=%2224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2216%22 y=%2236%22 width=%221%22 height=%221%22/%3E%3Crect x=%224%22 y=%2216%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%228%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2222%22 y=%2224%22 width=%221%22 height=%221%22/%3E%3Crect x=%2230%22 y=%227%22 width=%221%22 height=%221%22/%3E%3Crect x=%2214%22 y=%2220%22 width=%221%22 height=%221%22/%3E%3Crect x=%2220%22 y=%2236%22 width=%221%22 height=%221%22/%3E%3Crect x=%2234%22 y=%2226%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2212%22 width=%221%22 height=%221%22/%3E%3Crect x=%2219%22 y=%2225%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2221%22 width=%221%22 height=%221%22/%3E%3Crect x=%222%22 y=%2218%22 width=%221%22 height=%221%22/%3E%3Crect x=%2217%22 y=%2237%22 width=%221%22 height=%221%22/%3E%3Crect x=%229%22 y=%2233%22 width=%221%22 height=%221%22/%3E%3Crect x=%2211%22 y=%2230%22 width=%221%22 height=%221%22/%3E%3Crect x=%2229%22 y=%2211%22 width=%221%22 height=%221%22/%3E%3Crect x=%227%22 y=%228%22 width=%221%22 height=%221%22/%3E%3Crect x=%2224%22 y=%2224%22 width=%221%22 height=%221%22/%3E%3C/g%3E%3C/svg%3E");
+}
+html[data-theme="light"] body{background:linear-gradient(180deg,#f4f7f6 0,#e9efed 100%);color:var(--ink)}
+html[data-theme="light"] .flag{opacity:.85}
+html[data-theme="light"] .mark{color:var(--muted)}
+html[data-theme="light"] .langs{border-color:var(--line);background:#fff}
+html[data-theme="light"] .langs button{color:var(--muted)}
+html[data-theme="light"] .langs button.on{background:#4f6b69;color:#fff}
+html[data-theme="light"] h1.hero img{filter:saturate(.7) brightness(1.02) contrast(.95)}
+html[data-theme="light"] h1.hero::before{background:radial-gradient(ellipse 80% 22% at 50% 26%,rgba(28,42,44,.35),transparent 75%),radial-gradient(ellipse 80% 16% at 50% 76%,rgba(28,42,44,.4),transparent 75%),linear-gradient(180deg,rgba(238,242,240,.1),rgba(28,42,44,.2) 55%,rgba(28,42,44,.5))}
+html[data-theme="light"] h1.hero{color:#fff;text-shadow:0 2px 18px rgba(20,35,37,.45)}
+html[data-theme="light"] h1.hero span{color:#f2f6f4}
+html[data-theme="light"] .tabs{background:rgba(238,242,240,.92)}
+html[data-theme="light"] .tab{background:linear-gradient(90deg,#dfe7e4,#cfdcd8);color:#2f4442}
+html[data-theme="light"] .tab:nth-child(2){background:linear-gradient(90deg,#d8e0d6,#cfdcd8)}
+html[data-theme="light"] .tab:nth-child(3){background:linear-gradient(90deg,#cfdcd8,#e0e8e5)}
+html[data-theme="light"] .tab:nth-child(4){background:linear-gradient(90deg,#d6dfdc,#c9d6d3)}
+html[data-theme="light"] .tab:nth-child(5){background:linear-gradient(90deg,#e5e2d2,#d5dfdc)}
+html[data-theme="light"] .tab:nth-child(6){background:linear-gradient(90deg,#d3dddb,#c7d3d1)}
+html[data-theme="light"] .tab.on{background:#4f6b69;color:#fff;box-shadow:0 6px 18px -8px rgba(30,50,50,.45)}
+html[data-theme="light"] .box,html[data-theme="light"] .fs,html[data-theme="light"] .step,html[data-theme="light"] .sheet .sec,html[data-theme="light"] .contact{background:var(--card);box-shadow:0 1px 2px rgba(20,40,40,.04),0 12px 30px -20px rgba(20,40,40,.3)}
+html[data-theme="light"] .step:nth-of-type(even){background:var(--card2)}
+html[data-theme="light"] .step:nth-of-type(even) .sub,html[data-theme="light"] .step:nth-of-type(even) .hint{color:#4d605e}
+html[data-theme="light"] .quick button{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(20,40,40,.04),0 12px 30px -20px rgba(20,40,40,.3)}
+html[data-theme="light"] .quick button:nth-child(2),html[data-theme="light"] .quick button:nth-child(3){background:var(--card2)}
+html[data-theme="light"] .quick .n{color:#3f5a58}
+html[data-theme="light"] .quick small{color:var(--muted)}
+@media (hover:hover){html[data-theme="light"] .quick button:hover,html[data-theme="light"] .links a:hover{box-shadow:0 18px 30px -16px rgba(20,40,40,.35)}
+}
+html[data-theme="light"] .btn,html[data-theme="light"] .btn.red,html[data-theme="light"] .step .btn.blue{background:#4f6b69;color:#fff}
+html[data-theme="light"] .btn.line{background:#fff;color:var(--ink);border:1px solid #b9c7c4}
+@media (hover:hover){html[data-theme="light"] .btn:hover{box-shadow:0 10px 22px -10px rgba(30,50,50,.45)}
+}
+html[data-theme="light"] .mini{background:var(--red-soft);color:var(--ink)}
+html[data-theme="light"] .seg{border-color:var(--line);background:#fff}
+html[data-theme="light"] .seg button.on,html[data-theme="light"] .vbtn.on,html[data-theme="light"] .gtog button.on{background:#4f6b69;color:#fff}
+html[data-theme="light"] .gtog button.on small{color:#fff}
+html[data-theme="light"] .vbtn{background:#fff;color:var(--ink);border-color:var(--line)}
+html[data-theme="light"] .gtog button{background:var(--field);color:var(--ink)}
+html[data-theme="light"] .note{background:#f6efe2;color:#4f3f22}
+html[data-theme="light"] .note.ok{background:var(--ok-soft);color:#1f4a30}
+html[data-theme="light"] .note[style]{background:var(--card2)!important;color:var(--ink)}
+html[data-theme="light"] .step-num{color:#3f5a58}
+html[data-theme="light"] .step a,html[data-theme="light"] .step summary,html[data-theme="light"] .savebar .hint a{color:#3f6b66}
+html[data-theme="light"] .f input,html[data-theme="light"] .f select,html[data-theme="light"] #oswText{background:var(--field);border:1px solid var(--line);color:var(--ink)}
+html[data-theme="light"] .f input:focus,html[data-theme="light"] .f select:focus,html[data-theme="light"] #oswText:focus{border-color:#4f6b69;box-shadow:0 0 0 4px rgba(79,107,105,.15)}
+html[data-theme="light"] .f input::placeholder{color:#9aaaa7}
+html[data-theme="light"] .pre,html[data-theme="light"] .uz{background:var(--field);color:var(--ink);border-color:var(--line)}
+html[data-theme="light"] .sheet .sec h4 .lt{color:#3f5a58}
+html[data-theme="light"] .do.x i{background:#4f6b69;color:#fff}
+html[data-theme="light"] .do.info i{background:var(--card2);color:var(--ink)}
+html[data-theme="light"] ul.check li::before{background:var(--card2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233f5a58' stroke-width='3'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/11px no-repeat}
+html[data-theme="light"] .links a{background:var(--field);color:var(--ink)}
+html[data-theme="light"] .links a span.ic{background:#4f6b69;color:#fff}
+html[data-theme="light"] footer{color:var(--muted)}
+
+/* theme toggle button */
+.top{gap:10px}
+.top .right{display:flex;align-items:center;gap:8px}
+.theme-tg{width:38px;height:38px;flex:none;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer;position:relative;overflow:hidden;transition:background .3s,border-color .3s,transform .2s}
+.theme-tg:active{transform:scale(.92)}
+.theme-tg svg{width:18px;height:18px;position:absolute;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .4s}
+.theme-tg .sun{opacity:0;transform:rotate(-90deg) scale(.4)}
+.theme-tg .moon{opacity:1;transform:none}
+html[data-theme="light"] .theme-tg{background:#fff}
+html[data-theme="light"] .theme-tg .sun{opacity:1;transform:none}
+html[data-theme="light"] .theme-tg .moon{opacity:0;transform:rotate(90deg) scale(.4)}
+/* smooth switch */
+html.theme-anim body,html.theme-anim .box,html.theme-anim .fs,html.theme-anim .step,html.theme-anim .quick button,html.theme-anim .tab,html.theme-anim .btn,html.theme-anim .f input,html.theme-anim .f select,html.theme-anim .note,html.theme-anim .links a,html.theme-anim .langs,html.theme-anim .seg,html.theme-anim .pre,html.theme-anim .uz{transition:background-color .45s ease,color .45s ease,border-color .45s ease,box-shadow .45s ease!important}
+@media print{.theme-tg{display:none!important}}
 /* ===== print (must stay last) ===== */
 @media print{
   :root{color-scheme:light;--ink:#000;--paper:#fff;--card:#fff;--muted:#444;--line:#bbb;--field:#fff;--blue:#1d3f8f;--red:#1d3f8f;--blue-soft:#eef2fb;--red-soft:#eef2fb;--accent2:#b0102a;--warn-soft:#fff;--ok-soft:#fff;--shadow:none}
@@ -296,7 +454,7 @@ footer a{color:var(--muted)}
     <button class="tab" data-tab="bank"><span data-l="ru">Банк</span><span data-l="pl">Bank</span><span data-l="be">Банк</span></button>
     <button class="tab" data-tab="guide"><span data-l="ru">Инструкция</span><span data-l="pl">Poradnik</span><span data-l="be">Інструкцыя</span></button>
     <button class="tab" data-tab="tg">Telegram</button>
-    <button class="tab" data-tab="fb">Facebook</button>
+    <button class="tab" data-tab="kontakt"><span data-l="ru">Наши соцсети</span><span data-l="pl">Nasze social media</span><span data-l="be">Нашы сацсеткі</span></button>
   </div>
 </nav>
 
@@ -315,13 +473,13 @@ footer a{color:var(--muted)}
       <button data-go="bank"><span class="n">02</span><b>Bank Millennium</b><small><span data-l="ru">Что делать при блокировке</span><span data-l="pl">Co robić przy blokadzie</span><span data-l="be">Што рабіць пры блакаванні</span></small></button>
       <button data-go="guide"><span class="n">03</span><b><span data-l="ru">Инструкция</span><span data-l="pl">Poradnik</span><span data-l="be">Інструкцыя</span></b><small><span data-l="ru">Как получить документ</span><span data-l="pl">Jak uzyskać dokument</span><span data-l="be">Як атрымаць дакумент</span></small></button>
       <button data-go="tg"><span class="n">04</span><b>Telegram</b><small><span data-l="ru">Чат и канал</span><span data-l="pl">Czat i kanał</span><span data-l="be">Чат і канал</span></small></button>
-      <button data-go="fb"><span class="n">05</span><b>Facebook</b><small><span data-l="ru">Наша группа</span><span data-l="pl">Nasza grupa</span><span data-l="be">Наша група</span></small></button>
+      <button data-go="kontakt"><span class="n">05</span><b><span data-l="ru">Наши соцсети</span><span data-l="pl">Nasze social media</span><span data-l="be">Нашы сацсеткі</span></b><small>Facebook · X</small></button>
     </div>
     <div class="box">
       <h3><span data-l="ru">Контакты</span><span data-l="pl">Kontakt</span><span data-l="be">Кантакты</span></h3>
       <div class="links">
         <a href="mailto:BialorusiniDP@proton.me"><span class="ic">✉</span>BialorusiniDP@proton.me</a>
-        <a href="https://x.com/bialorusinidp" target="_blank" rel="noopener"><span class="ic">𝕏</span>@bialorusinidp</a>
+        
       </div>
     </div>
   </section>
@@ -554,21 +712,23 @@ footer a{color:var(--muted)}
     </div>
   </section>
 
-  <!-- Facebook -->
-  <section class="panel" id="fb">
-    <h2><span data-l="ru">Наша группа</span><span data-l="pl">Nasza grupa</span><span data-l="be">Наша група</span></h2>
+  <!-- Контакты и соцсети -->
+  <section class="panel" id="kontakt">
+    <h2><span data-l="ru">Наши соцсети</span><span data-l="pl">Nasze social media</span><span data-l="be">Нашы сацсеткі</span></h2>
     <p class="lead">
-      <span data-l="ru">Главная площадка инициативы в Facebook.</span>
-      <span data-l="pl">Główne miejsce inicjatywy na Facebooku.</span>
-      <span data-l="be">Галоўная пляцоўка ініцыятывы ў Facebook.</span>
+      <span data-l="ru">Следите за новостями инициативы.</span>
+      <span data-l="pl">Śledź aktualności inicjatywy.</span>
+      <span data-l="be">Сачыце за навінамі ініцыятывы.</span>
     </p>
     <div class="box">
-      <ul class="check" style="margin-top:0">
-        <li><span data-l="ru">Новости и важные изменения</span><span data-l="pl">Aktualności i ważne zmiany</span><span data-l="be">Навіны і важныя змены</span></li>
-        <li><span data-l="ru">Обсуждения и вопросы</span><span data-l="pl">Dyskusje i pytania</span><span data-l="be">Абмеркаванні і пытанні</span></li>
-        <li><span data-l="ru">Истории участников — например, о блокировке счетов в банках</span><span data-l="pl">Historie członków — np. o blokowaniu kont w bankach</span><span data-l="be">Гісторыі ўдзельнікаў — напрыклад, пра блакаванне рахункаў у банках</span></li>
-      </ul>
+      <h3>Facebook</h3>
+      <p><span data-l="ru">Главная площадка инициативы: новости, обсуждения и истории участников — например, о блокировке счетов в банках.</span><span data-l="pl">Główne miejsce inicjatywy: aktualności, dyskusje i historie członków — np. o blokowaniu kont w bankach.</span><span data-l="be">Галоўная пляцоўка ініцыятывы: навіны, абмеркаванні і гісторыі ўдзельнікаў — напрыклад, пра блакаванне рахункаў у банках.</span></p>
       <a class="btn red" href="https://www.facebook.com/share/g/18cgRLzLox/" target="_blank" rel="noopener"><span data-l="ru">Вступить в группу →</span><span data-l="pl">Dołącz do grupy →</span><span data-l="be">Далучыцца да групы →</span></a>
+    </div>
+    <div class="box">
+      <h3>X (Twitter)</h3>
+      <p><span data-l="ru">Короткие новости и обновления: <b>@bialorusinidp</b></span><span data-l="pl">Krótkie wiadomości i aktualizacje: <b>@bialorusinidp</b></span><span data-l="be">Кароткія навіны і абнаўленні: <b>@bialorusinidp</b></span></p>
+      <a class="btn" href="https://x.com/bialorusinidp" target="_blank" rel="noopener"><span data-l="ru">Открыть X →</span><span data-l="pl">Otwórz X →</span><span data-l="be">Адкрыць X →</span></a>
     </div>
   </section>
 </main>
@@ -1141,6 +1301,40 @@ tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.ta
 document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){show(b.dataset.go);window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'});});});
 var start=(location.hash||'').slice(1);
 show(document.getElementById(start)&&document.getElementById(start).classList.contains('panel')?start:'home');
+})();
+</script>
+<script>
+/* keep the active tab visible in the scrollable tab strip */
+(function(){var w=document.querySelector('.tabs .wrap');if(!w)return;
+function c(){var t=w.querySelector('.tab.on');if(!t)return;var x=t.offsetLeft-(w.clientWidth-t.offsetWidth)/2;try{w.scrollTo({left:x,behavior:'smooth'});}catch(e){w.scrollLeft=x;}}
+document.addEventListener('click',function(e){if(e.target.closest('.tab,[data-go]'))setTimeout(c,30);});setTimeout(c,100);})();
+</script>
+<script>
+/* scroll reveal */
+(function(){try{
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.quick button,.box,.step,.fs,.links a,.note').forEach(function(el){el.classList.add('rv');io.observe(el);});
+  window.addEventListener('beforeprint',function(){document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});});
+}catch(e){}})();
+</script>
+<script>
+/* theme toggle */
+(function(){
+  var h=document.documentElement,top=document.querySelector('header .top'),langs=top&&top.querySelector('.langs');if(!langs)return;
+  var wrap=document.createElement('div');wrap.className='right';langs.parentNode.insertBefore(wrap,langs);
+  var b=document.createElement('button');b.type='button';b.className='theme-tg';
+  b.innerHTML='<svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>';
+  wrap.appendChild(b);wrap.appendChild(langs);
+  function label(){var d=h.getAttribute('data-theme')==='dark';var l=h.lang;b.title=b.ariaLabel=d?(l==='pl'?'Jasny motyw':l==='be'?'Светлая тэма':'Светлая тема'):(l==='pl'?'Ciemny motyw':l==='be'?'Цёмная тэма':'Тёмная тема');}
+  label();
+  b.addEventListener('click',function(){
+    var n=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.classList.add('theme-anim');h.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}
+    var m=document.querySelector('meta[name=theme-color]');if(m)m.content=n==='dark'?'#1b2729':'#eef2f0';
+    label();setTimeout(function(){h.classList.remove('theme-anim');},600);
+  });
+  document.querySelectorAll('.langs button').forEach(function(x){x.addEventListener('click',function(){setTimeout(label,0);});});
 })();
 </script>
 </body>
