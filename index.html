@@ -451,6 +451,7 @@ html:not([data-theme="light"]) .soc-i{color:#d98a7e;border-color:rgba(217,138,12
 @media (hover:hover){.soc-i:hover{background:#b9655a!important;color:#fff!important;border-color:#b9655a!important}}
 .f input[type=checkbox]{accent-color:#4f6b69;width:20px;height:20px;flex:none}
 html:not([data-theme="light"]) .f input[type=checkbox]{accent-color:#9fb2ae}
+.savehint{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(0,0,0,.12)}.savehint .mini{margin:8px 0 0;display:inline-block}
 /* ===== print (must stay last) ===== */
 @media print{
   :root{color-scheme:light;--ink:#000;--paper:#fff;--card:#fff;--muted:#444;--line:#bbb;--field:#fff;--blue:#1d3f8f;--red:#1d3f8f;--blue-soft:#eef2fb;--red-soft:#eef2fb;--accent2:#b0102a;--warn-soft:#fff;--ok-soft:#fff;--shadow:none}
@@ -544,6 +545,8 @@ html:not([data-theme="light"]) .f input[type=checkbox]{accent-color:#9fb2ae}
         <span data-l="ru">🔒 Данные никуда не отправляются — всё считается прямо в браузере.</span>
         <span data-l="pl">🔒 Dane nigdzie nie są wysyłane — wszystko liczy się w przeglądarce.</span>
         <span data-l="be">🔒 Даныя нікуды не адпраўляюцца — усё лічыцца ў браўзеры.</span>
+        <div class="savehint"><span data-l="ru">💾 Заполненное сохраняется в этом браузере на этом устройстве. В следующий раз всё будет на месте — останется поправить даты. Дата подачи ставится сегодняшняя.</span><span data-l="pl">💾 Wpisane dane zapisują się w tej przeglądarce na tym urządzeniu. Następnym razem wszystko będzie na miejscu — wystarczy poprawić daty. Data złożenia ustawia się na dzisiejszą.</span><span data-l="be">💾 Запоўненае захоўваецца ў гэтым браўзеры на гэтай прыладзе. Наступным разам усё будзе на месцы — застанецца паправіць даты. Дата падачы ставіцца сённяшняя.</span>
+          <button type="button" class="mini" id="wfClear"><span data-l="ru">Очистить сохранённое</span><span data-l="pl">Wyczyść zapisane</span><span data-l="be">Ачысціць захаванае</span></button><span class="hint" id="wfSaved"></span></div>
       </div>
       <div class="btns no-print">
         <button class="btn red" id="go"><span data-l="ru">Показать, как заполнить</span><span data-l="pl">Pokaż, jak wypełnić</span><span data-l="be">Паказаць, як запоўніць</span></button>
@@ -614,6 +617,7 @@ html:not([data-theme="light"]) .f input[type=checkbox]{accent-color:#9fb2ae}
       <div class="step-head"><span class="step-num">1</span><div><h3><span data-l="ru">Рекламация в банк</span><span data-l="pl">Reklamacja w banku</span><span data-l="be">Рэкламацыя ў банк</span></h3><p class="sub"><span data-l="ru">Без неё омбудсмен и защитник прав потребителей обычно не возьмут дело.</span><span data-l="pl">Bez niej rzecznik zwykle nie podejmie sprawy.</span><span data-l="be">Без яе амбудсмен і абаронца правоў спажыўцоў звычайна не возьмуць справу.</span></p></div></div>
       <ul>
         <li><span data-l="ru">Подать можно в приложении, письменно в отделении или по e-mail:</span><span data-l="pl">Złożyć można w aplikacji, pisemnie w oddziale lub e-mailem:</span><span data-l="be">Падаць можна ў праграме, пісьмова ў аддзяленні або па e-mail:</span> <span class="mono">kontakt@bankmillennium.pl</span><button class="mini" data-copy="millmail">Copy</button></li>
+        <li><span data-l="ru">Адрес для e-Doręczeń:</span><span data-l="pl">Adres do e-Doręczeń:</span><span data-l="be">Адрас для e-Doręczeń:</span> <span class="mono">AE:PL-10327-59258-UACTU-34</span><button class="mini" type="button" data-ade="AE:PL-10327-59258-UACTU-34">Copy</button><br><span data-l="ru">Письмом: Bank Millennium S.A., Wydział Relacji z Klientami, ul. Stanisława Żaryna 2A, 02-593 Warszawa, с пометкой «Reklamacja».</span><span data-l="pl">Listownie: Bank Millennium S.A., Wydział Relacji z Klientami, ul. Stanisława Żaryna 2A, 02-593 Warszawa, z dopiskiem „Reklamacja”.</span><span data-l="be">Лістом: Bank Millennium S.A., Wydział Relacji z Klientami, ul. Stanisława Żaryna 2A, 02-593 Warszawa, з пазнакай «Reklamacja».</span></li>
         <li><span data-l="ru">Попросите указать правовые основания и какие операции банк ограничит.</span><span data-l="pl">Poproś o podstawę prawną i listę ograniczanych operacji.</span><span data-l="be">Папрасіце ўказаць прававыя падставы і якія аперацыі банк абмяжуе.</span></li>
         <li><span data-l="ru">Если банк ссылается на санкции ЕС — попросите назвать конкретную норму.</span><span data-l="pl">Jeśli bank powołuje się na sankcje UE — poproś o konkretny przepis.</span><span data-l="be">Калі банк спасылаецца на санкцыі ЕС — папрасіце назваць канкрэтную норму.</span></li>
         <li><span data-l="ru">Сохраните подтверждение отправки и номер рекламации.</span><span data-l="pl">Zachowaj potwierdzenie i numer reklamacji.</span><span data-l="be">Захавайце пацвярджэнне адпраўкі і нумар рэкламацыі.</span></li>
@@ -653,6 +657,7 @@ html:not([data-theme="light"]) .f input[type=checkbox]{accent-color:#9fb2ae}
       <ul>
         <li><a href="https://rf.gov.pl/" target="_blank" rel="noopener">rf.gov.pl</a></li>
         <li><a href="https://rf.gov.pl/dla-klientow/postepowania-interwencyjne/" target="_blank" rel="noopener">rf.gov.pl/dla-klientow/postepowania-interwencyjne</a></li>
+        <li><span data-l="ru">Адрес для e-Doręczeń:</span><span data-l="pl">Adres do e-Doręczeń:</span><span data-l="be">Адрас для e-Doręczeń:</span> <span class="mono">AE:PL-82898-28814-BHBGA-15</span><button class="mini" type="button" data-ade="AE:PL-82898-28814-BHBGA-15">Copy</button><br><span data-l="ru">Письмом: Biuro Rzecznika Finansowego, ul. Nowogrodzka 47A, 00-695 Warszawa.</span><span data-l="pl">Listownie: Biuro Rzecznika Finansowego, ul. Nowogrodzka 47A, 00-695 Warszawa.</span><span data-l="be">Лістом: Biuro Rzecznika Finansowego, ul. Nowogrodzka 47A, 00-695 Warszawa.</span></li>
         <li><span data-l="ru">Приложите рекламацию, ответ банка и документы.</span><span data-l="pl">Dołącz reklamację, odpowiedź banku i dokumenty.</span><span data-l="be">Прыкладзіце рэкламацыю, адказ банка і дакументы.</span></li>
       </ul>
     </div>
@@ -669,8 +674,8 @@ html:not([data-theme="light"]) .f input[type=checkbox]{accent-color:#9fb2ae}
     <div class="step">
       <div class="step-head"><span class="step-num">5</span><div><h3>Miejski Rzecznik Konsumentów</h3><p class="sub"><span data-l="ru">Городской защитник прав потребителей — бесплатно, по месту жительства.</span><span data-l="pl">Bezpłatnie, według miejsca zamieszkania.</span><span data-l="be">Гарадскі абаронца правоў спажыўцоў — бясплатна, па месцы жыхарства.</span></p></div></div>
       <div class="contacts">
-        <div class="contact"><b>Warszawa</b><span>ul. Canaletta 2, 00-099 Warszawa</span><span class="mono">22 443 34 44</span><span><span class="mono">konsument@um.warszawa.pl</span><button class="mini" data-copy="waw">Copy</button></span><a href="https://warszawa19115.pl/szukasz-informacji/spoleczenstwo-obywatelskie/miejski-rzecznik-konsumentow" target="_blank" rel="noopener">warszawa19115.pl</a></div>
-        <div class="contact"><b>Wrocław</b><span>ul. Gabrieli Zapolskiej 4, 50-032 Wrocław</span><span class="mono">71 777 79 02</span><span><span class="mono">brk@um.wroc.pl</span><button class="mini" data-copy="wro">Copy</button></span><a href="https://www.wroclaw.pl/dla-mieszkanca/miejski-rzecznik-konsumentow-we-wroclawiu" target="_blank" rel="noopener">wroclaw.pl</a></div>
+        <div class="contact"><b>Warszawa</b><span>ul. Canaletta 2, 00-099 Warszawa</span><span class="mono">22 443 34 44</span><span><span class="mono">konsument@um.warszawa.pl</span><button class="mini" data-copy="waw">Copy</button></span><span>e-Doręczenia (Urząd m.st. Warszawy): <span class="mono">AE:PL-79408-50689-FDSVF-21</span><button class="mini" type="button" data-ade="AE:PL-79408-50689-FDSVF-21">Copy</button></span><a href="https://warszawa19115.pl/szukasz-informacji/spoleczenstwo-obywatelskie/miejski-rzecznik-konsumentow" target="_blank" rel="noopener">warszawa19115.pl</a></div>
+        <div class="contact"><b>Wrocław</b><span>ul. Gabrieli Zapolskiej 4, 50-032 Wrocław</span><span class="mono">71 777 79 02</span><span><span class="mono">brk@um.wroc.pl</span><button class="mini" data-copy="wro">Copy</button></span><span>e-Doręczenia (Urząd Miejski Wrocławia): <span class="mono">AE:PL-95179-82549-VVTFT-27</span><button class="mini" type="button" data-ade="AE:PL-95179-82549-VVTFT-27">Copy</button></span><a href="https://www.wroclaw.pl/dla-mieszkanca/miejski-rzecznik-konsumentow-we-wroclawiu" target="_blank" rel="noopener">wroclaw.pl</a></div>
       </div>
       <p class="hint"><span data-l="ru">В другом городе ищите «miejski (powiatowy) rzecznik konsumentów + город».</span><span data-l="pl">W innym mieście szukaj „miejski (powiatowy) rzecznik konsumentów + miasto”.</span><span data-l="be">У іншым горадзе шукайце «miejski (powiatowy) rzecznik konsumentów + горад».</span></p>
     </div>
@@ -678,6 +683,7 @@ html:not([data-theme="light"]) .f input[type=checkbox]{accent-color:#9fb2ae}
     <div class="step">
       <div class="step-head"><span class="step-num">6</span><div><h3><span data-l="ru">Письмо в KNF</span><span data-l="pl">Pismo do KNF</span><span data-l="be">Ліст у KNF</span></h3><p class="sub"><span data-l="ru">Комиссия финансового надзора — регулятор банков.</span><span data-l="pl">Komisja Nadzoru Finansowego — regulator banków.</span><span data-l="be">Камісія фінансавага нагляду — рэгулятар банкаў.</span></p></div></div>
       <p class="hint" style="margin-top:0">Do: <span class="mono">knf@knf.gov.pl</span><button class="mini" data-copy="knfmail">Copy</button></p>
+      <p class="hint">e-Doręczenia: <span class="mono">AE:PL-15372-29362-SCIBD-25</span><button class="mini" type="button" data-ade="AE:PL-15372-29362-SCIBD-25">Copy</button></p>
       <p class="hint">Temat: <b id="knf-subj"></b><button class="mini" data-copy="knfsubj">Copy</button></p>
       <div class="callout"><span data-l="ru"><b>Проверьте перед отправкой.</b> В письме сказано, что банк блокирует счета и не принимает dokument podróży. Если с вами этого не было — поправьте под свою ситуацию, например «zapowiada zablokowanie».</span><span data-l="pl"><b>Sprawdź przed wysłaniem.</b> List mówi, że bank blokuje rachunki i nie akceptuje dokumentu podróży. Jeśli to Cię nie dotyczy — dostosuj, np. „zapowiada zablokowanie”.</span><span data-l="be"><b>Праверце перад адпраўкай.</b> У лісце сказана, што банк блакуе рахункі і не прымае dokument podróży. Калі з вамі гэтага не было — папраўце, напрыклад «zapowiada zablokowanie».</span></div>
       <div class="gtog sm" role="group"><button type="button" data-g="f" class="on"><span data-l="ru">Женщина</span><span data-l="pl">Kobieta</span><span data-l="be">Жанчына</span></button><button type="button" data-g="m"><span data-l="ru">Мужчина</span><span data-l="pl">Mężczyzna</span><span data-l="be">Мужчына</span></button></div>
@@ -1481,6 +1487,44 @@ document.addEventListener('click',function(e){if(e.target.closest('.tab,[data-go
 (function(){var pc=document.getElementById('prpCopy');if(!pc)return;pc.addEventListener('click',function(){var src=pc.previousElementSibling,t=src.textContent;var ok=function(){pc.classList.add('done');setTimeout(function(){pc.classList.remove('done');},1500);};
 var fb=function(){try{var r=document.createRange();r.selectNodeContents(src);var sel=window.getSelection();sel.removeAllRanges();sel.addRange(r);document.execCommand('copy');sel.removeAllRanges();}catch(e){}ok();};
 if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb);}else{fb();}});})();
+</script>
+<script>
+/* remember the wniosek between visits (this browser only) */
+(function(){
+  var KEY='bdp_wniosek_v1',form=document.getElementById('wf');if(!form)return;
+  var osw=document.getElementById('oswText'),st=document.getElementById('wfSaved');
+  function L(ru,pl,be){var l=document.documentElement.lang;return l==='pl'?pl:l==='be'?be:ru;}
+  function get(){try{return JSON.parse(localStorage.getItem(KEY)||'null');}catch(e){return null;}}
+  function fire(el,t){el.dispatchEvent(new Event(t,{bubbles:true}));}
+  function setVal(n,v){var e=form.elements[n];if(!e||v===undefined)return;if(e.type==='checkbox')e.checked=!!v;else e.value=v;}
+  var d=get(),restoring=false;
+  if(d&&d.f){
+    restoring=true;var f=d.f;
+    ['voi','permit'].forEach(function(n){if(f[n]!==undefined){setVal(n,f[n]);fire(form.elements[n],'change');}});
+    Object.keys(f).forEach(function(n){if(n==='sign'||n==='voi'||n==='permit'||n.indexOf('att_')===0&&n!=='att_other')return;setVal(n,f[n]);});
+    ['reason','minor'].forEach(function(n){if(form.elements[n])fire(form.elements[n],'change');});
+    Object.keys(f).forEach(function(n){if(n.indexOf('att_')===0&&n!=='att_other'&&form.elements[n]&&form.elements[n].checked!==!!f[n]){setVal(n,f[n]);fire(form.elements[n],'change');}});
+    if(osw&&d.osw){osw.value=d.osw;osw.dataset.dirty='1';fire(osw,'input');}
+    fire(form,'input');restoring=false;
+    if(st)st.textContent=' ✓ '+L('Данные восстановлены','Dane przywrócone','Даныя адноўлены');
+  }
+  var t=null;
+  function save(){clearTimeout(t);t=setTimeout(function(){if(restoring)return;
+    var f={};Array.prototype.forEach.call(form.elements,function(e){if(e.name)f[e.name]=e.type==='checkbox'?e.checked:e.value;});
+    var o={f:f};if(osw&&osw.value&&osw.dataset.dirty)o.osw=osw.value;
+    try{localStorage.setItem(KEY,JSON.stringify(o));}catch(e){}},400);}
+  form.addEventListener('input',save);form.addEventListener('change',save);
+  if(osw)osw.addEventListener('input',function(){if(!restoring)osw.dataset.dirty='1';save();});
+  var r=document.getElementById('oswReset');if(r)r.addEventListener('click',function(){if(osw)delete osw.dataset.dirty;save();});
+  var c=document.getElementById('wfClear');
+  if(c)c.addEventListener('click',function(){try{localStorage.removeItem(KEY);}catch(e){}location.reload();});
+})();
+</script>
+<script>
+document.addEventListener('click',function(e){var b=e.target.closest('[data-ade]');if(!b)return;var t=b.dataset.ade;
+function ok(){b.classList.add('done');setTimeout(function(){b.classList.remove('done');},1500);}
+function fb(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');}catch(x){}document.body.removeChild(a);ok();}
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb);}else fb();});
 </script>
 <script>
 /* scroll reveal */
